@@ -10,9 +10,10 @@ import lombok.*;
 @AllArgsConstructor
 @EqualsAndHashCode
 @JsonIgnoreProperties
-public class TrassirSession {
-   private String sid;
-   private Integer success;
+public class TrassirServersGuid {
 
-   private String error_code;
+    private String[] subdirs;
+
+    private String error_code;
+
 }
