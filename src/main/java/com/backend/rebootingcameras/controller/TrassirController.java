@@ -239,8 +239,14 @@ public class TrassirController {
 
                         } else { // такого guid нет в массиве (либо новый элемент, либо удалён (отсутсвует сигнал))
 
-                            //todo добавить методы по добавлению нового канала, пока оставлю заглушку:
-                            trassirChannels.add(new TrassirChannel(serverIp, guidChannel, null,null,null,null, null, new Date()));
+                            if (channelStatus != null && channelStatus.getError_code() == null) { // значит камера подключена, но не добавлена в БД (массив)
+                                //todo добавить методы по добавлению нового канала, пока оставлю заглушку:
+                                trassirChannels.add(new TrassirChannel(serverIp, guidChannel, null,null,null,null, null, new Date()));
+                            } else {
+                                channel.setSignal(null); // скорее всего камера удалена из трассира
+                            }
+
+
                         }
                     });
 
