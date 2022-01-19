@@ -3,6 +3,8 @@ package com.backend.rebootingcameras.trassir_models;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
 
+import java.util.Date;
+
 @Getter
 @Setter
 @ToString
@@ -19,10 +21,11 @@ public class TrassirServerInfo {
     private Integer serverStatus;
 
     private String sessionId;
+    private Date lustUpdate;
 
     private String error_code;
 
-    public TrassirServerInfo(String guid, String serverName, String serverIP, Integer channels_total, Integer channels_online, Integer serverStatus, String sessionId) {
+    public TrassirServerInfo(String guid, String serverName, String serverIP, Integer channels_total, Integer channels_online, Integer serverStatus, String sessionId, Date lustUpdate) {
         this.guid = guid;
         this.serverName = serverName;
         this.serverIP = serverIP;
@@ -30,6 +33,7 @@ public class TrassirServerInfo {
         this.channels_online = channels_online;
         this.serverStatus = serverStatus;
         this.sessionId = sessionId;
+        this.lustUpdate = lustUpdate;
     }
 
 

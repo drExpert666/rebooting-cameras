@@ -2,6 +2,8 @@ package com.backend.rebootingcameras.trassir_models;
 
 import lombok.*;
 
+import java.util.Date;
+
 @Getter
 @Setter
 @ToString
@@ -18,6 +20,8 @@ public class TrassirChannel {
     private String guidIpDevice; // id ip девайса
     private String ip; // ip адрес девайса
     private String model; // модель устройства
+
+    private Date lustUpdate; // последнее обновление информации (когда был последний запрос);
 
 
 

@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -27,12 +28,12 @@ public class TrassirController {
     private TrassirSession trassirSessionWithUser; // данные сессии через имя и пароль
 
     private TrassirGuid trassirGuid;
-    private List<TrassirServerInfo> serverInfos = new ArrayList<>();
-    private List<TrassirChannel> trassirChannels = new ArrayList<>();
+
+    private ArrayList<TrassirChannel> trassirChannels = new ArrayList<>(); // список каналов
+    private ArrayList<TrassirServerInfo> servers; // список серверов
 
     private RestTemplate restTemplate; // DI для работы с запросами
 
-    private ArrayList<TrassirServerInfo> servers; // список серверов
 
     @Autowired
     public TrassirController(RestTemplate restTemplate) {
@@ -155,7 +156,7 @@ public class TrassirController {
             trassirChannel = new TrassirChannel(serverGuidValue,
                     guidChannel, channelName.getValue(),
                     channelStatus.getValue(),
-                    deviceGuidValue, deviceIpValue, deviceModelValue);
+                    deviceGuidValue, deviceIpValue, deviceModelValue, new Date());
 
             trassirChannels.add(trassirChannel);
             try {
@@ -182,6 +183,7 @@ public class TrassirController {
 
             // заполняю данные состояния
             if (session.getSid() != null) {
+                serverInfo.setLustUpdate(new Date());
                 String sessionId = session.getSid();
                 serverInfo.setSessionId(sessionId);
                 String getServerHealth = String.format(STRING_FOR_FORMAT, serverInfo.getServerIP(), "health", sessionId);
