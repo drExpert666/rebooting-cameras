@@ -1,5 +1,6 @@
 package com.backend.rebootingcameras.controller;
 
+import com.backend.rebootingcameras.data.ServersData;
 import com.backend.rebootingcameras.trassir_models.TrassirChannel;
 import com.backend.rebootingcameras.trassir_models.TrassirServerInfo;
 import com.backend.rebootingcameras.trassir_requests.*;
@@ -20,6 +21,7 @@ public class TrassirController {
     private final static String SESSION_URL_WITH_USER = "https://" + TRASSIR_MAIN_NAME + ":8080/login?username=Admin&password=Tiera6778351";
     private final static String SERVERS_GUID_METHOD = "settings/network/";
     private final static String STRING_FOR_FORMAT = "https://%s:8080/%s?sid=%s";
+    private final static String STRING_FOR_SESSION = "https://%s:8080/login?password=12345";
 
     private TrassirSession trassirSessionWithSdk; // данные сессии через id сессии
     private TrassirSession trassirSessionWithUser; // данные сессии через имя и пароль
@@ -30,7 +32,7 @@ public class TrassirController {
 
     private RestTemplate restTemplate; // DI для работы с запросами
 
-    private ArrayList<String> serversIps; // список серверов
+    private ArrayList<TrassirServerInfo> servers; // список серверов
 
     @Autowired
     public TrassirController(RestTemplate restTemplate) {
@@ -39,78 +41,36 @@ public class TrassirController {
 
 
     // планировщик, запускающий сбор статистики с серверов Trassir
-    @Scheduled(initialDelay = 3000, fixedDelayString = "PT01H")
+    @Scheduled(initialDelay = 3000, fixedDelayString = "PT11S")
     public void startCollectTrassirStats() {
-        if (trassirSessionWithSdk == null) {
-            openSession(SESSION_URL_WITH_SDK);
-            System.out.println(this.trassirSessionWithSdk);
+
+        System.out.println("Начало сбора информации о серверах");
+        System.out.println("--------------------------------------------------");
+        fillServers();
+        System.out.println("Информация собрана:");
+        for (TrassirServerInfo serverInfo : servers) {
+            System.out.println(serverInfo);
         }
-//        if (trassirSessionWithSdk.getError_code() != null) {
-//            openSession(SESSION_URL_WITH_SDK);
-//            System.out.println("Повторная попытка открыть сессию - ошибка: " + trassirSessionWithSdk.getError_code());
-//        } else {
-//            System.out.println("Сессия " + this.trassirSessionWithSdk.getSid() + " уже созана");
-//            trassirServersGuid = getTrassirServersGuid();
-//            System.out.println(trassirServersGuid);
-//        }
-//        if (trassirServersGuid != null) {
-//            getServersIp(trassirServersGuid);
-//            System.out.println(serverInfos);
-//        }
 
-        System.out.println("Завершено");
-        getChannels(TRASSIR_MAIN_NAME, trassirSessionWithSdk.getSid());
-        for (TrassirChannel trassirChannel:
-             trassirChannels) {
-            System.out.println(trassirChannel);
-        }
-    }
-
-
-    // получение сессии
-    private ResponseEntity<TrassirSession> openSession(String sessionURL) {
-        TrassirSession trassirSessionWithSdk = restTemplate.getForObject(sessionURL, TrassirSession.class);
-        this.trassirSessionWithSdk = trassirSessionWithSdk;
-        return ResponseEntity.ok(trassirSessionWithSdk);
-    }
-
-
-    // конструктор для создания get запроса из переданных параметров
-    private String createUrl(String SID, String serverIP, String method) {
-        return "https://" + serverIP + ":8080/" + method + "?sid=" + SID;
-    }
-
-    // получение guid серверов
-//    private TrassirGuid getTrassirServersGuid() {
-//        String serversGuid = createUrl(trassirSessionWithSdk.getSid(), TRASSIR_MAIN_NAME, SERVERS_GUID_METHOD);
-//        return restTemplate.getForObject(serversGuid, TrassirGuid.class);
-//    }
-
-    // получение ip серверов
-    private List<TrassirServerInfo> getServersIp(TrassirGuid trassirGuid) {
-        if (trassirGuid == null) {
-            return null;
-        }
-        for (String guid : trassirGuid.getSubdirs()) {
-            if (!guid.equals("network_node_add")) {
-                String serverIp = createUrl(trassirSessionWithSdk.getSid(), TRASSIR_MAIN_NAME, SERVERS_GUID_METHOD + guid + "/ip_address");
-                System.out.println(Thread.currentThread().getName());
-                TrassirServerInfo trassirServerInfo = restTemplate.getForObject(serverIp, TrassirServerInfo.class);
-                assert trassirServerInfo != null;
-                trassirServerInfo.setGuid(guid);
-                serverInfos.add(trassirServerInfo);
-                try {
-                    Thread.sleep(100);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
+        System.out.println("Начало сбора информации о камерах");
+        System.out.println("--------------------------------------------------");
+        if (servers != null) {
+            for (TrassirServerInfo serverInfo : servers) {
+                getChannels(serverInfo.getServerIP(), serverInfo.getSessionId());
             }
         }
 
-        return serverInfos;
+        for (TrassirChannel trassirChannel : trassirChannels) {
+            System.out.println(trassirChannel);
+        }
+        System.out.println("--------------------------------------------------");
+        System.out.println("Сбор всей информации завершён");
+
     }
 
-    /** получение списка каналов сервера */ //todo добавить проверки
+    /**
+     * получение списка каналов сервера
+     */ //todo добавить проверки
     private void getChannels(String serverIp, String SID) {
 
         String serversList = "settings/"; // список серверов
@@ -164,7 +124,7 @@ public class TrassirController {
             }
 
             try {
-                Thread.sleep(50);
+                Thread.sleep(20);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -178,7 +138,7 @@ public class TrassirController {
             }
 
             try {
-                Thread.sleep(50);
+                Thread.sleep(20);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -199,12 +159,59 @@ public class TrassirController {
 
             trassirChannels.add(trassirChannel);
             try {
-                Thread.sleep(100);
+                Thread.sleep(20);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
         }
     }
 
+    /**
+     * заполнение информации о серверах
+     */ //todo добавить проверки
+    private void fillServers() {
+        ServersData serversData = new ServersData();
+        servers = serversData.getServers();
+
+        // передаём в цикле значения сервера
+        for (TrassirServerInfo serverInfo : servers) {
+
+            // получаю сессию
+            String getSessionUrl = String.format(STRING_FOR_SESSION, serverInfo.getServerIP());
+            TrassirSession session = restTemplate.getForObject(getSessionUrl, TrassirSession.class);
+
+            // заполняю данные состояния
+            if (session.getSid() != null) {
+                String sessionId = session.getSid();
+                serverInfo.setSessionId(sessionId);
+                String getServerHealth = String.format(STRING_FOR_FORMAT, serverInfo.getServerIP(), "health", sessionId);
+                ServerHealth serverHealth = restTemplate.getForObject(getServerHealth, ServerHealth.class);
+
+                if (serverHealth.getError_code() == null) {
+                    serverInfo.setChannels_total(serverHealth.getChannels_total());
+                    serverInfo.setChannels_online(serverHealth.getChannels_online());
+                    serverInfo.setServerStatus(serverHealth.getNetwork());
+                }
+            }
+
+            // заполняю имя сервера
+            if (session.getSid() != null) {
+                String sessionId = session.getSid();
+                String getServerName = String.format(STRING_FOR_FORMAT, serverInfo.getServerIP(), "settings/name", sessionId);
+                ServerName serverName = restTemplate.getForObject(getServerName, ServerName.class);
+
+                if (serverName.getError_code() == null) {
+                    serverInfo.setServerName(serverName.getValue());
+                }
+            }
+
+            // усыпляем поток перед следующим вызовом
+            try {
+                Thread.sleep(100);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+    }
 
 }
