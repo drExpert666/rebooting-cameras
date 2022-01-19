@@ -1,4 +1,4 @@
-package com.backend.rebootingcameras.utils;
+package com.backend.rebootingcameras.trassir_requests;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
@@ -7,13 +7,14 @@ import lombok.*;
 @Setter
 @NoArgsConstructor
 @ToString
-@AllArgsConstructor
 @EqualsAndHashCode
 @JsonIgnoreProperties
-public class TrassirChannels {
+public class DeviceModel {
 
-
-    private String guid;
+    private String directory;
+    private String name;
+    private String type;
+    private String value;
 
     private String error_code;
 

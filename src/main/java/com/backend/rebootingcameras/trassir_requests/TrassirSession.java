@@ -1,4 +1,4 @@
-package com.backend.rebootingcameras.utils;
+package com.backend.rebootingcameras.trassir_requests;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
