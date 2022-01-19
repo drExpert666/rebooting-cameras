@@ -9,8 +9,9 @@ import java.util.Date;
 @Setter
 @ToString
 @EqualsAndHashCode
+@AllArgsConstructor
 
-// класс контейнер для хранилища инвормации о сервере
+// класс контейнер для хранения информации о сервере
 public class TrassirServerInfo {
 
     private String guid;
@@ -24,17 +25,6 @@ public class TrassirServerInfo {
     private Date lustUpdate;
 
     private String error_code;
-
-    public TrassirServerInfo(String guid, String serverName, String serverIP, Integer channels_total, Integer channels_online, Integer serverStatus, String sessionId, Date lustUpdate) {
-        this.guid = guid;
-        this.serverName = serverName;
-        this.serverIP = serverIP;
-        this.channels_total = channels_total;
-        this.channels_online = channels_online;
-        this.serverStatus = serverStatus;
-        this.sessionId = sessionId;
-        this.lustUpdate = lustUpdate;
-    }
 
 
 }
