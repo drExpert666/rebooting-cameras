@@ -1,17 +1,17 @@
 package com.backend.rebootingcameras.controller;
 
 import com.backend.rebootingcameras.data.ServersData;
-import com.backend.rebootingcameras.trassir_models.TrassirChannel;
+import com.backend.rebootingcameras.service.TrassirChannelService;
+import com.backend.rebootingcameras.service.TrassirServerService;
+import com.backend.rebootingcameras.trassir_models.TrassirChannelInfo;
 import com.backend.rebootingcameras.trassir_models.TrassirServerInfo;
 import com.backend.rebootingcameras.trassir_requests.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
@@ -24,16 +24,27 @@ public class TrassirController {
     private TrassirGuid trassirGuid;
 
     private ServersData serversData; // массив серверов с данными (пока заменяет БД)
-    private List<TrassirChannel> trassirChannels; // список каналов (пока заменяет БД)
+    private List<TrassirChannelInfo> trassirChannels = new ArrayList<>(); // список каналов (пока заменяет БД)
     private List<TrassirServerInfo> servers; // список серверов (пока заменяет БД)
 
     private RestTemplate restTemplate; // DI для работы с запросами
+    private TrassirChannelService trassirChannelService;
+    private TrassirServerService trassirServerService;
+
+    @Autowired
+    public void setTrassirServerService(TrassirServerService trassirServerService) {
+        this.trassirServerService = trassirServerService;
+    }
 
     @Autowired
     public TrassirController(RestTemplate restTemplate) {
         this.restTemplate = restTemplate;
     }
 
+    @Autowired
+    public void setTrassirChannelService(TrassirChannelService trassirChannelService) {
+        this.trassirChannelService = trassirChannelService;
+    }
 
     /**
      * планировщик, запускающий сбор статистики с серверов Trassir
@@ -49,19 +60,20 @@ public class TrassirController {
             System.out.println(serverInfo);
         }
 
+        updateAllServers(servers);
+
         System.out.println("Начало сбора информации о камерах");
         System.out.println("--------------------------------------------------");
         if (servers != null) {
             for (TrassirServerInfo serverInfo : servers) {
-                getChannels(serverInfo.getServerIP(), serverInfo.getSessionId());
+                getChannels(serverInfo);
             }
         }
 
-        for (TrassirChannel trassirChannel : trassirChannels) {
-            System.out.println(trassirChannel);
-        }
         System.out.println("--------------------------------------------------");
         System.out.println("Сбор всей информации завершён");
+
+        updateAllChannels(trassirChannels);
 
     }
 
@@ -125,7 +137,10 @@ public class TrassirController {
     /**
      * получение списка каналов сервера
      */
-    private void getChannels(String serverIp, String SID) {
+    private void getChannels(TrassirServerInfo serverInfo) {
+
+        String serverIp = serverInfo.getServerIP();
+        String SID = serverInfo.getSessionId();
 
         /* создаём url для получения guid сервера */
         final String serversList = "settings/"; // список серверов
@@ -147,130 +162,140 @@ public class TrassirController {
             }
         }
 
-        /* если список каналов пустой (приложение запускается в первый раз) */
-        if (trassirChannels == null) {
-            trassirChannels = new ArrayList<>();
+        if (channelsGUIDs != null) {
 
-            if (channelsGUIDs != null) {
-                for (String guidChannel : channelsGUIDs.getSubdirs()) {
+            /* если список каналов пустой (приложение запускается в первый раз) */
+            for (String guidChannel : channelsGUIDs.getSubdirs()) {
 
-                    /* получаем имя канала */
-                    String getChannelName = String.format(STRING_FOR_FORMAT, serverIp, channelsList + guidChannel + "/name", SID);
-                    ChannelName channelName = restTemplate.getForObject(getChannelName, ChannelName.class);
-                    if (channelName == null || channelName.getError_code() != null) {
-                        channelName = new ChannelName();
-                        channelName.setValue("Неизвестное устройство");
-                    }
+                /* получаем статус канала */
+                Integer channelStatus = getChannelStatus(guidChannel, serverIp, channelsList, SID);
 
-                    threadSleepWithTryCatchBlock(20);
+                /* получаем имя канала */
+                String channelName = getChannelName(guidChannel, serverIp, channelsList, SID);
 
-                    /* получаем статус канала */
-                    String getChannelStatus = String.format(STRING_FOR_FORMAT, serverIp, channelsList + guidChannel + "/flags/signal", SID);
-                    ChannelStatus channelStatus = restTemplate.getForObject(getChannelStatus, ChannelStatus.class);
-                    if (channelStatus == null || channelStatus.getError_code() != null) {
-                        channelStatus = new ChannelStatus();
-                        channelStatus.setValue(null);
-                    }
-
-                    threadSleepWithTryCatchBlock(20);
-
-                    /* получаем guid девайса */ //todo добавить проверки дальше
-                    String deviceGuidValue = null;
-                    String getIpGuid = String.format(STRING_FOR_FORMAT, serverIp, channelsList + guidChannel + "/info/grabber_path", SID);
-                    DeviceGuid deviceGuid = restTemplate.getForObject(getIpGuid, DeviceGuid.class);
-                    if (deviceGuid.getValue() != null) {
-                        StringBuilder stringBuffer = new StringBuilder(deviceGuid.getValue());
-                        deviceGuidValue = stringBuffer.delete(0, 21).toString();
-                    }
-
-                    threadSleepWithTryCatchBlock(20);
-
-                    /* получаем ip девайса */
-                    String deviceIpValue = null;
-                    if (deviceGuidValue != null) {
-                        String getDeviceIp = String.format(STRING_FOR_FORMAT, serverIp, devicesList + deviceGuidValue + "/connection_ip", SID);
-                        DeviceIp deviceIp = restTemplate.getForObject(getDeviceIp, DeviceIp.class);
-                        deviceIpValue = deviceIp.getValue();
-                    }
-
-                    threadSleepWithTryCatchBlock(20);
-
-                    /* получаем модель девайса */
-                    String deviceModelValue = null;
-                    if (deviceGuidValue != null) {
-                        String getDeviceModel = String.format(STRING_FOR_FORMAT, serverIp, devicesList + deviceGuidValue + "/model", SID);
-                        DeviceIp deviceModel = restTemplate.getForObject(getDeviceModel, DeviceIp.class);
-                        deviceModelValue = deviceModel.getValue();
-                    }
-
-
-                    TrassirChannel trassirChannel = new TrassirChannel(serverGuid,
-                            guidChannel, channelName.getValue(),
-                            channelStatus.getValue(),
-                            deviceGuidValue, deviceIpValue, deviceModelValue, new Date());
-
-                    trassirChannels.add(trassirChannel);
-
-                    threadSleepWithTryCatchBlock(20);
-
+                /* получаем guid девайса */ //todo добавить проверки дальше
+                String deviceGuidValue = null;
+                String getIpGuid = String.format(STRING_FOR_FORMAT, serverIp, channelsList + guidChannel + "/info/grabber_path", SID);
+                DeviceGuid deviceGuid = restTemplate.getForObject(getIpGuid, DeviceGuid.class);
+                if (deviceGuid.getValue() != null) {
+                    StringBuilder stringBuffer = new StringBuilder(deviceGuid.getValue());
+                    deviceGuidValue = stringBuffer.delete(0, 21).toString();
                 }
+
+                threadSleepWithTryCatchBlock(20);
+
+                /* получаем ip девайса */
+                String deviceIpValue = null;
+                if (deviceGuidValue != null) {
+                    String getDeviceIp = String.format(STRING_FOR_FORMAT, serverIp, devicesList + deviceGuidValue + "/connection_ip", SID);
+                    DeviceIp deviceIp = restTemplate.getForObject(getDeviceIp, DeviceIp.class);
+                    deviceIpValue = deviceIp.getValue();
+                }
+
+                threadSleepWithTryCatchBlock(20);
+
+                /* получаем модель девайса */
+                String deviceModelValue = null;
+                if (deviceGuidValue != null) {
+                    String getDeviceModel = String.format(STRING_FOR_FORMAT, serverIp, devicesList + deviceGuidValue + "/model", SID);
+                    DeviceIp deviceModel = restTemplate.getForObject(getDeviceModel, DeviceIp.class);
+                    deviceModelValue = deviceModel.getValue();
+                }
+
+
+                TrassirChannelInfo trassirChannel = new TrassirChannelInfo(serverGuid,
+                        guidChannel, channelName,
+                        channelStatus,
+                        deviceGuidValue, deviceIpValue, deviceModelValue, new Date());
+
+                trassirChannels.add(trassirChannel);
+                System.out.println(trassirChannel);
+
+                threadSleepWithTryCatchBlock(20);
+
             }
+
         }
 
-        /* если данные однажды уже были получены */
-        else {
-            if (channelsGUIDs != null) {
-                for (String guidChannel : channelsGUIDs.getSubdirs()) {
-                    trassirChannels.forEach(channel -> {
-
-                        // запрашиваем статус
-                        String getChannelStatus = String.format(STRING_FOR_FORMAT, serverIp, channelsList + channel.getGuidChannel() + "/flags/signal", SID);
-                        ChannelStatus channelStatus = restTemplate.getForObject(getChannelStatus, ChannelStatus.class);
-
-                        // проверяем, есть ли такой guid в массиве и есть ли у него сигнал
-                        if (channel.getGuidChannel().equals(guidChannel)) {
-
-                            if (channelStatus == null || channelStatus.getError_code() != null) {
-                                channel.setSignal(-1); // если нет связи, то ставим null //todo или -1, нужно проверить
-                            } else {
-                                channel.setSignal(channelStatus.getValue()); // если есть связь, то обновляем статус сигнала
-                            }
-                            channel.setLustUpdate(new Date());
-
-                        } else { // такого guid нет в массиве (либо новый элемент, либо удалён (отсутсвует сигнал))
-
-                            if (channelStatus != null && channelStatus.getError_code() == null) { // значит камера подключена, но не добавлена в БД (массив)
-                                //todo добавить методы по добавлению нового канала, пока оставлю заглушку:
-                                trassirChannels.add(new TrassirChannel(serverIp, guidChannel, null,null,null,null, null, new Date()));
-                            } else {
-                                channel.setSignal(null); // скорее всего камера удалена из трассира
-                            }
+//            else {
+//                List<TrassirChannel> newTrassirChannels = new ArrayList<>();
+//                // для каждого элемента из записанного в массив (БД) делаем проверку:
+//                trassirChannels.forEach(trassirChannel -> {
+//
+//                    trassirChannel.setLustUpdate(new Date());
+//
+//                    if (Arrays.asList(channelsGUIDs.getSubdirs()).contains(trassirChannel.getGuidChannel())) {
+//                        trassirChannel.setSignal(getChannelStatus(trassirChannel.getGuidChannel(), serverIp, channelsList, SID));
+//
+//                        if (trassirChannel.getName() == null) {
+//                            trassirChannel.setName(getChannelName(trassirChannel.getGuidChannel(), serverIp, channelsList, SID));
+//                        }
+//                    } else {
+//                        trassirChannel.setSignal(-1);
+//                    }
+//
+//                    newTrassirChannels.add(trassirChannel);
+//
+//                });
+//                trassirChannels = newTrassirChannels;
+//            }
 
 
-                        }
-                    });
 
+}
 
-                    ;
-                    {
-
-                        /* изменяем состояние (если поменялось) для каждого канала */
+    /* если данные однажды уже были получены */
+//        else {
+//            if (channelsGUIDs != null) {
+//                for (String guidChannel : channelsGUIDs.getSubdirs()) {
+//                    trassirChannels.forEach(channel -> {
+//
+//                        // запрашиваем статус
 //                        String getChannelStatus = String.format(STRING_FOR_FORMAT, serverIp, channelsList + channel.getGuidChannel() + "/flags/signal", SID);
 //                        ChannelStatus channelStatus = restTemplate.getForObject(getChannelStatus, ChannelStatus.class);
-//                        if (channelStatus == null || channelStatus.getError_code() != null) {
-//                            channelStatus = new ChannelStatus();
-//                            channelStatus.setValue(null);
+//
+//                        // проверяем, есть ли такой guid в массиве и есть ли у него сигнал
+//                        if (channel.getGuidChannel().equals(guidChannel)) {
+//
+//                            if (channelStatus == null || channelStatus.getError_code() != null) {
+//                                channel.setSignal(-1); // если нет связи, то ставим null //todo или -1, нужно проверить
+//                            } else {
+//                                channel.setSignal(channelStatus.getValue()); // если есть связь, то обновляем статус сигнала
+//                            }
+//                            channel.setLustUpdate(new Date());
+//
+//                        } else { // такого guid нет в массиве (либо новый элемент, либо удалён (отсутсвует сигнал))
+//
+//                            if (channelStatus != null && channelStatus.getError_code() == null) { // значит камера подключена, но не добавлена в БД (массив)
+//                                //todo добавить методы по добавлению нового канала, пока оставлю заглушку:
+//                                trassirChannels.add(new TrassirChannel(serverIp, guidChannel, null,null,null,null, null, new Date()));
+//                            } else {
+//                                channel.setSignal(null); // скорее всего камера удалена из трассира
+//                            }
+//
+//
 //                        }
+//                    });
+//
+//
+//                    ;
+//                    {
+//
+//                        /* изменяем состояние (если поменялось) для каждого канала */
+////                        String getChannelStatus = String.format(STRING_FOR_FORMAT, serverIp, channelsList + channel.getGuidChannel() + "/flags/signal", SID);
+////                        ChannelStatus channelStatus = restTemplate.getForObject(getChannelStatus, ChannelStatus.class);
+////                        if (channelStatus == null || channelStatus.getError_code() != null) {
+////                            channelStatus = new ChannelStatus();
+////                            channelStatus.setValue(null);
+////                        }
+//
+//
+//                    }
+//                }
+//            }
+//
+//        }
 
-
-                    }
-                }
-            }
-
-        }
-
-
-    }
 
     // вынесенное в отдельный метод усыпление потока перед новым запросом в Трассир
     private void threadSleepWithTryCatchBlock(long millis) {
@@ -279,6 +304,40 @@ public class TrassirController {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+    }
+
+
+    /* получаем имя канала */
+    private String getChannelName(String guidChannel, String serverIp, String channelsList, String SID) {
+
+        String getChannelName = String.format(STRING_FOR_FORMAT, serverIp, channelsList + guidChannel + "/name", SID);
+        ChannelName channelName = restTemplate.getForObject(getChannelName, ChannelName.class);
+        if (channelName == null || channelName.getError_code() != null) {
+            channelName = new ChannelName();
+            channelName.setValue("Неизвестное устройство");
+        }
+        threadSleepWithTryCatchBlock(20);
+        return channelName.getValue();
+    }
+
+    /* получаем статус канала */
+    private Integer getChannelStatus(String guidChannel, String serverIp, String channelsList, String SID) {
+        String getChannelStatus = String.format(STRING_FOR_FORMAT, serverIp, channelsList + guidChannel + "/flags/signal", SID);
+        ChannelStatus channelStatus = restTemplate.getForObject(getChannelStatus, ChannelStatus.class);
+        if (channelStatus == null || channelStatus.getError_code() != null) {
+            channelStatus = new ChannelStatus();
+            channelStatus.setValue(null);
+        }
+        threadSleepWithTryCatchBlock(20);
+        return channelStatus.getValue();
+    }
+
+    List<TrassirChannelInfo> updateAllChannels(List<TrassirChannelInfo> channels) {
+       return trassirChannelService.updateAll(channels);
+    }
+
+    List<TrassirServerInfo> updateAllServers(List<TrassirServerInfo> servers) {
+        return trassirServerService.updateAll(servers);
     }
 
 }
