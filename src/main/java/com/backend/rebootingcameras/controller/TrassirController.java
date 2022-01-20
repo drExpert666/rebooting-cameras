@@ -52,6 +52,11 @@ public class TrassirController {
     @Scheduled(initialDelay = 1000, fixedDelayString = "PT5S")
     public void startCollectTrassirStats() {
 
+        /* получение данных из БД */
+
+        trassirChannels = findAllCameras();
+
+
         System.out.println("Начало сбора информации о серверах");
         System.out.println("--------------------------------------------------");
         fillServers();
@@ -73,7 +78,9 @@ public class TrassirController {
         System.out.println("--------------------------------------------------");
         System.out.println("Сбор всей информации завершён");
 
-        updateAllChannels(trassirChannels);
+//        updateAllChannels(trassirChannels);
+
+        updateAllChannelsWithCheckingFields(trassirChannels);
 
     }
 
@@ -332,12 +339,46 @@ public class TrassirController {
         return channelStatus.getValue();
     }
 
+    /* записываем в БД список серверов */
+    List<TrassirServerInfo> updateAllServers(List<TrassirServerInfo> servers) {
+        return trassirServerService.updateAll(servers);
+    }
+
+    /* записываем в БД список камер */
     List<TrassirChannelInfo> updateAllChannels(List<TrassirChannelInfo> channels) {
        return trassirChannelService.updateAll(channels);
     }
 
-    List<TrassirServerInfo> updateAllServers(List<TrassirServerInfo> servers) {
-        return trassirServerService.updateAll(servers);
+    List<TrassirChannelInfo> findAllCameras() {
+        return trassirChannelService.findAll();
     }
+
+    /* обновление всех данных с проверкой параметров */
+    private List<TrassirChannelInfo> updateAllChannelsWithCheckingFields(List<TrassirChannelInfo> channels) {
+        for (TrassirChannelInfo trassirChannel: channels) {
+
+            TrassirChannelInfo trassirChannelTmpl = trassirChannelService.findByGuid(trassirChannel.getGuidChannel());
+
+            String tmplIp = trassirChannelTmpl.getIp(); // считываем из БД информацию о ip устройства
+            String tmplGuidIpDevice = trassirChannelTmpl.getGuidIpDevice();  // считываем из БД информацию о guid ip устройства
+            String tmplModel = trassirChannelTmpl.getModel(); // считываем из БД информацию о модели устройства
+
+            String tmplGuidChannel = trassirChannelTmpl.getGuidChannel(); // считываем из БД информацию о модели устройства
+            String tmplName = trassirChannelTmpl.getName(); // считываем из БД информацию о модели устройства
+            String tmplGuidServer = trassirChannelTmpl.getGuidServer(); // считываем из БД информацию о модели устройства
+
+            System.out.println("-------------------------------------");
+            System.out.println(trassirChannelTmpl);
+            threadSleepWithTryCatchBlock(30);
+            if (tmplIp != null | tmplGuidIpDevice != null | tmplModel != null) {
+                trassirChannelService.updateByChannel(
+                        new TrassirChannelInfo(tmplGuidServer, tmplGuidChannel,tmplName, trassirChannel.getSignal(), tmplGuidIpDevice, tmplIp, tmplModel, new Date()));
+            }
+            else {
+                trassirChannelService.updateByChannel(trassirChannel);
+            }
+        } return  channels;
+    }
+
 
 }

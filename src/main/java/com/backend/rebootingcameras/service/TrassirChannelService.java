@@ -23,4 +23,19 @@ public class TrassirChannelService {
        return trassirChannelRepo.saveAll(channels);
     }
 
+    @Transactional
+    public TrassirChannelInfo findByGuid(String guid) {
+        return trassirChannelRepo.findByGuidChannel(guid);
+    }
+
+    @Transactional
+    public TrassirChannelInfo updateByChannel(TrassirChannelInfo channel) {
+        return trassirChannelRepo.save(channel);
+    }
+
+    @Transactional
+    public List<TrassirChannelInfo> findAll() {
+        return trassirChannelRepo.findAll();
+    }
+
 }
