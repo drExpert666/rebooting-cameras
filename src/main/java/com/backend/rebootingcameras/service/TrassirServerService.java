@@ -25,5 +25,20 @@ public class TrassirServerService {
     }
 
 
+    @Transactional
+    public List<TrassirServerInfo> findAll() {
+        return trassirServerRepo.findAll();
+    }
+
+    @Transactional
+    public TrassirServerInfo findByGuid(String guid) {
+        return trassirServerRepo.findByGuid(guid);
+    }
+
+    @Transactional
+    public TrassirServerInfo updateByServer(TrassirServerInfo server) {
+        return trassirServerRepo.save(server);
+    }
+
 
 }
