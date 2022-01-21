@@ -15,9 +15,9 @@ import java.util.Date;
 @Table(name = "trassir_channel_info")
 public class TrassirChannelInfo {
 
-    @Basic
-    @Column(name = "guid_server")
-    private String guidServer; // id канала
+    @ManyToOne
+    @JoinColumn(name = "guid_server", referencedColumnName = "guid")
+    private TrassirServerInfo guidServer; // id канала
 
     @Id
     @Column(name = "guid_channel")
