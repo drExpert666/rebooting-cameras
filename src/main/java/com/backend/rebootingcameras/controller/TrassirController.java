@@ -309,11 +309,11 @@ public class TrassirController {
            if (!checkLastSessionUpdate(server)) {
                System.out.println("Время сессии " +server.getServerName() + " истекло, нужно обновить");
                System.out.println("-----------------------------------------");
-               //todo добавить обновление статуса сервера в БД, при отсутсвии связи
+
                try {
                    session = getSession(server);
                } catch (ResourceAccessException e) {
-                   server.setServerStatus(-1);
+                   server.setServerStatus(-1); //todo посмотреть какой статус лучше подходит (null или -1)
                    session = null;
                    System.out.println("Поймана ошибка! " + e + " Нет соединения с сервером");
                }
@@ -452,6 +452,6 @@ public class TrassirController {
             server.setLustUpdate(new Date()); // время последнего обновления
 
             return session;
-    }
+    } //todo добавить аналогичный try-catch при каждом запросе к трассиру
 
 }
