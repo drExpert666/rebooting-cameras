@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -47,7 +48,7 @@ public class TrassirController {
     /**
      * планировщик, запускающий сбор статистики с серверов Trassir
      */
-    @Scheduled(initialDelay = 1000, fixedDelayString = "PT5S")
+    @Scheduled(initialDelay = 1000, fixedDelayString = "PT15S")
     public void startCollectTrassirStats() {
 
         /* получение данных из БД */
@@ -57,8 +58,6 @@ public class TrassirController {
         fillServers(); // получаем данные из трассир
 
         updateAllServersWithCheckingFields(servers); // обновляем данные cерверов в БД
-
-//        updateAllServers(servers); - если в БД есть записи, то обновлять всё сразу никогда не нужно
 
         /* заполняем в цикле список каналов из Трассира */
         channelsFromTrassir = new ArrayList<>();
@@ -78,14 +77,6 @@ public class TrassirController {
 
     }
 
-    /* вынесенное в отдельный метод усыпление потока перед новым запросом в Трассир */
-    private void threadSleepWithTryCatchBlock(long millis) {
-        try {
-            Thread.sleep(millis);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-    }
 
     /**
      * методы работы с каналами
@@ -99,8 +90,6 @@ public class TrassirController {
 
         /* создаём url для получения guid канала */
         String urlForChannels = String.format(PathForRequest.STRING_FOR_FORMAT, serverIp, PathForRequest.STRING_CHANNEL_LIST, SID); // для получения массива guid каналов
-
-        final String devicesList = "settings/ip_cameras/"; // список девайсов
 
         /* получаем массив guid каналов сервера */
         TrassirGuid channelsGUIDs = restTemplate.getForObject(urlForChannels, TrassirGuid.class);
@@ -123,6 +112,7 @@ public class TrassirController {
                             channelStatus,
                             null, null, null, new Date());
                     channelsFromTrassir.add(trassirChannel);
+                    System.out.println(trassirChannel);
                 } else {
                     /* получаем имя канала */
                     String channelName = getChannelName(guidChannel, serverIp, SID);
@@ -143,6 +133,7 @@ public class TrassirController {
                             deviceGuidValue, deviceIpValue, deviceModelValue, new Date());
 
                     channelsFromTrassir.add(trassirChannel);
+                    System.out.println(trassirChannel);
 
                 }
 
@@ -253,7 +244,7 @@ public class TrassirController {
         return trassirChannelService.findAll();
     }
 
-    /* обновление всех данных с проверкой параметров */ //todo убрать возвращаемы тип, если нигде не понадобится
+    /* обновление всех данных с проверкой параметров */ //todo убрать возвращаемый тип, если нигде не понадобится
     private List<TrassirChannelInfo> updateAllChannelsWithCheckingFields(List<TrassirChannelInfo> channels) {
         for (TrassirChannelInfo trassirChannel : channels) {
 
@@ -305,52 +296,63 @@ public class TrassirController {
 
         servers = serversFromDB;
 
-        // присваиваем в цикле значения для каждого сервера сервера
-        for (TrassirServerInfo serverInfo : servers) {
-
-            /* получаю сессию */
-            String getSessionUrl = String.format(PathForRequest.STRING_FOR_SESSION, serverInfo.getServerIP());  // строка для получения сессии
-            TrassirSession session = restTemplate.getForObject(getSessionUrl, TrassirSession.class);
-
-            serverInfo.setLustUpdate(new Date()); // время последнего обновления
+        for (TrassirServerInfo server : servers) {
+            TrassirSession session;
+           if (!checkLastSessionUpdate(server)) {
+               System.out.println("Время сессии " +server.getServerName() + " истекло, нужно обновить");
+               System.out.println("-----------------------------------------");
+               session = getSession(server);
+           }
+           else {
+                System.out.println("Обновление сессии " +server.getServerName() + " не требуется");
+                System.out.println("---------------------------------------");
+                session = new TrassirSession(server.getSessionId(), null, null);
+                server.setLustUpdate(new Date());
+            }
 
             /* заполняю данные состояния */
             if (session != null && session.getSid() != null && session.getError_code() == null) {
                 String sessionId = session.getSid();
-                serverInfo.setSessionId(sessionId); // сохраняю значение полученной сессии
+                server.setSessionId(sessionId); // сохраняю значение полученной сессии
 
                 // получаю состояние сервера
-                String getServerHealth = String.format(PathForRequest.STRING_FOR_FORMAT, serverInfo.getServerIP(), PathForRequest.STRING_SERVER_HEALTH, sessionId);
+                String getServerHealth = String.format(PathForRequest.STRING_FOR_FORMAT, server.getServerIP(), PathForRequest.STRING_SERVER_HEALTH, sessionId);
                 ServerHealth serverHealth = restTemplate.getForObject(getServerHealth, ServerHealth.class);
 
                 if (serverHealth != null && serverHealth.getError_code() == null) {
-                    serverInfo.setChannels_total(serverHealth.getChannels_total());
-                    serverInfo.setChannels_online(serverHealth.getChannels_online());
-                    serverInfo.setServerStatus(serverHealth.getNetwork());
+                    server.setChannels_total(serverHealth.getChannels_total());
+                    server.setChannels_online(serverHealth.getChannels_online());
+                    server.setServerStatus(serverHealth.getNetwork());
                 }
                 /* усыпляем поток перед следующим вызовом */
                 threadSleepWithTryCatchBlock(20);
 
                 /* заполняю имя сервера */
-                String getServerName = String.format(PathForRequest.STRING_FOR_FORMAT, serverInfo.getServerIP(), PathForRequest.STRING_SERVER_NAME, sessionId);
+                String getServerName = String.format(PathForRequest.STRING_FOR_FORMAT, server.getServerIP(), PathForRequest.STRING_SERVER_NAME, sessionId);
                 ServerName serverName = restTemplate.getForObject(getServerName, ServerName.class);
 
                 if (serverName != null && serverName.getError_code() == null) {
-                    serverInfo.setServerName(serverName.getValue());
+                    server.setServerName(serverName.getValue());
                 }
 
             }
             else {
-                serverInfo.setSessionId(null);
-                serverInfo.setChannels_total(null);
-                serverInfo.setChannels_online(null);
-                serverInfo.setServerStatus(-1); //todo проверить, какое значение означает отсутствие связи с сервером
+                server.setSessionId(null);
+                server.setChannels_total(null);
+                server.setChannels_online(null);
+                server.setServerStatus(-1); //todo проверить, какое значение означает отсутствие связи с сервером
             }
+
+            System.out.println("ID session:");
+            System.out.println(server.getSessionId());
 
             /* усыпляем поток перед следующим вызовом */
             threadSleepWithTryCatchBlock(20);
+
         }
-    }
+
+        }
+
 
     /**
      * методы работы с БД серверов
@@ -358,7 +360,7 @@ public class TrassirController {
 
     /* получаем список серверов из БД */
     List<TrassirServerInfo> findAllServers() {
-      return trassirServerService.findAll();
+        return trassirServerService.findAll();
     }
 
     /* записываем в БД список серверов */
@@ -370,24 +372,69 @@ public class TrassirController {
     List<TrassirServerInfo> updateAllServersWithCheckingFields(List<TrassirServerInfo> servers) {
         if (servers == null) {
             return null;
-        }
-        else {
-            for (TrassirServerInfo server: servers) {
+        } else {
+            for (TrassirServerInfo server : servers) {
 
                 // без проверки на добавление нового сервера, т.к. мы сами добавляем новый сервер вручную в БД
                 // (его guid и ip). В будущем можно сделать метод по проверке новых серверов по guid (если добавляется в клиенте)
-               TrassirServerInfo serverFromDb = trassirServerService.findByGuid(server.getGuid());
+                TrassirServerInfo serverFromDb = trassirServerService.findByGuid(server.getGuid());
 
-               if (!serverFromDb.equals(server)) { //todo перевести в такой формат проверки у камер
-                   trassirServerService.updateByServer(new TrassirServerInfo(
-                           server.getGuid() != null ? server.getGuid() : serverFromDb.getGuid(),
-                           server.getServerName() != null ? server.getServerName() : serverFromDb.getServerName(),
-                           serverFromDb.getServerIP(),
-                           server.getChannels_total(),server.getChannels_online(), server.getServerStatus(),
-                           server.getSessionId(), new Date(), server.getError_code()));
-               }
+                if (!serverFromDb.equals(server)) { //todo перевести в такой формат проверки у камер
+                    trassirServerService.updateByServer(new TrassirServerInfo(
+                            server.getGuid() != null ? server.getGuid() : serverFromDb.getGuid(),
+                            server.getServerName() != null ? server.getServerName() : serverFromDb.getServerName(),
+                            serverFromDb.getServerIP(),
+                            server.getChannels_total(), server.getChannels_online(), server.getServerStatus(),
+                            server.getSessionId(), new Date(), server.getError_code()));
+                }
             }
         }
         return servers;
     }
+
+    /**
+     * утилиты
+     */
+
+    /* вынесенное в отдельный метод усыпление потока перед новым запросом в Трассир */
+    private void threadSleepWithTryCatchBlock(long millis) {
+        try {
+            Thread.sleep(millis);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /* проверка, живал и сессия: true - значит жива */
+    private boolean checkLastSessionUpdate(TrassirServerInfo server) {
+        if (server == null || server.getLustUpdate() == null) {
+            return false;
+        } else {
+            Calendar calendarNewTime = Calendar.getInstance();
+            calendarNewTime.setTime(new Date());
+            Calendar calendarLastUpdateTime = Calendar.getInstance();
+            calendarLastUpdateTime.setTime(server.getLustUpdate());
+
+            long result = calendarNewTime.getTimeInMillis() - calendarLastUpdateTime.getTimeInMillis();
+            if (result > PathForRequest.TIME_BETWEEN_NOW_AND_GET_SESSION) {
+                System.out.println("true " + result / 60000 + " минут");
+                return false;
+            } else {
+                System.out.println("else " + result / 60000 + " минут");
+                return true;
+            }
+        }
+    }
+
+    /* получение сессии */
+    private TrassirSession getSession(TrassirServerInfo server) {
+
+            String getSessionUrl = String.format(PathForRequest.STRING_FOR_SESSION, server.getServerIP());  // строка для получения сессии
+            TrassirSession session = restTemplate.getForObject(getSessionUrl, TrassirSession.class);
+
+            server.setLustUpdate(new Date()); // время последнего обновления
+
+            return session;
+    }
+
 }

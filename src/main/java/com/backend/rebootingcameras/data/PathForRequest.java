@@ -14,5 +14,6 @@ public class PathForRequest {
     public final static String STRING_DEVICE_IP = "/connection_ip";
     public final static String STRING_DEVICE_MODEL =  "/model";
 
+    public final static int TIME_BETWEEN_NOW_AND_GET_SESSION =  780000; // время милисекундах (13 минут)
 
 }
