@@ -1,6 +1,7 @@
 package com.backend.rebootingcameras.controller;
 
 import com.backend.rebootingcameras.data.PathForRequest;
+import com.backend.rebootingcameras.entity.Switch;
 import com.backend.rebootingcameras.service.TrassirChannelService;
 import com.backend.rebootingcameras.service.TrassirServerService;
 import com.backend.rebootingcameras.trassir_models.TrassirChannelInfo;
@@ -68,7 +69,12 @@ public class TrassirController {
         channelsFromTrassir = new ArrayList<>();
         if (servers != null) {
             for (TrassirServerInfo server : servers) {
-                getChannels(server);
+               try {
+                   getChannels(server);
+               } catch (ResourceAccessException e) {
+                   server.setSessionId(null);
+                   System.out.println("Потеряна связь с сервером во время выполнения запроса к каналу\n" + e);
+               }
             }
         }
 
@@ -88,13 +94,13 @@ public class TrassirController {
      * методы работы с каналами
      */
 
-    /* получение списка каналов сервера их Трассира */
-    private void getChannels(TrassirServerInfo server) {
+    /* получение списка каналов сервера из Трассира */
+    private void getChannels(TrassirServerInfo server) throws ResourceAccessException{
 
         String serverIp = server.getServerIP();
         String SID = server.getSessionId();
 
-        if (server.getSessionId() != null) {
+        if (server.getSessionId() != null) { // выполняем, если до этого была получена сессия
             /* создаём url для получения guid канала */
             String urlForChannels = String.format(PathForRequest.STRING_FOR_FORMAT, serverIp, PathForRequest.STRING_CHANNEL_LIST, SID); // для получения массива guid каналов
 
@@ -117,7 +123,7 @@ public class TrassirController {
                         TrassirChannelInfo trassirChannel = new TrassirChannelInfo(server,
                                 guidChannel, null,
                                 channelStatus,
-                                null, null, null, new Date());
+                                null, null, null, new Date(), null, null);
                         channelsFromTrassir.add(trassirChannel);
                         System.out.println(trassirChannel);
                     } else {
@@ -137,7 +143,7 @@ public class TrassirController {
                         TrassirChannelInfo trassirChannel = new TrassirChannelInfo(server,
                                 guidChannel, channelName,
                                 channelStatus,
-                                deviceGuidValue, deviceIpValue, deviceModelValue, new Date());
+                                deviceGuidValue, deviceIpValue, deviceModelValue, new Date(), null, null);
 
                         channelsFromTrassir.add(trassirChannel);
                         System.out.println(trassirChannel);
@@ -259,28 +265,30 @@ public class TrassirController {
 
         for (TrassirChannelInfo trassirChannel : channels) {
 
-            TrassirChannelInfo trassirChannelTmpl = trassirChannelService.findByGuid(trassirChannel.getGuidChannel());
+            TrassirChannelInfo trassirChannelTmp = trassirChannelService.findByGuid(trassirChannel.getGuidChannel());
 
-            if (trassirChannelTmpl == null) { // если элемент в БД не найден, значит это новая запись (камера)
+            if (trassirChannelTmp == null) { // если элемент в БД не найден, значит это новая запись (камера)
                 trassirChannelService.updateByChannel(trassirChannel); // добавляем её в БД
             } else {
 
-                Integer tmpSignal = trassirChannelTmpl.getSignal(); // считываем из БД информацию о последнем состоянии устройства
-                String tmpIp = trassirChannelTmpl.getIp(); // считываем из БД информацию о ip устройства
-                String tmpGuidIpDevice = trassirChannelTmpl.getGuidIpDevice();  // считываем из БД информацию о guid ip устройства
-                String tmpModel = trassirChannelTmpl.getModel(); // считываем из БД информацию о модели устройства
+                Integer tmpSignal = trassirChannelTmp.getSignal(); // считываем из БД информацию о последнем состоянии устройства
+                String tmpIp = trassirChannelTmp.getIp(); // считываем из БД информацию о ip устройства
+                String tmpGuidIpDevice = trassirChannelTmp.getGuidIpDevice();  // считываем из БД информацию о guid ip устройства
+                String tmpModel = trassirChannelTmp.getModel(); // считываем из БД информацию о модели устройства
 
-                String tmpGuidChannel = trassirChannelTmpl.getGuidChannel(); // считываем из БД информацию о guid канала
-                String tmpName = trassirChannelTmpl.getName(); // считываем из БД информацию о имени устройства
-                TrassirServerInfo tmpServer = trassirChannelTmpl.getGuidServer(); // считываем из БД сервер устройства
+                String tmpGuidChannel = trassirChannelTmp.getGuidChannel(); // считываем из БД информацию о guid канала
+                String tmpName = trassirChannelTmp.getName(); // считываем из БД информацию о имени устройства
+                TrassirServerInfo tmpServer = trassirChannelTmp.getGuidServer(); // считываем из БД сервер устройства
+                Boolean tmpPoeInjector = trassirChannelTmp.getPoeInjector(); // считываем из БД информацию о poe инжекторе
+                Switch tmpSwitch = trassirChannelTmp.getSwitchId(); // считываем из БД информацию о коммутаторе
 
                 // если нет сигнала, а в БД статус был ОК, то перезаписываем значение сигнала, все остальные не перезаписываем
                 if ((trassirChannel.getSignal() == null
                         || trassirChannel.getSignal() == -1)
                         && trassirChannel.getSignal() != tmpSignal) {
                     trassirChannelService.updateByChannel(new TrassirChannelInfo(tmpServer, tmpGuidChannel,
-                            tmpName, trassirChannel.getSignal(), tmpGuidIpDevice, tmpIp, tmpModel, new Date()));
-                } else { // иначе перезаписать все значения (если данные все данные от трассира были заполнены), кроме guid канала
+                            tmpName, trassirChannel.getSignal(), tmpGuidIpDevice, tmpIp, tmpModel, new Date(), tmpPoeInjector, tmpSwitch));
+                } else { // иначе перезаписать все значения (если все данные от трассира были заполнены), кроме guid канала
                     if (trassirChannel.getGuidServer() != null
                             && trassirChannel.getGuidIpDevice() != null
                             && trassirChannel.getModel() != null
@@ -290,7 +298,7 @@ public class TrassirController {
                                 new TrassirChannelInfo(trassirChannel.getGuidServer(), tmpGuidChannel,
                                         trassirChannel.getName(), trassirChannel.getSignal(),
                                         trassirChannel.getGuidIpDevice(), trassirChannel.getIp(),
-                                        trassirChannel.getModel(), new Date()));
+                                        trassirChannel.getModel(), new Date(), null, null));
 
                     }
                 }
@@ -329,7 +337,7 @@ public class TrassirController {
             }
 
             /* заполняю данные состояния */
-            if (session != null && session.getSid() != null && session.getError_code() == null) {
+            if (session != null && session.getSid() != null && session.getError_code() == null) { // если получена сессия
                 String sessionId = session.getSid();
                 server.setSessionId(sessionId); // сохраняю значение полученной сессии
 
@@ -337,9 +345,10 @@ public class TrassirController {
                 String getServerHealth = String.format(PathForRequest.STRING_FOR_FORMAT, server.getServerIP(), PathForRequest.STRING_SERVER_HEALTH, sessionId);
                 ServerHealth serverHealth = restTemplate.getForObject(getServerHealth, ServerHealth.class);
 
+                /* записываю полученные данные, если пришёл ответ */
                 if (serverHealth != null && serverHealth.getError_code() == null) {
-                    server.setChannels_total(serverHealth.getChannels_total());
-                    server.setChannels_online(serverHealth.getChannels_online());
+                    server.setChannelsTotal(serverHealth.getChannels_total());
+                    server.setChannelsOnline(serverHealth.getChannels_online());
                     server.setServerStatus(serverHealth.getNetwork());
                 }
                 /* усыпляем поток перед следующим вызовом */
@@ -354,10 +363,10 @@ public class TrassirController {
                 }
 
             }
-            else {
+            else { // если сессия не была полученв
                 server.setSessionId(null);
-                server.setChannels_total(null);
-                server.setChannels_online(null);
+                server.setChannelsTotal(null);
+                server.setChannelsOnline(null);
                 server.setServerStatus(-1); //todo проверить, какое значение означает отсутствие связи с сервером
             }
 
@@ -402,8 +411,8 @@ public class TrassirController {
                             server.getGuid() != null ? server.getGuid() : serverFromDb.getGuid(),
                             server.getServerName() != null ? server.getServerName() : serverFromDb.getServerName(),
                             serverFromDb.getServerIP(),
-                            server.getChannels_total(), server.getChannels_online(), server.getServerStatus(),
-                            server.getSessionId(), new Date(), server.getError_code()));
+                            server.getChannelsTotal(), server.getChannelsOnline(), server.getServerStatus(),
+                            server.getSessionId(), new Date(), server.getErrorCode()));
                 }
             }
         }
@@ -423,7 +432,7 @@ public class TrassirController {
         }
     }
 
-    /* проверка, живал и сессия: true - значит жива */
+    /* проверка, живая ли сессия: true - значит жива */
     private boolean checkLastSessionUpdate(TrassirServerInfo server) {
         if (server == null || server.getLustUpdate() == null || server.getSessionId() == null) {
             return false;
@@ -455,6 +464,6 @@ public class TrassirController {
             server.setLustUpdate(new Date()); // время последнего обновления
 
             return session;
-    } //todo добавить аналогичный try-catch при каждом запросе к трассиру
+    }
 
 }

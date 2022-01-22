@@ -1,5 +1,6 @@
 package com.backend.rebootingcameras.trassir_models;
 
+import com.backend.rebootingcameras.entity.Switch;
 import lombok.*;
 
 import javax.persistence.*;
@@ -43,6 +44,13 @@ public class TrassirChannelInfo {
     @Column(name = "lust_update")
     private Date lustUpdate; // последнее обновление информации (когда был последний запрос);
 
+    @Basic
+    @Column(name = "poe_injector")
+    private Boolean poeInjector;
+
+    @ManyToOne
+    @JoinColumn(name = "switch_id", referencedColumnName = "id")
+    private Switch switchId;
 
 
 }

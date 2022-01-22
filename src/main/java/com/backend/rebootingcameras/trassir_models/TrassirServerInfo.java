@@ -29,10 +29,10 @@ public class TrassirServerInfo {
     private String serverIP;
     @Basic
     @Column(name = "channels_total")
-    private Integer channels_total;
+    private Integer channelsTotal;
     @Basic
     @Column(name = "channels_online")
-    private Integer channels_online;
+    private Integer channelsOnline;
     @Basic
     @Column(name = "server_status")
     private Integer serverStatus;
@@ -46,7 +46,7 @@ public class TrassirServerInfo {
 
     @Basic
     @Column(name = "error_code")
-    private String error_code;
+    private String errorCode;
 
 
 }
