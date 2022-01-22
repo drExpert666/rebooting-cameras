@@ -2,6 +2,7 @@ package com.backend.rebootingcameras.service;
 
 import com.backend.rebootingcameras.repository.TrassirChannelRepo;
 import com.backend.rebootingcameras.trassir_models.TrassirChannelInfo;
+import com.backend.rebootingcameras.trassir_models.TrassirServerInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -36,6 +37,13 @@ public class TrassirChannelService {
     @Transactional
     public List<TrassirChannelInfo> findAll() {
         return trassirChannelRepo.findAll();
+    }
+
+
+
+    @Transactional
+    public List<TrassirChannelInfo> findByParams(String serverId, String channelId, String channelName) {
+        return trassirChannelRepo.findByParams(serverId, channelId, channelName);
     }
 
 }

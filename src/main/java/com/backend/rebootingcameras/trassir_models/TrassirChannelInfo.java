@@ -18,7 +18,7 @@ public class TrassirChannelInfo {
 
     @ManyToOne
     @JoinColumn(name = "guid_server", referencedColumnName = "guid")
-    private TrassirServerInfo guidServer; // id канала
+    private TrassirServerInfo guidServer; // id сервера
 
     @Id
     @Column(name = "guid_channel")
