@@ -54,13 +54,15 @@ public class TrassirController {
     @Scheduled(initialDelay = 1000, fixedDelayString = "PT15S")
     public void startCollectTrassirStats() {
 
+        System.out.println("Начало работы планировщика: " + new Date());
+
         /* получение данных из БД */
         serversFromDB = findAllServers();
         channelsFromDB = findAllCameras();
 
-        fillServers(); // получаем данные из трассир
+//        fillServers(); // получаем данные из трассир
 
-        updateAllServersWithCheckingFields(servers); // обновляем данные cерверов в БД
+        updateAllServersWithCheckingFields(servers); // обновляем данные серверов в БД
 
         /* заполняем в цикле список каналов из Трассира */
         channelsFromTrassir = new ArrayList<>();
@@ -70,13 +72,14 @@ public class TrassirController {
             }
         }
 
-        if (channelsFromDB == null && channelsFromTrassir != null) {
+        if (channelsFromDB == null && channelsFromTrassir != null) { // обновляем данные о каналах в БД, если БД пустая
             updateAllChannels(channelsFromTrassir);
         }
 
-        if (channelsFromDB != null && channelsFromTrassir != null) {
+        if (channelsFromDB != null && channelsFromTrassir != null) { // обновляем данные о каналах в БД, если БД полная
             updateAllChannelsWithCheckingFields(channelsFromTrassir);
         }
+
 
     }
 
@@ -269,7 +272,7 @@ public class TrassirController {
 
                 String tmpGuidChannel = trassirChannelTmpl.getGuidChannel(); // считываем из БД информацию о guid канала
                 String tmpName = trassirChannelTmpl.getName(); // считываем из БД информацию о имени устройства
-                TrassirServerInfo tmpServer = trassirChannelTmpl.getGuidServer(); // считываем из БД guid сервера устройства
+                TrassirServerInfo tmpServer = trassirChannelTmpl.getGuidServer(); // считываем из БД сервер устройства
 
                 // если нет сигнала, а в БД статус был ОК, то перезаписываем значение сигнала, все остальные не перезаписываем
                 if ((trassirChannel.getSignal() == null
