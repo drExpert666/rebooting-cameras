@@ -34,4 +34,5 @@ public class ServerController {
         return new ResponseEntity<>(serverService.findByParams(searchValues.getServerName()), HttpStatus.OK);
     }
 
+
 }

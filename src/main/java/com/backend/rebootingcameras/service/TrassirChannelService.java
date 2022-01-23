@@ -42,8 +42,8 @@ public class TrassirChannelService {
 
 
     @Transactional
-    public List<TrassirChannelInfo> findByParams(String serverId, String channelId, String channelName) {
-        return trassirChannelRepo.findByParams(serverId, channelId, channelName);
+    public List<TrassirChannelInfo> findByParams(String serverId, String channelId, String channelName, Integer signal) {
+        return trassirChannelRepo.findByParams(serverId, channelId, channelName, signal);
     }
 
 }

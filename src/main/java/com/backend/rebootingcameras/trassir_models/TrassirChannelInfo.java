@@ -52,5 +52,8 @@ public class TrassirChannelInfo {
     @JoinColumn(name = "switch_id", referencedColumnName = "id")
     private Switch switchId;
 
+    @Basic
+    @Column(name = "port")
+    private Integer port; // номер порта коммутатора
 
 }

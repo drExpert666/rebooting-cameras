@@ -9,4 +9,5 @@ public class ChannelSearchValues {
     private String guidServer;
     private String guidChannel;
     private String name;
+    private Integer signal;
 }

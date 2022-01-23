@@ -13,6 +13,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/switch")
+@CrossOrigin(origins = "http://localhost:4200") // разрешить для этого ресурса получать данные с бэкенда
 public class SwitchController {
 
     private SwitchService switchService;

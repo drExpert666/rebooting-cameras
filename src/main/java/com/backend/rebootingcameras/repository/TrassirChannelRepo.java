@@ -16,9 +16,11 @@ public interface TrassirChannelRepo extends JpaRepository<TrassirChannelInfo, St
 
     @Query("select s from TrassirChannelInfo s where (:guidServer is null or :guidServer = '' or lower(s.guidServer) like lower(concat('%',:guidServer,'%') )) " +
             "and (:guidChannel is null or :guidChannel = '' or lower(s.guidChannel) like lower(concat('%',:guidChannel,'%'))) " +
-            "and (:name is null or :name = '' or lower(s.name) like lower(concat('%',:name,'%'))) ")
+            "and (:name is null or :name = '' or lower(s.name) like lower(concat('%',:name,'%'))) " +
+            "and (:signal is null or s.signal = :signal)")
     List<TrassirChannelInfo> findByParams(@Param("guidServer")String guidServer,
                                           @Param("guidChannel")String guidChannel,
-                                          @Param("name") String name);
+                                          @Param("name") String name,
+                                          @Param("signal") Integer signal);
 
 }

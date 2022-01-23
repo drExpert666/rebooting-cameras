@@ -21,7 +21,7 @@ import java.time.Duration;
 @Configuration
 public class RestTemplateConfig {
 
-    @Bean
+    @Bean  //todo готовый конфиг взят из инета (с выкл ssl), разобраться что тут да как
     public RestTemplate restTemplate()
             throws KeyStoreException, NoSuchAlgorithmException, KeyManagementException {
         TrustStrategy acceptingTrustStrategy = (x509Certificates, s) -> true;

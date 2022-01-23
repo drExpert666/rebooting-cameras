@@ -43,7 +43,8 @@ public class CommonChannelController {
     public ResponseEntity<List<TrassirChannelInfo>> search(@RequestBody ChannelSearchValues searchValues) {
         String serverId = searchValues.getGuidServer();
         String channelName = searchValues.getName();
-        List<TrassirChannelInfo> channels = channelService.findByParams(serverId, null, channelName);
+        Integer signal = searchValues.getSignal();
+        List<TrassirChannelInfo> channels = channelService.findByParams(serverId, null, channelName, signal);
         return new ResponseEntity(channels, HttpStatus.OK);
     }
 

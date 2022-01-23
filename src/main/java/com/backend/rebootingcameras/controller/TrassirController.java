@@ -123,7 +123,7 @@ public class TrassirController {
                         TrassirChannelInfo trassirChannel = new TrassirChannelInfo(server,
                                 guidChannel, null,
                                 channelStatus,
-                                null, null, null, new Date(), null, null);
+                                null, null, null, new Date(), null, null, null);
                         channelsFromTrassir.add(trassirChannel);
                         System.out.println(trassirChannel);
                     } else {
@@ -143,7 +143,7 @@ public class TrassirController {
                         TrassirChannelInfo trassirChannel = new TrassirChannelInfo(server,
                                 guidChannel, channelName,
                                 channelStatus,
-                                deviceGuidValue, deviceIpValue, deviceModelValue, new Date(), null, null);
+                                deviceGuidValue, deviceIpValue, deviceModelValue, new Date(), null, null, null);
 
                         channelsFromTrassir.add(trassirChannel);
                         System.out.println(trassirChannel);
@@ -281,13 +281,14 @@ public class TrassirController {
                 TrassirServerInfo tmpServer = trassirChannelTmp.getGuidServer(); // считываем из БД сервер устройства
                 Boolean tmpPoeInjector = trassirChannelTmp.getPoeInjector(); // считываем из БД информацию о poe инжекторе
                 Switch tmpSwitch = trassirChannelTmp.getSwitchId(); // считываем из БД информацию о коммутаторе
+                Integer tmpPort = trassirChannelTmp.getPort(); // считываем из БД информацию о порте коммутатора
 
                 // если нет сигнала, а в БД статус был ОК, то перезаписываем значение сигнала, все остальные не перезаписываем
                 if ((trassirChannel.getSignal() == null
                         || trassirChannel.getSignal() == -1)
                         && trassirChannel.getSignal() != tmpSignal) {
                     trassirChannelService.updateByChannel(new TrassirChannelInfo(tmpServer, tmpGuidChannel,
-                            tmpName, trassirChannel.getSignal(), tmpGuidIpDevice, tmpIp, tmpModel, new Date(), tmpPoeInjector, tmpSwitch));
+                            tmpName, trassirChannel.getSignal(), tmpGuidIpDevice, tmpIp, tmpModel, new Date(), tmpPoeInjector, tmpSwitch, tmpPort));
                 } else { // иначе перезаписать все значения (если все данные от трассира были заполнены), кроме guid канала
                     if (trassirChannel.getGuidServer() != null
                             && trassirChannel.getGuidIpDevice() != null
@@ -298,7 +299,7 @@ public class TrassirController {
                                 new TrassirChannelInfo(trassirChannel.getGuidServer(), tmpGuidChannel,
                                         trassirChannel.getName(), trassirChannel.getSignal(),
                                         trassirChannel.getGuidIpDevice(), trassirChannel.getIp(),
-                                        trassirChannel.getModel(), new Date(), null, null));
+                                        trassirChannel.getModel(), new Date(), tmpPoeInjector, tmpSwitch, tmpPort));
 
                     }
                 }
