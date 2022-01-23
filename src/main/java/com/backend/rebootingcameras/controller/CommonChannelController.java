@@ -44,7 +44,8 @@ public class CommonChannelController {
         String serverId = searchValues.getGuidServer();
         String channelName = searchValues.getName();
         Integer signal = searchValues.getSignal();
-        List<TrassirChannelInfo> channels = channelService.findByParams(serverId, null, channelName, signal);
+        Long switchId = searchValues.getSwitchId();
+        List<TrassirChannelInfo> channels = channelService.findByParams(serverId, null, channelName, signal, switchId);
         return new ResponseEntity(channels, HttpStatus.OK);
     }
 

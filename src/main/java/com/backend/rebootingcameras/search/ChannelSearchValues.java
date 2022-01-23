@@ -10,4 +10,5 @@ public class ChannelSearchValues {
     private String guidChannel;
     private String name;
     private Integer signal;
+    private Long switchId;
 }
