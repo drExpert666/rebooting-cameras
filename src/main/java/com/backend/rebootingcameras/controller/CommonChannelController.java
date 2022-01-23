@@ -42,7 +42,8 @@ public class CommonChannelController {
     @PostMapping("/search")
     public ResponseEntity<List<TrassirChannelInfo>> search(@RequestBody ChannelSearchValues searchValues) {
         String serverId = searchValues.getGuidServer();
-        List<TrassirChannelInfo> channels = channelService.findByParams(serverId, null, null);
+        String channelName = searchValues.getName();
+        List<TrassirChannelInfo> channels = channelService.findByParams(serverId, null, channelName);
         return new ResponseEntity(channels, HttpStatus.OK);
     }
 
