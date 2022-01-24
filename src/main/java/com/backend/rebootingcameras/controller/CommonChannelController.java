@@ -49,4 +49,10 @@ public class CommonChannelController {
         return new ResponseEntity(channels, HttpStatus.OK);
     }
 
+    @PutMapping("/update")
+    public ResponseEntity<TrassirChannelInfo> update(@RequestBody TrassirChannelInfo channel) {
+       return new ResponseEntity<>(channelService.updateByChannel(channel), HttpStatus.OK) ;
+    }
+
+
 }

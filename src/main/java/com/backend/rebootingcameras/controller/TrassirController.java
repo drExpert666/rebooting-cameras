@@ -61,7 +61,9 @@ public class TrassirController {
         serversFromDB = findAllServers();
         channelsFromDB = findAllCameras();
 
-//        fillServers(); // получаем данные из трассир
+        fillServers(); // получаем данные из трассир
+
+        System.out.println("Данные по серверам обновлены в БД: " + new Date());
 
         updateAllServersWithCheckingFields(servers); // обновляем данные серверов в БД
 
@@ -85,6 +87,8 @@ public class TrassirController {
         if (channelsFromDB != null && channelsFromTrassir != null) { // обновляем данные о каналах в БД, если БД полная
             updateAllChannelsWithCheckingFields(channelsFromTrassir);
         }
+
+        System.out.println("Данные по камерам обновлены в БД: " + new Date());
 
 
     }
@@ -380,7 +384,6 @@ public class TrassirController {
         }
 
         }
-
 
     /**
      * методы работы с БД серверов

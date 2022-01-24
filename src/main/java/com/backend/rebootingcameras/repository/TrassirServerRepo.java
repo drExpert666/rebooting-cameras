@@ -15,7 +15,9 @@ public interface TrassirServerRepo extends JpaRepository<TrassirServerInfo, Stri
     TrassirServerInfo findByGuid(String guid);
 
 
-    @Query("select t from TrassirServerInfo t where (:serverName is null or :serverName = '' or lower(t.serverName) like lower(concat('%',:serverName,'%') ))")
+    @Query("select t from TrassirServerInfo t where " +
+            "(:serverName is null or :serverName = '' or lower(t.serverName) " +
+            "like lower(concat('%',:serverName,'%') ))")
     List<TrassirServerInfo> findByParams(@Param("serverName")String serverName);
 
 
