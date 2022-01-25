@@ -62,7 +62,7 @@ public class TrassirController {
     /**
      * планировщик, запускающий сбор статистики с серверов Trassir
      */
-    @Scheduled(initialDelay = 1000, fixedDelayString = "PT2S")
+    @Scheduled(initialDelay = 1000, fixedDelayString = "PT2M")
     public void startCollectTrassirStats() {
 
         System.out.println("Начало работы планировщика: " + new Date());
@@ -72,36 +72,36 @@ public class TrassirController {
 
 
 
-        /* получение данных из БД */
-        serversFromDB = findAllServers();
-        channelsFromDB = findAllCameras();
-
-        fillServers(); // получаем данные из трассир
-
-        System.out.println("Данные по серверам обновлены в БД: " + new Date());
-
-        updateAllServersWithCheckingFields(servers); // обновляем данные серверов в БД
-
-        /* заполняем в цикле список каналов из Трассира */
-        channelsFromTrassir = new ArrayList<>();
-        if (servers != null) {
-            for (TrassirServerInfo server : servers) {
-               try {
-                   getChannels(server);
-               } catch (ResourceAccessException e) {
-                   server.setSessionId(null);
-                   System.out.println("Потеряна связь с сервером во время выполнения запроса к каналу\n" + e);
-               }
-            }
-        }
-
-        if (channelsFromDB == null && channelsFromTrassir != null) { // обновляем данные о каналах в БД, если БД пустая
-            updateAllChannels(channelsFromTrassir);
-        }
-
-        if (channelsFromDB != null && channelsFromTrassir != null) { // обновляем данные о каналах в БД, если БД полная
-            updateAllChannelsWithCheckingFields(channelsFromTrassir);
-        }
+//        /* получение данных из БД */
+//        serversFromDB = findAllServers();
+//        channelsFromDB = findAllCameras();
+//
+//        fillServers(); // получаем данные из трассир
+//
+//        System.out.println("Данные по серверам обновлены в БД: " + new Date());
+//
+//        updateAllServersWithCheckingFields(servers); // обновляем данные серверов в БД
+//
+//        /* заполняем в цикле список каналов из Трассира */
+//        channelsFromTrassir = new ArrayList<>();
+//        if (servers != null) {
+//            for (TrassirServerInfo server : servers) {
+//               try {
+//                   getChannels(server);
+//               } catch (ResourceAccessException e) {
+//                   server.setSessionId(null);
+//                   System.out.println("Потеряна связь с сервером во время выполнения запроса к каналу\n" + e);
+//               }
+//            }
+//        }
+//
+//        if (channelsFromDB == null && channelsFromTrassir != null) { // обновляем данные о каналах в БД, если БД пустая
+//            updateAllChannels(channelsFromTrassir);
+//        }
+//
+//        if (channelsFromDB != null && channelsFromTrassir != null) { // обновляем данные о каналах в БД, если БД полная
+//            updateAllChannelsWithCheckingFields(channelsFromTrassir);
+//        }
 
         System.out.println("Данные по камерам обновлены в БД: " + new Date());
 
