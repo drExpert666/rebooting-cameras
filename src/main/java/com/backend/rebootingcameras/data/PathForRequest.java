@@ -16,4 +16,7 @@ public class PathForRequest {
 
     public final static int TIME_BETWEEN_NOW_AND_GET_SESSION =  780000; // время милисекундах (13 минут)
 
+    public final static String STRING_FOR_REBOOT_CISCO = "-v:2c -c:public -r:%s -o:.1.3.6.1.2.1.105.1.1.1.3.1.%s -val:%s -tp:int";
+    public final static String STRING_FOR_RUN_SNMP_SET = "C:\\Users\\romanov-av\\Downloads\\SnmpSet\\SnmpSet.exe ";
+
 }

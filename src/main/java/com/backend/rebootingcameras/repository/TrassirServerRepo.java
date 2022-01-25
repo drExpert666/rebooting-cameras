@@ -20,5 +20,4 @@ public interface TrassirServerRepo extends JpaRepository<TrassirServerInfo, Stri
             "like lower(concat('%',:serverName,'%') ))")
     List<TrassirServerInfo> findByParams(@Param("serverName")String serverName);
 
-
 }
