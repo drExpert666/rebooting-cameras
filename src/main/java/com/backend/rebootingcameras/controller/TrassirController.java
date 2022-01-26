@@ -16,10 +16,7 @@ import org.springframework.web.client.ResourceAccessException;
 import org.springframework.web.client.RestTemplate;
 
 import java.net.ConnectException;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 @Controller
 public class TrassirController {
@@ -115,15 +112,16 @@ public class TrassirController {
         String SID = server.getSessionId();
 
         if (server.getSessionId() != null) { // выполняем, если до этого была получена сессия
+
             /* создаём url для получения guid канала */
             String urlForChannels = String.format(PathForRequest.STRING_FOR_FORMAT, serverIp, PathForRequest.STRING_CHANNEL_LIST, SID); // для получения массива guid каналов
 
             /* получаем массив guid каналов сервера */
             TrassirGuid channelsGUIDs = restTemplate.getForObject(urlForChannels, TrassirGuid.class);
 
-
             System.out.println(urlForChannels);
 
+            /* если массив guid был получен, иначе ничего не делаем и переходм к следующему серверу в цикле */
             if (channelsGUIDs != null) {
 
                 /* получаем список каналов из Трассира */
@@ -136,7 +134,7 @@ public class TrassirController {
                     if (channelStatus == null || channelStatus == -1) { // если сигнала нет, то нет смысла выполнять последующие проверки
                         TrassirChannelInfo trassirChannel = new TrassirChannelInfo(server,
                                 guidChannel, null,
-                                -1 ,
+                                null ,
                                 null, null, null, new Date(), null, null, null);
                         channelsFromTrassir.add(trassirChannel);
                         System.out.println(trassirChannel);
@@ -212,7 +210,7 @@ public class TrassirController {
             return null;
         } else {
             StringBuilder stringBuffer = new StringBuilder(deviceGuid.getValue());
-            deviceGuidValue = stringBuffer.delete(0, 21).toString();
+            deviceGuidValue = stringBuffer.delete(0, 21).toString(); // удаляем лишние элементы из строки
             threadSleepWithTryCatchBlock(20);
             return deviceGuidValue;
         }
@@ -281,6 +279,7 @@ public class TrassirController {
 
         for (TrassirChannelInfo trassirChannel : channels) {
 
+            // получаем из БД в цикле все камеры
             TrassirChannelInfo trassirChannelTmp = trassirChannelService.findByGuid(trassirChannel.getGuidChannel());
 
             if (trassirChannelTmp == null) { // если элемент в БД не найден, значит это новая запись (камера)
@@ -302,15 +301,19 @@ public class TrassirController {
                 // если нет сигнала, а в БД статус был ОК, то перезаписываем значение сигнала, все остальные не перезаписываем
                 if ((trassirChannel.getSignal() == null
                         || trassirChannel.getSignal() == -1)
-                        && trassirChannel.getSignal() != tmpSignal) {
+                        && tmpSignal == 1) {
+
                     trassirChannelService.updateByChannel(new TrassirChannelInfo(tmpServer, tmpGuidChannel,
-                            tmpName, trassirChannel.getSignal(), tmpGuidIpDevice, tmpIp, tmpModel, new Date(), tmpPoeInjector, tmpSwitch, tmpPort));
+                            tmpName, trassirChannel.getSignal() != null ? trassirChannel.getSignal() : null,
+                            tmpGuidIpDevice, tmpIp, tmpModel, new Date(), tmpPoeInjector, tmpSwitch, tmpPort));
+
                 } else { // иначе перезаписать все значения (если все данные от трассира были заполнены), кроме guid канала
                     if (trassirChannel.getGuidServer() != null
                             && trassirChannel.getGuidIpDevice() != null
                             && trassirChannel.getModel() != null
                             && trassirChannel.getIp() != null
-                            && trassirChannel.getName() != null) {
+                            && trassirChannel.getName() != null) { // вск остальные значения присваиваются не из трассира
+                        // поэтому их перезаписывать не нужно
                         trassirChannelService.updateByChannel(
                                 new TrassirChannelInfo(trassirChannel.getGuidServer(), tmpGuidChannel,
                                         trassirChannel.getName(), trassirChannel.getSignal(),
