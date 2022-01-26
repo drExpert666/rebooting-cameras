@@ -26,44 +26,29 @@ public class RebootController {
     }
 
 
-    HashMap<String, String> oids84 = new HashMap<>();
-
-
     @PostMapping("/values")
     public ResponseEntity<RebootValues> rebootCamera(@RequestBody RebootValues rebootValues) {
-        oids84.put("1", "49");
-        oids84.put("2", "50");
-        oids84.put("3", "51");
-        oids84.put("4", "52");
-        oids84.put("5", "53");
-        oids84.put("6", "54");
-        oids84.put("13", "61");
-        oids84.put("14", "62");
-        oids84.put("15", "63");
-        oids84.put("16", "64");
-        oids84.put("17", "65");
-        oids84.put("18", "66");
+
         System.out.println(rebootValues);
 
+        // присваиваю значение порта в зависимости от типа коммутатора
         Integer portNumberForReboot = getSwitchIpAndPortNumberForReboot(rebootValues);
+
+        // если из метода выше вернулось значение, то выполняем команду по перезагрузке
         if (portNumberForReboot != null) {
             System.out.println(portNumberForReboot.toString());
             RebootValues newRebootValues = new RebootValues(rebootValues.getSwitchIp(), portNumberForReboot.toString());
             System.out.println(newRebootValues);
 
+            // передаём в параметрах значения для перезагрузки
             RebootChannel rebootChannel = new RebootChannel(newRebootValues);
-            rebootChannel.run();
+            // вызываем метод перезагрузки
+            String result =  rebootChannel.executeSnmpSetForReboot();
+            /*todo прописать действия, если полученный результат ОК и не ОК */
+            rebootValues.setSwitchIp(result);
             return ResponseEntity.ok(rebootValues);
         }
 
-//        if (rebootValues.getSwitchIp().equals("192.168.254.84")) {
-//            rebootValues.setCameraPort(oids84.get(rebootValues.getCameraPort()));
-//            RebootChannel rebootChannel = new RebootChannel(rebootValues);
-//            rebootChannel.run();
-//            return new ResponseEntity(rebootValues, HttpStatus.OK);
-//        } else {
-//            return new ResponseEntity(new RebootValues(null, null), HttpStatus.OK);
-//        }
         else {
             return ResponseEntity.ok(new RebootValues(null, null));
         }
@@ -71,20 +56,24 @@ public class RebootController {
     }
 
     private Integer getSwitchIpAndPortNumberForReboot(RebootValues rebootValues) {
+        // получаю коммутатор по переданному ip
         Switch tmpSwitch = switchService.findByIp(rebootValues.getSwitchIp());
         if (tmpSwitch == null) {
             return null;
         }
         String tmpSwitchName;
-        int newPortNumber;
+        Integer newPortNumber;
+        // если имя коммутатора было заполнено
         if (tmpSwitch.getName() != null) {
             tmpSwitchName = tmpSwitch.getName();
         } else {
             return null;
         }
 
+        // перевожу номер порта из текста в интеджер
         newPortNumber = Integer.parseInt(rebootValues.getCameraPort());
 
+        // проверяю в свитч-кейсе на соответсвие модели коммутатора
         switch (tmpSwitchName) {
             case (PathForRequest.SWITCH_MODEL_CISCO_SG200):
             case (PathForRequest.SWITCH_MODEL_CISCO_SG300):
@@ -92,6 +81,8 @@ public class RebootController {
                 break;
             case (PathForRequest.SWITCH_MODEL_CISCO_SFE2000P):
                 break;
+            default:
+                newPortNumber = null;
         }
 
         return (newPortNumber);

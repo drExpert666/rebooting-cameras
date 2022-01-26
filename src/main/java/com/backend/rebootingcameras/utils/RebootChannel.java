@@ -14,11 +14,18 @@ public class RebootChannel implements Runnable{
 
 
     private RebootValues rebootValues;
+    private String resultOfReboot;
 
 
     public RebootChannel(RebootValues rebootValues) {
         this.rebootValues = rebootValues;
     }
+
+    public String executeSnmpSetForReboot() {
+        run();
+        return resultOfReboot;
+    }
+
 
     @SneakyThrows
     @Override
@@ -47,6 +54,8 @@ public class RebootChannel implements Runnable{
         process2.getInputStream().transferTo(outputStream2);
         Thread.sleep(5000);
         process2.destroy();
+        //todo написать метод чтения информации из файлов poe_of.bin, poe_on.bin и вернуть результат (ОК? не ок?)
+        resultOfReboot = "OKEY";
 
     }
 }
