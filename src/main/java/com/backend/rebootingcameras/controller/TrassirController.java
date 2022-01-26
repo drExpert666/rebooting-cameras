@@ -62,15 +62,10 @@ public class TrassirController {
     /**
      * планировщик, запускающий сбор статистики с серверов Trassir
      */
-    @Scheduled(initialDelay = 1000, fixedDelayString = "PT2M")
+    @Scheduled(initialDelay = 1000, fixedDelayString = "PT10S")
     public void startCollectTrassirStats() {
 
         System.out.println("Начало работы планировщика: " + new Date());
-
-
-
-
-
 
 //        /* получение данных из БД */
 //        serversFromDB = findAllServers();
@@ -195,7 +190,8 @@ public class TrassirController {
 
     /* получаем статус канала */
     private Integer getChannelStatus(String guidChannel, String serverIp, String SID) {
-        String getChannelStatus = String.format(PathForRequest.STRING_FOR_FORMAT, serverIp, PathForRequest.STRING_CHANNEL_LIST + guidChannel + PathForRequest.STRING_CHANNEL_FLAG_SIGNAL, SID);
+        String getChannelStatus = String.format(PathForRequest.STRING_FOR_FORMAT, serverIp,
+                PathForRequest.STRING_CHANNEL_LIST + guidChannel + PathForRequest.STRING_CHANNEL_FLAG_SIGNAL, SID);
         ChannelStatus channelStatus = restTemplate.getForObject(getChannelStatus, ChannelStatus.class);
         if (channelStatus == null || channelStatus.getError_code() != null) {
             channelStatus = new ChannelStatus();

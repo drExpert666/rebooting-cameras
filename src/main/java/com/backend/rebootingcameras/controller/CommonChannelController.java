@@ -1,17 +1,13 @@
 package com.backend.rebootingcameras.controller;
 
-import com.backend.rebootingcameras.entity.Channel;
 import com.backend.rebootingcameras.search.ChannelSearchValues;
 import com.backend.rebootingcameras.service.TrassirChannelService;
-import com.backend.rebootingcameras.service.TrassirServerService;
-import com.backend.rebootingcameras.trassir_models.CommonChannel;
 import com.backend.rebootingcameras.trassir_models.TrassirChannelInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -51,7 +47,13 @@ public class CommonChannelController {
 
     @PutMapping("/update")
     public ResponseEntity<TrassirChannelInfo> update(@RequestBody TrassirChannelInfo channel) {
-       return new ResponseEntity<>(channelService.updateByChannel(channel), HttpStatus.OK) ;
+
+        if (channel.getGuidChannel() == null || channel.getGuidChannel().trim().length() == 0) {
+            return new ResponseEntity("id must be fill", HttpStatus.NOT_ACCEPTABLE);
+        }
+        else {
+            return new ResponseEntity(channelService.updateByChannel(channel), HttpStatus.OK);
+        }
     }
 
 

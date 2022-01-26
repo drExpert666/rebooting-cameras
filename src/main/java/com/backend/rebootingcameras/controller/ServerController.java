@@ -30,7 +30,6 @@ public class ServerController {
 
     @PostMapping("/search")
     public ResponseEntity<List<TrassirServerInfo>> findByParams(@RequestBody ServerSearchValues searchValues) {
-        System.out.println(searchValues);
         return new ResponseEntity<>(serverService.findByParams(searchValues.getServerName()), HttpStatus.OK);
     }
 

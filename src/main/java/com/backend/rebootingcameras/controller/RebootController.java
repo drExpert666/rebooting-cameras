@@ -16,7 +16,6 @@ public class RebootController {
     HashMap<String, String> oids84 = new HashMap<>();
 
 
-
     @PostMapping("/values")
     public ResponseEntity<RebootValues> rebootCamera(@RequestBody RebootValues rebootValues) {
         oids84.put("1", "49");
@@ -34,8 +33,8 @@ public class RebootController {
         System.out.println(rebootValues);
         if (rebootValues.getSwitchIp().equals("192.168.254.84")) {
            rebootValues.setCameraPort(oids84.get(rebootValues.getCameraPort()));
-//            RebootChannel rebootChannel = new RebootChannel(rebootValues);
-//            rebootChannel.run();
+            RebootChannel rebootChannel = new RebootChannel(rebootValues);
+            rebootChannel.run();
             return new ResponseEntity(rebootValues, HttpStatus.OK);
         } else {
             return new ResponseEntity(new RebootValues(null, null), HttpStatus.OK);

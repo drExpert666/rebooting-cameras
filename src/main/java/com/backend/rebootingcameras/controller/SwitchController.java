@@ -4,6 +4,7 @@ import com.backend.rebootingcameras.entity.Switch;
 import com.backend.rebootingcameras.search.SwitchSearchValues;
 import com.backend.rebootingcameras.service.SwitchService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.data.repository.query.Param;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -26,37 +27,58 @@ public class SwitchController {
     /** CRUD операции */
 
     @GetMapping("/all")
-    public ResponseEntity<List<Switch>> findAll() { //todo добавить проверки
+    public ResponseEntity<List<Switch>> findAll() {
         return new ResponseEntity<>(switchService.findAll(), HttpStatus.OK);
     }
 
     @GetMapping("/id/{id}")
-    public ResponseEntity<Switch> findById(@PathVariable Long id) { //todo добавить проверки
-        return new ResponseEntity<>(switchService.findById(id), HttpStatus.OK);
+    public ResponseEntity<Switch> findById(@PathVariable Long id) {
+        Switch switchServiceById = switchService.findById(id);
+        if (switchServiceById != null) {
+            return new ResponseEntity<>(switchService.findById(id), HttpStatus.OK);
+        }
+        else {
+            return new ResponseEntity("id = " + id + " not found", HttpStatus.NOT_FOUND);
+        }
     }
 
-    @DeleteMapping("/id/{id}")
-    public ResponseEntity<Switch> deleteById(@PathVariable Long id) { //todo добавить проверки
-        switchService.deleteById(id);
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<Switch> deleteById(@PathVariable Long id) {
+       try {
+           switchService.deleteById(id);
+       } catch (EmptyResultDataAccessException e) {
+           return new ResponseEntity("id = " + id + " not found", HttpStatus.NOT_FOUND);
+       }
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @PutMapping("/update")
-    public ResponseEntity<Switch> update(@RequestBody Switch s) { //todo добавить проверки
-        return new ResponseEntity<>(switchService.update(s), HttpStatus.OK);
+    public ResponseEntity<Switch> update(@RequestBody Switch s) {
+        if (s.getId() == null || s.getId() == 0) {
+            return new ResponseEntity("id must be fill", HttpStatus.NOT_ACCEPTABLE);
+        }
+        else {
+            return new ResponseEntity(switchService.update(s), HttpStatus.OK);
+        }
     }
 
     @PostMapping("/add")
-    public ResponseEntity<Switch> add(@RequestBody Switch s) { //todo добавить проверки
-        return new ResponseEntity<>(switchService.update(s), HttpStatus.OK);
+    public ResponseEntity<Switch> add(@RequestBody Switch s) {
+        if (s.getId() != null && s.getId() != 0) {
+            return new ResponseEntity("id must be empty", HttpStatus.NOT_ACCEPTABLE);
+        }
+        else {
+            return new ResponseEntity(switchService.update(s), HttpStatus.OK);
+        }
     }
 
     /** другие операции */
 
     /* поиск по всем параметрам */
     @PostMapping("/search")
-    public ResponseEntity<List<Switch>> search(@RequestBody SwitchSearchValues searchValues) { //todo добавить проверки
-        return new ResponseEntity<>(switchService.findByParams(searchValues.getName(), searchValues.getIp(), searchValues.getDescription()), HttpStatus.OK);
+    public ResponseEntity<List<Switch>> search(@RequestBody SwitchSearchValues searchValues) {
+        return new ResponseEntity<>(switchService.findByParams(searchValues.getName(), searchValues.getIp(),
+                searchValues.getDescription()), HttpStatus.OK);
     }
 
 
