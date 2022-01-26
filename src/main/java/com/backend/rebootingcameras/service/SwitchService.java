@@ -26,7 +26,7 @@ public class SwitchService {
         return switchRepo.findAll();
     }
 
-    @Transactional //todo добавить проверку
+    @Transactional
     public Switch findById(Long id) {
        if (switchRepo.findById(id).isPresent()) {
            return switchRepo.findById(id).get();
@@ -50,5 +50,12 @@ public class SwitchService {
     public List<Switch> findByParams(String name, String ip, String description) {
         return switchRepo.findByParams(name, ip, description);
     }
+
+    @Transactional //todo добавить проверку
+    public Switch findByIp(String ip) {
+       return switchRepo.findSwitchByIp(ip);
+    }
+
+
 
 }

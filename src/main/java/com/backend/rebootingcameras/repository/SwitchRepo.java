@@ -19,4 +19,6 @@ public interface SwitchRepo extends JpaRepository<Switch, Long> {
                               @Param("ip")String ip,
                               @Param("description") String description);
 
+    Switch findSwitchByIp(String ip);
+
 }

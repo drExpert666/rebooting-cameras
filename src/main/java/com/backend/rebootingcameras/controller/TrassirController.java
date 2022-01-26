@@ -67,36 +67,36 @@ public class TrassirController {
 
         System.out.println("Начало работы планировщика: " + new Date());
 
-//        /* получение данных из БД */
-//        serversFromDB = findAllServers();
-//        channelsFromDB = findAllCameras();
-//
-//        fillServers(); // получаем данные из трассир
-//
-//        System.out.println("Данные по серверам обновлены в БД: " + new Date());
-//
-//        updateAllServersWithCheckingFields(servers); // обновляем данные серверов в БД
-//
-//        /* заполняем в цикле список каналов из Трассира */
-//        channelsFromTrassir = new ArrayList<>();
-//        if (servers != null) {
-//            for (TrassirServerInfo server : servers) {
-//               try {
-//                   getChannels(server);
-//               } catch (ResourceAccessException e) {
-//                   server.setSessionId(null);
-//                   System.out.println("Потеряна связь с сервером во время выполнения запроса к каналу\n" + e);
-//               }
-//            }
-//        }
-//
-//        if (channelsFromDB == null && channelsFromTrassir != null) { // обновляем данные о каналах в БД, если БД пустая
-//            updateAllChannels(channelsFromTrassir);
-//        }
-//
-//        if (channelsFromDB != null && channelsFromTrassir != null) { // обновляем данные о каналах в БД, если БД полная
-//            updateAllChannelsWithCheckingFields(channelsFromTrassir);
-//        }
+        /* получение данных из БД */
+        serversFromDB = findAllServers();
+        channelsFromDB = findAllCameras();
+
+        fillServers(); // получаем данные из трассир
+
+        System.out.println("Данные по серверам обновлены в БД: " + new Date());
+
+        updateAllServersWithCheckingFields(servers); // обновляем данные серверов в БД
+
+        /* заполняем в цикле список каналов из Трассира */
+        channelsFromTrassir = new ArrayList<>();
+        if (servers != null) {
+            for (TrassirServerInfo server : servers) {
+               try {
+                   getChannels(server);
+               } catch (ResourceAccessException e) {
+                   server.setSessionId(null);
+                   System.out.println("Потеряна связь с сервером во время выполнения запроса к каналу\n" + e);
+               }
+            }
+        }
+
+        if (channelsFromDB == null && channelsFromTrassir != null) { // обновляем данные о каналах в БД, если БД пустая
+            updateAllChannels(channelsFromTrassir);
+        }
+
+        if (channelsFromDB != null && channelsFromTrassir != null) { // обновляем данные о каналах в БД, если БД полная
+            updateAllChannelsWithCheckingFields(channelsFromTrassir);
+        }
 
         System.out.println("Данные по камерам обновлены в БД: " + new Date());
 
@@ -136,7 +136,7 @@ public class TrassirController {
                     if (channelStatus == null || channelStatus == -1) { // если сигнала нет, то нет смысла выполнять последующие проверки
                         TrassirChannelInfo trassirChannel = new TrassirChannelInfo(server,
                                 guidChannel, null,
-                                channelStatus,
+                                -1 ,
                                 null, null, null, new Date(), null, null, null);
                         channelsFromTrassir.add(trassirChannel);
                         System.out.println(trassirChannel);
@@ -204,7 +204,8 @@ public class TrassirController {
     /* получаем guid девайса */
     private String getChannelGuid(String guidChannel, String serverIp, String SID) {
         String deviceGuidValue;
-        String getDeviceGuid = String.format(PathForRequest.STRING_FOR_FORMAT, serverIp, PathForRequest.STRING_CHANNEL_LIST + guidChannel + PathForRequest.STRING_DEVICE_GUID, SID);
+        String getDeviceGuid = String.format(PathForRequest.STRING_FOR_FORMAT, serverIp,
+                PathForRequest.STRING_CHANNEL_LIST + guidChannel + PathForRequest.STRING_DEVICE_GUID, SID);
         DeviceGuid deviceGuid = restTemplate.getForObject(getDeviceGuid, DeviceGuid.class);
         if (deviceGuid == null || deviceGuid.getError_code() != null) {
             threadSleepWithTryCatchBlock(20);

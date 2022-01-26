@@ -1,5 +1,6 @@
 package com.backend.rebootingcameras.data;
 
+/** класс-контейнер для хранения строковых значений в переменных */
 public class PathForRequest {
 
     public final static String STRING_FOR_FORMAT = "https://%s:8080/%s?sid=%s";
@@ -18,5 +19,13 @@ public class PathForRequest {
 
     public final static String STRING_FOR_REBOOT_CISCO = "-v:2c -c:public -r:%s -o:.1.3.6.1.2.1.105.1.1.1.3.1.%s -val:%s -tp:int";
     public final static String STRING_FOR_RUN_SNMP_SET = "C:\\Users\\romanov-av\\Downloads\\SnmpSet\\SnmpSet.exe ";
+
+    public final static char STRING_FOR_REBOOT_OFF = '2';
+    public final static char STRING_FOR_REBOOT_ON = '1';
+
+    public final static String SWITCH_MODEL_CISCO_SG200 =  "CISCO SG200-26P 26-Port Gigabit PoE Smart Switch";
+    public final static String SWITCH_MODEL_CISCO_SG300 =  "CISCO SG300-28P 28-Port Gigabit PoE Managed Switch";
+    public final static String SWITCH_MODEL_CISCO_SFE2000P =  "CISCO SFE2000P 24-port 10/100 Ethernet Switch with PoE";
+
 
 }
