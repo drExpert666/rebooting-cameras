@@ -27,5 +27,10 @@ public class PathForRequest {
     public final static String SWITCH_MODEL_CISCO_SG300 =  "CISCO SG300-28P 28-Port Gigabit PoE Managed Switch";
     public final static String SWITCH_MODEL_CISCO_SFE2000P =  "CISCO SFE2000P 24-port 10/100 Ethernet Switch with PoE";
 
+    public final static String DEFAULT_SORT_DIRECTION_COLUMN =  "asc";
+    public final static String OPTIONAL_SORT_DIRECTION_COLUMN =  "desc";
+
+    public final static String DEFAULT_SORT_COLUMN =  "guidServer";
+
 
 }

@@ -4,6 +4,9 @@ import com.backend.rebootingcameras.repository.TrassirChannelRepo;
 import com.backend.rebootingcameras.trassir_models.TrassirChannelInfo;
 import com.backend.rebootingcameras.trassir_models.TrassirServerInfo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -42,8 +45,8 @@ public class TrassirChannelService {
 
 
     @Transactional
-    public List<TrassirChannelInfo> findByParams(String serverId, String channelId, String channelName, Integer signal, Long switchId) {
-        return trassirChannelRepo.findByParams(serverId, channelId, channelName, signal, switchId);
+    public Page<TrassirChannelInfo> findByParams(String serverId, String channelId, String channelName, Integer signal, Long switchId, PageRequest pageRequest) {
+        return trassirChannelRepo.findByParams(serverId, channelId, channelName, signal, switchId, pageRequest);
     }
 
 }

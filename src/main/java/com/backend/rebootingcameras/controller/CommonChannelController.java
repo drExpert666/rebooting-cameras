@@ -1,14 +1,19 @@
 package com.backend.rebootingcameras.controller;
 
+import com.backend.rebootingcameras.data.PathForRequest;
 import com.backend.rebootingcameras.search.ChannelSearchValues;
 import com.backend.rebootingcameras.service.TrassirChannelService;
 import com.backend.rebootingcameras.trassir_models.TrassirChannelInfo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Locale;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200") // разрешить для этого ресурса получать данные с бэкенда
@@ -37,12 +42,41 @@ public class CommonChannelController {
 
     @PostMapping("/search")
     public ResponseEntity<List<TrassirChannelInfo>> search(@RequestBody ChannelSearchValues searchValues) {
-        String serverId = searchValues.getGuidServer();
-        String channelName = searchValues.getName();
-        Integer signal = searchValues.getSignal();
-        Long switchId = searchValues.getSwitchId();
-        List<TrassirChannelInfo> channels = channelService.findByParams(serverId, null, channelName, signal, switchId);
-        return new ResponseEntity(channels, HttpStatus.OK);
+
+        String serverId = searchValues.getGuidServer() != null ? searchValues.getGuidServer() : null;
+        String channelName = searchValues.getName() != null ? searchValues.getName() : null;
+        Integer signal = searchValues.getSignal() != null ? searchValues.getSignal() : null;
+        Long switchId = searchValues.getSwitchId() != null ? searchValues.getSwitchId() : null;
+
+        // сортировка
+        String sortDirection = searchValues.getSortDirection() == null ||
+                searchValues.getSortDirection().trim().length() == 0 ||
+                !searchValues.getSortDirection().trim().equalsIgnoreCase(PathForRequest.OPTIONAL_SORT_DIRECTION_COLUMN) ?
+                PathForRequest.DEFAULT_SORT_DIRECTION_COLUMN : PathForRequest.OPTIONAL_SORT_DIRECTION_COLUMN;
+
+        // направление сортировки
+        Sort.Direction direction = sortDirection.equals(PathForRequest.DEFAULT_SORT_DIRECTION_COLUMN)
+                ? Sort.Direction.ASC : Sort.Direction.DESC;
+
+        String sortColumn = searchValues.getSortColumn() != null ?
+                searchValues.getSortColumn() : PathForRequest.DEFAULT_SORT_COLUMN;
+
+        // объект сортировки
+        Sort sort = Sort.by(direction, sortColumn);
+
+        // постраничность
+        int pageNumber = searchValues.getPageNumber()  != null && searchValues.getPageNumber() >= 0 ?
+                searchValues.getPageNumber() : 0;
+        int pageSize = searchValues.getPageSize() != null && searchValues.getPageSize() > 0 ?
+                searchValues.getPageSize() : 10;
+
+        // объект постраничности
+        PageRequest pageRequest = PageRequest.of(pageNumber, pageSize, sort);
+
+        // результат запроса с постраничным выводом
+        Page<TrassirChannelInfo> channelsWithPaginationAndSorting = channelService.findByParams(serverId, null, channelName, signal, switchId, pageRequest);
+
+        return new ResponseEntity(channelsWithPaginationAndSorting, HttpStatus.OK);
     }
 
     @PutMapping("/update")
