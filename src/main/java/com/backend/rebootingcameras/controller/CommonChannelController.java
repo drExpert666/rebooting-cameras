@@ -43,8 +43,10 @@ public class CommonChannelController {
     @PostMapping("/search")
     public ResponseEntity<List<TrassirChannelInfo>> search(@RequestBody ChannelSearchValues searchValues) {
 
+        System.out.println(searchValues);
+
         /* сохраняю переданные значения */
-        String serverId = searchValues.getGuidServer() != null &&  searchValues.getGuidServer().trim().length() > 0
+        String serverId = searchValues.getGuidServer() != null && searchValues.getGuidServer().trim().length() > 0
                 ? searchValues.getGuidServer() : null;
         String channelName = searchValues.getName() != null && searchValues.getName().trim().length() > 0
                 ? searchValues.getName() : null;
@@ -70,7 +72,7 @@ public class CommonChannelController {
         Sort sort = Sort.by(direction, sortColumn);
 
         // постраничность
-        int pageNumber = searchValues.getPageNumber()  != null && searchValues.getPageNumber() >= 0 ?
+        int pageNumber = searchValues.getPageNumber() != null && searchValues.getPageNumber() >= 0 ?
                 searchValues.getPageNumber() : 0;
         int pageSize = searchValues.getPageSize() != null && searchValues.getPageSize() > 0 ?
                 searchValues.getPageSize() : 10;
@@ -80,7 +82,7 @@ public class CommonChannelController {
 
         // результат запроса с постраничным выводом
         Page<TrassirChannelInfo> channelsWithPaginationAndSorting = channelService.findByParams(serverId, null,
-                channelName, signal, switchId,channelIp, pageRequest);
+                channelName, signal, switchId, channelIp, pageRequest);
 
         return new ResponseEntity(channelsWithPaginationAndSorting, HttpStatus.OK);
     }
@@ -90,12 +92,9 @@ public class CommonChannelController {
 
         if (channel.getGuidChannel() == null || channel.getGuidChannel().trim().length() == 0) {
             return new ResponseEntity("id must be fill", HttpStatus.NOT_ACCEPTABLE);
-        }
-        else {
+        } else {
             return new ResponseEntity(channelService.updateByChannel(channel), HttpStatus.OK);
         }
     }
-
-
 
 }

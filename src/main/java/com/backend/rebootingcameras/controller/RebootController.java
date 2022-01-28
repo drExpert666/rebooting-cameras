@@ -5,17 +5,17 @@ import com.backend.rebootingcameras.entity.Switch;
 import com.backend.rebootingcameras.search.RebootValues;
 import com.backend.rebootingcameras.service.SwitchService;
 import com.backend.rebootingcameras.utils.RebootChannel;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Arrays;
-import java.util.HashMap;
 
 @RestController
 @RequestMapping("/reboot")
 @CrossOrigin(origins = "http://localhost:4200") // разрешить для этого ресурса получать данные с бэкенда)
+@Slf4j
 public class RebootController {
 
     private SwitchService switchService;
@@ -28,6 +28,7 @@ public class RebootController {
 
     @PostMapping("/values")
     public ResponseEntity<RebootValues> rebootCamera(@RequestBody RebootValues rebootValues) {
+
 
         System.out.println(rebootValues);
 
@@ -43,9 +44,15 @@ public class RebootController {
             // передаём в параметрах значения для перезагрузки
             RebootChannel rebootChannel = new RebootChannel(newRebootValues);
             // вызываем метод перезагрузки
-            String result =  rebootChannel.executeSnmpSetForReboot();
-            /*todo прописать действия, если полученный результат ОК и не ОК */
-            rebootValues.setSwitchIp(result);
+            boolean[] result =  rebootChannel.executeSnmpSetForReboot();
+            if (!result[0] & !result[1]) {
+                rebootValues.setSwitchIp("OK");
+            } else {
+                rebootValues.setSwitchIp("ERROR");
+            }
+            System.out.println(Arrays.toString(result));
+
+            log.info(Arrays.toString(result));
             return ResponseEntity.ok(rebootValues);
         }
 
@@ -77,7 +84,7 @@ public class RebootController {
         switch (tmpSwitchName) {
             case (PathForRequest.SWITCH_MODEL_CISCO_SG200):
             case (PathForRequest.SWITCH_MODEL_CISCO_SG300):
-                newPortNumber = newPortNumber + 48;
+                newPortNumber += 48;
                 break;
             case (PathForRequest.SWITCH_MODEL_CISCO_SFE2000P):
                 break;

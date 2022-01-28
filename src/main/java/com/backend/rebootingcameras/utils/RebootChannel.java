@@ -1,29 +1,30 @@
 package com.backend.rebootingcameras.utils;
 
+import com.backend.rebootingcameras.RebootingCamerasApplication;
 import com.backend.rebootingcameras.data.PathForRequest;
 import com.backend.rebootingcameras.search.RebootValues;
-import com.backend.rebootingcameras.service.SwitchService;
 import lombok.SneakyThrows;
-import org.springframework.beans.factory.annotation.Autowired;
 
-import java.io.DataOutputStream;
-import java.io.FileOutputStream;
+import java.io.*;
 
-/** класс для запуска snmpSet для выполнения перезагрузки по пое */
-public class RebootChannel implements Runnable{
+/**
+ * класс для запуска snmpSet для выполнения перезагрузки по пое
+ */
+public class RebootChannel implements Runnable {
 
 
     private RebootValues rebootValues;
-    private String resultOfReboot;
+    private boolean wasErrorOnExecuteSnmp;
+    private boolean wasErrorOnChangePoeStatus;
 
 
     public RebootChannel(RebootValues rebootValues) {
         this.rebootValues = rebootValues;
     }
 
-    public String executeSnmpSetForReboot() {
+    public boolean[] executeSnmpSetForReboot() {
         run();
-        return resultOfReboot;
+        return new boolean[]{wasErrorOnExecuteSnmp, wasErrorOnChangePoeStatus};
     }
 
 
@@ -39,23 +40,53 @@ public class RebootChannel implements Runnable{
         System.out.println(PathForRequest.STRING_FOR_RUN_SNMP_SET + setCommandOff);
         System.out.println(PathForRequest.STRING_FOR_RUN_SNMP_SET + setCommandOn);
 
-        Process process = Runtime.getRuntime().exec(PathForRequest.STRING_FOR_RUN_SNMP_SET + setCommandOff);
-//        process.getInputStream();
-        DataOutputStream outputStream = new DataOutputStream(
-                new FileOutputStream("poe_of.bin")); // создаю поток данных для записи в этот файл
+        try {
+            /* запускаю SnmpSet */
+            runSnmp(setCommandOff, "poe_of.bin");
 
+            /* читаю файл */
+            openFileReader("C:/Users/romanov-av/Documents/rebooting-cameras/poe_of.bin");
+
+        } catch (IOException e) {
+            System.out.println("Поймана во время запуска программы SnmpSet.exe " + e);
+            wasErrorOnExecuteSnmp = true;
+        }
+
+        try {
+            /* запускаю SnmpSet */
+            runSnmp(setCommandOn, "poe_on.bin");
+            /* читаю файл */
+            openFileReader("C:/Users/romanov-av/Documents/rebooting-cameras/poe_on.bin");
+
+        } catch (IOException e) {
+            System.out.println("Поймана ошибка повторного открытия файла " + e);
+            wasErrorOnExecuteSnmp = true;
+        }
+
+    }
+
+    private void openFileReader(String filePath) throws IOException {
+        BufferedReader reader =
+                new BufferedReader(new FileReader(filePath));
+        StringBuilder content = new StringBuilder();
+        String line;
+        while ((line = reader.readLine()) != null) {
+            content.append(line);
+            content.append(System.lineSeparator());
+        }
+        String result = content.toString();
+        RebootingCamerasApplication.log.debug(result);
+        System.out.println(result);
+        wasErrorOnChangePoeStatus = !result.contains("OK"); //todo возможно нужно ловить исключения
+    }
+
+    private void runSnmp(String setCommand, String fileName) throws IOException, InterruptedException {
+        Process process = Runtime.getRuntime().exec(PathForRequest.STRING_FOR_RUN_SNMP_SET + setCommand);
+        DataOutputStream outputStream = new DataOutputStream(
+                new FileOutputStream(fileName)); // создаю поток данных для записи в этот файл
         process.getInputStream().transferTo(outputStream);
         process.destroy();
-        Thread.sleep(5000);
-
-        Process process2 = Runtime.getRuntime().exec(PathForRequest.STRING_FOR_RUN_SNMP_SET + setCommandOn);
-        process2.getInputStream();
-        DataOutputStream outputStream2 = new DataOutputStream(new FileOutputStream("poe_on.bin"));
-        process2.getInputStream().transferTo(outputStream2);
-        Thread.sleep(5000);
-        process2.destroy();
-        //todo написать метод чтения информации из файлов poe_of.bin, poe_on.bin и вернуть результат (ОК? не ок?)
-        resultOfReboot = "OKEY";
-
+        wasErrorOnExecuteSnmp = false;
+        Thread.sleep(4000);
     }
 }

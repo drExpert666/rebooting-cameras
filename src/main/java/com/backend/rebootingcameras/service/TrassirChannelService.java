@@ -3,6 +3,7 @@ package com.backend.rebootingcameras.service;
 import com.backend.rebootingcameras.repository.TrassirChannelRepo;
 import com.backend.rebootingcameras.trassir_models.TrassirChannelInfo;
 import com.backend.rebootingcameras.trassir_models.TrassirServerInfo;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -12,6 +13,7 @@ import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
 import java.util.List;
 
+@Slf4j
 @Service
 public class TrassirChannelService {
 
@@ -42,11 +44,10 @@ public class TrassirChannelService {
         return trassirChannelRepo.findAll();
     }
 
-
-
     @Transactional
     public Page<TrassirChannelInfo> findByParams(String serverId, String channelId, String channelName,
                                                  Integer signal, Long switchId, String channelIp, PageRequest pageRequest) {
+        log.info(channelName);
         return trassirChannelRepo.findByParams(serverId, channelId, channelName, signal, switchId, channelIp, pageRequest);
     }
 
