@@ -43,10 +43,15 @@ public class CommonChannelController {
     @PostMapping("/search")
     public ResponseEntity<List<TrassirChannelInfo>> search(@RequestBody ChannelSearchValues searchValues) {
 
-        String serverId = searchValues.getGuidServer() != null ? searchValues.getGuidServer() : null;
-        String channelName = searchValues.getName() != null ? searchValues.getName() : null;
+        /* сохраняю переданные значения */
+        String serverId = searchValues.getGuidServer() != null &&  searchValues.getGuidServer().trim().length() > 0
+                ? searchValues.getGuidServer() : null;
+        String channelName = searchValues.getName() != null && searchValues.getName().trim().length() > 0
+                ? searchValues.getName() : null;
         Integer signal = searchValues.getSignal() != null ? searchValues.getSignal() : null;
         Long switchId = searchValues.getSwitchId() != null ? searchValues.getSwitchId() : null;
+        String channelIp = searchValues.getIp() != null && searchValues.getIp().trim().length() > 0
+                ? searchValues.getIp() : null;
 
         // сортировка
         String sortDirection = searchValues.getSortDirection() == null ||
@@ -74,7 +79,8 @@ public class CommonChannelController {
         PageRequest pageRequest = PageRequest.of(pageNumber, pageSize, sort);
 
         // результат запроса с постраничным выводом
-        Page<TrassirChannelInfo> channelsWithPaginationAndSorting = channelService.findByParams(serverId, null, channelName, signal, switchId, pageRequest);
+        Page<TrassirChannelInfo> channelsWithPaginationAndSorting = channelService.findByParams(serverId, null,
+                channelName, signal, switchId,channelIp, pageRequest);
 
         return new ResponseEntity(channelsWithPaginationAndSorting, HttpStatus.OK);
     }

@@ -13,6 +13,7 @@ public class ChannelSearchValues {
     private String name;
     private Integer signal;
     private Long switchId;
+    private String ip;
 
     // постарничность
     private Integer pageNumber;
