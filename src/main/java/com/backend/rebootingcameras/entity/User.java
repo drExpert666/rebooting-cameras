@@ -14,16 +14,19 @@ import java.util.Set;
 @Data
 @Entity
 @NoArgsConstructor
+@Table(name = "users")
 public class User implements UserDetails {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id;
 
     // проверки в скобках - происходят до сохранения в БД, поэтому получим ошибку до обращения к БД
-    @Column(unique = true, updatable = false)
+    @Column(name = "username", unique = true, updatable = false)
     private String username;
 
-    @Column(length = 3000) // макс длина
+    @Column(name = "password", length = 3000) // макс длина
     private String password;
 
     // указываем хайбернейту какие поля связываются при создании таблицы

@@ -23,12 +23,12 @@ public class CustomUserDetailsService implements UserDetailsService {
         this.userRepository = userRepository;
     }
 
-
     // ищем юзера по имени, который передали через клиент
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         User user = userRepository.findUserByUsername(username)
                 .orElseThrow(() -> new UsernameNotFoundException("Username not found: " + username));
+        System.out.println(user);
         return build(user); // возвращаем юзера с листом authorities
     }
 
