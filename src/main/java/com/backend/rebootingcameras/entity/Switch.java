@@ -4,9 +4,8 @@ import lombok.*;
 
 import javax.persistence.*;
 
-@ToString
-@Getter
-@Setter
+@Data
+@AllArgsConstructor
 @NoArgsConstructor
 @Entity
 @Table(name = "switch_info")

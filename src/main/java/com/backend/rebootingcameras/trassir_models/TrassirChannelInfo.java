@@ -6,11 +6,8 @@ import lombok.*;
 import javax.persistence.*;
 import java.util.Date;
 
-@Getter
-@Setter
-@ToString
+@Data
 @AllArgsConstructor
-@EqualsAndHashCode
 @NoArgsConstructor
 @Entity
 @Table(name = "trassir_channel_info")

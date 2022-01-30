@@ -5,8 +5,11 @@ import com.backend.rebootingcameras.repository.UserRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+
+import java.security.Principal;
 
 /** сервис по созданию нового пользователя */
 //todo написать реализацию позже, т.к. сейчас в задаче регистрация пользователей не стоит
@@ -28,5 +31,16 @@ public class UserService {
         this.passwordEncoder = passwordEncoder;
     }
 
+    /** SecurityContextHolder, в нем содержится информация о текущем контексте безопасности приложения,
+     *  который включает в себя подробную информацию о пользователе(Principal) работающем в настоящее время с приложением. */
+    public User getCurrentUser(Principal principal) {
+       return getUserByPrincipal(principal);
+    }
+
+    public User getUserByPrincipal(Principal principal) {
+        String username = principal.getName();
+        return userRepository.findUserByUsername(username)
+                .orElseThrow(() -> new UsernameNotFoundException("Username not found with username " + username));
+    }
 
 }

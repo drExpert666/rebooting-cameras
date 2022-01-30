@@ -41,6 +41,7 @@ public class SwitchService {
 
     @Transactional
     public Switch update(Switch s) {
+        System.out.println(s);
        return switchRepo.save(s);
     }
 

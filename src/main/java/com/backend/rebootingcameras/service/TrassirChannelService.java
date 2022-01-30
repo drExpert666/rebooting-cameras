@@ -36,6 +36,7 @@ public class TrassirChannelService {
 
     @Transactional
     public TrassirChannelInfo updateByChannel(TrassirChannelInfo channel) {
+        System.out.println(channel);
         return trassirChannelRepo.save(channel);
     }
 

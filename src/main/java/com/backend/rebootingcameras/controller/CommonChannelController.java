@@ -90,6 +90,8 @@ public class CommonChannelController {
     @PutMapping("/update")
     public ResponseEntity<TrassirChannelInfo> update(@RequestBody TrassirChannelInfo channel) {
 
+        System.out.println(channel);
+
         if (channel.getGuidChannel() == null || channel.getGuidChannel().trim().length() == 0) {
             return new ResponseEntity("id must be fill", HttpStatus.NOT_ACCEPTABLE);
         } else {
