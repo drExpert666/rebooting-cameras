@@ -26,29 +26,28 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
      */
     private JWTAuthenticationEntryPoint jwtAuthenticationEntryPoint;
     private CustomUserDetailsService customUserDetailsService;
-
     @Autowired
     public void setJwtAuthenticationEntryPoint(JWTAuthenticationEntryPoint jwtAuthenticationEntryPoint) {
         this.jwtAuthenticationEntryPoint = jwtAuthenticationEntryPoint;
     }
-
     @Autowired
     public void setCustomUserDetailsService(CustomUserDetailsService customUserDetailsService) {
         this.customUserDetailsService = customUserDetailsService;
     }
 
-
+    /*  */
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(customUserDetailsService).passwordEncoder(bCryptPasswordEncoder());
     }
 
     //todo разобраться что тут происходит
+    /* предположительно описывается конфигурация перехвата http запросов от клиента */
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.cors().and().csrf().disable()
                 .exceptionHandling() // обработчик ошибок
-                .authenticationEntryPoint(jwtAuthenticationEntryPoint) // передаём класс, который будет обрабаиывать ошибки
+                .authenticationEntryPoint(jwtAuthenticationEntryPoint) // передаём класс, который будет обрабатывать ошибки
                 .and().sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
@@ -59,6 +58,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.addFilterBefore(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
     }
 
+    /** прописываем бины для spring контейнера */
     @Override
     @Bean(BeanIds.AUTHENTICATION_MANAGER)
     protected AuthenticationManager authenticationManager() throws Exception {

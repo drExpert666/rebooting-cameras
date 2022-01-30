@@ -23,7 +23,7 @@ public class CustomUserDetailsService implements UserDetailsService {
         this.userRepository = userRepository;
     }
 
-    // ищем юзера по имени, который передали через клиент
+    /* ищем юзера по имени, который передали через клиент */
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         User user = userRepository.findUserByUsername(username)
@@ -40,11 +40,12 @@ public class CustomUserDetailsService implements UserDetailsService {
         List<GrantedAuthority> authorities = user.getRoles().stream() // преобразуем сет ролей юзера в стрим
                 .map(role -> new SimpleGrantedAuthority(role.name())) // для каждой роли создаём новый элемент SimpleGrantedAuthority
                 .collect(Collectors.toList()); // и собираём всё в лист
+        System.out.println(authorities);
         return new User(
                 user.getId(),
                 user.getUsername(),
                 user.getPassword(),
-                authorities);
+                authorities); /* теперь юзер содержит лист authorities вместо листа ролей */
     }
 
 }

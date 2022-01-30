@@ -18,12 +18,15 @@ import java.io.IOException;
 public class JWTAuthenticationEntryPoint implements AuthenticationEntryPoint {
 
     @Override
-    public void commence(HttpServletRequest request, HttpServletResponse response, AuthenticationException authException) throws IOException, ServletException {
+    public void commence(HttpServletRequest request, HttpServletResponse response,
+                         AuthenticationException authException) throws IOException, ServletException {
+
+        /* созданный нами класс-конейтенр, при помощи которого отправляем json с кодом ошибки при неверной авторизации */
         InvalidLoginResponse loginResponse = new InvalidLoginResponse();
-        // библу Gson внедрили отдельно в градл
+        /* библу Gson внедрили отдельно в градл */
         String jsonLoginResponse = new Gson().toJson(loginResponse);
-        response.setContentType(SecurityConstants.CONTENT_TYPE); // выставляем тип json-у
+        response.setContentType(SecurityConstants.CONTENT_TYPE); // выставляем тип json-у "application/json"
         response.setStatus(HttpStatus.SC_UNAUTHORIZED); // ставим статус 401
-        response.getWriter().println(jsonLoginResponse);
+        response.getWriter().println(jsonLoginResponse); // записываем результат в текст для показа клиенту
     }
 }

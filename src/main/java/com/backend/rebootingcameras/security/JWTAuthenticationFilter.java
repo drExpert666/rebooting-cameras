@@ -26,23 +26,21 @@ public class JWTAuthenticationFilter extends OncePerRequestFilter {
     // так как у меня уже подключен собственный логгер у всего приложения (RebootingCamerasApplication.class)
     public static final Logger LOG = LoggerFactory.getLogger(JWTAuthenticationFilter.class);
 
+    /** DI */
     private JWTTokenProvider jwtTokenProvider;
-
     private CustomUserDetailsService customUserDetailsService;
-
     @Autowired
     public void setJwtTokenProvider(JWTTokenProvider jwtTokenProvider) {
         this.jwtTokenProvider = jwtTokenProvider;
     }
-
     @Autowired
     public void setCustomUserDetailsService(CustomUserDetailsService customUserDetailsService) {
         this.customUserDetailsService = customUserDetailsService;
     }
 
     @Override
-    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
-
+    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response,
+                                    FilterChain filterChain) throws ServletException, IOException {
         try {
             String jwt = getJWTFromRequest(request);
             // проверяем, что jwt не null и что при декодировании токена вернулся true (не было поймано эксепшенов)
