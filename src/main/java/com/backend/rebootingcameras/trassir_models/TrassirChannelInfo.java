@@ -53,4 +53,8 @@ public class TrassirChannelInfo {
     @Column(name = "port")
     private Integer port; // номер порта коммутатора
 
+    @Basic
+    @Column(name = "lost_channel")
+    private Boolean lostChannel;
+
 }

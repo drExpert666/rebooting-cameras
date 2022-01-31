@@ -2563,3 +2563,802 @@ Caused by: org.postgresql.util.PSQLException: ОШИБКА: ошибка син�
 2022-01-30 23:39:57.682  INFO 11772 --- [http-nio-8080-exec-2] c.b.r.service.TrassirChannelService      : 80
 2022-01-30 23:41:20.166  INFO 11772 --- [http-nio-8080-exec-5] c.b.r.service.TrassirChannelService      : 80
 2022-01-30 23:41:37.942  INFO 11772 --- [http-nio-8080-exec-8] c.b.r.service.TrassirChannelService      : null
+2022-01-31 09:41:02.193  INFO 19616 --- [restartedMain] c.b.r.RebootingCamerasApplication        : Starting RebootingCamerasApplication using Java 11.0.13 on romanov-av with PID 19616 (C:\Users\romanov-av\Documents\rebooting-cameras\build\classes\java\main started by romanov-av in C:\Users\romanov-av\Documents\rebooting-cameras)
+2022-01-31 09:41:02.196  INFO 19616 --- [restartedMain] c.b.r.RebootingCamerasApplication        : No active profile set, falling back to default profiles: default
+2022-01-31 09:41:02.383  INFO 19616 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-01-31 09:41:02.385  INFO 19616 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-01-31 09:41:03.311  INFO 19616 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-01-31 09:41:03.382  INFO 19616 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 62 ms. Found 4 JPA repository interfaces.
+2022-01-31 09:41:04.003  INFO 19616 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-01-31 09:41:04.023  INFO 19616 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-01-31 09:41:04.023  INFO 19616 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.56]
+2022-01-31 09:41:04.105  INFO 19616 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-01-31 09:41:04.105  INFO 19616 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1719 ms
+2022-01-31 09:41:04.208  WARN 19616 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-01-31 09:41:04.355  INFO 19616 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-01-31 09:41:04.636  INFO 19616 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-01-31 09:41:04.697  INFO 19616 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-01-31 09:41:04.752  INFO 19616 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.3.Final
+2022-01-31 09:41:04.904  INFO 19616 --- [restartedMain] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-01-31 09:41:05.014  INFO 19616 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL10Dialect
+2022-01-31 09:41:05.631  INFO 19616 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-01-31 09:41:05.641  INFO 19616 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-01-31 09:41:07.109  INFO 19616 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@2667bbc2, org.springframework.security.web.context.SecurityContextPersistenceFilter@4044b8af, org.springframework.security.web.header.HeaderWriterFilter@297d9000, org.springframework.web.filter.CorsFilter@365280fa, org.springframework.security.web.authentication.logout.LogoutFilter@6c678de2, com.backend.rebootingcameras.security.JWTAuthenticationFilter@55a4b844, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@69490174, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@461306e1, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@1ed1c7f1, org.springframework.security.web.session.SessionManagementFilter@47c66f58, org.springframework.security.web.access.ExceptionTranslationFilter@7dc5c801, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@86a468b]
+2022-01-31 09:41:07.611  INFO 19616 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-01-31 09:41:07.643  INFO 19616 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2022-01-31 09:41:07.654  INFO 19616 --- [restartedMain] c.b.r.RebootingCamerasApplication        : Started RebootingCamerasApplication in 6.579 seconds (JVM running for 7.98)
+2022-01-31 09:41:07.658  INFO 19616 --- [restartedMain] c.b.r.RebootingCamerasApplication        : Starting my application with 0 args.
+2022-01-31 09:42:04.426  INFO 19616 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-01-31 09:42:04.427  INFO 19616 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-01-31 09:42:04.428  INFO 19616 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2022-01-31 09:42:04.827  INFO 19616 --- [http-nio-8080-exec-6] c.b.r.service.TrassirChannelService      : null
+2022-01-31 09:42:05.162  INFO 19616 --- [http-nio-8080-exec-9] c.b.r.service.TrassirChannelService      : null
+2022-01-31 09:42:10.288  INFO 19616 --- [http-nio-8080-exec-2] c.b.r.service.TrassirChannelService      : null
+2022-01-31 09:42:10.926  INFO 19616 --- [http-nio-8080-exec-3] c.b.r.service.TrassirChannelService      : null
+2022-01-31 09:42:11.631  INFO 19616 --- [http-nio-8080-exec-5] c.b.r.service.TrassirChannelService      : null
+2022-01-31 09:42:28.960  INFO 19616 --- [http-nio-8080-exec-4] c.b.r.service.TrassirChannelService      : null
+2022-01-31 09:42:31.783  INFO 19616 --- [http-nio-8080-exec-8] c.b.r.service.TrassirChannelService      : null
+2022-01-31 09:42:33.575  INFO 19616 --- [http-nio-8080-exec-7] c.b.r.service.TrassirChannelService      : null
+2022-01-31 09:42:52.208  INFO 19616 --- [http-nio-8080-exec-6] c.b.r.service.TrassirChannelService      : null
+2022-01-31 09:43:12.267  INFO 19616 --- [http-nio-8080-exec-9] c.b.r.service.TrassirChannelService      : null
+2022-01-31 09:43:34.044  INFO 19616 --- [http-nio-8080-exec-5] c.b.r.service.TrassirChannelService      : null
+2022-01-31 09:43:39.052  INFO 19616 --- [http-nio-8080-exec-4] c.b.r.service.TrassirChannelService      : null
+2022-01-31 09:43:42.088  INFO 19616 --- [http-nio-8080-exec-8] c.b.r.service.TrassirChannelService      : null
+2022-01-31 09:45:10.781  INFO 19616 --- [http-nio-8080-exec-1] c.b.r.service.TrassirChannelService      : null
+2022-01-31 09:45:16.927  INFO 19616 --- [http-nio-8080-exec-2] c.b.r.service.TrassirChannelService      : n
+2022-01-31 09:45:18.221  INFO 19616 --- [http-nio-8080-exec-3] c.b.r.service.TrassirChannelService      : т
+2022-01-31 09:45:18.357  INFO 19616 --- [http-nio-8080-exec-9] c.b.r.service.TrassirChannelService      : те
+2022-01-31 09:45:19.240  INFO 19616 --- [http-nio-8080-exec-5] c.b.r.service.TrassirChannelService      : тес
+2022-01-31 09:45:19.441  INFO 19616 --- [http-nio-8080-exec-4] c.b.r.service.TrassirChannelService      : тест
+2022-01-31 09:45:23.041  INFO 19616 --- [http-nio-8080-exec-8] c.b.r.service.TrassirChannelService      : null
+2022-01-31 09:45:24.440  INFO 19616 --- [http-nio-8080-exec-6] c.b.r.service.TrassirChannelService      : t
+2022-01-31 09:45:24.687  INFO 19616 --- [http-nio-8080-exec-7] c.b.r.service.TrassirChannelService      : te
+2022-01-31 09:45:25.070  INFO 19616 --- [http-nio-8080-exec-10] c.b.r.service.TrassirChannelService      : tes
+2022-01-31 09:49:19.564  INFO 19616 --- [http-nio-8080-exec-2] c.b.r.service.TrassirChannelService      : null
+2022-01-31 09:49:22.635  INFO 19616 --- [http-nio-8080-exec-5] c.b.r.service.TrassirChannelService      : t
+2022-01-31 09:49:22.916  INFO 19616 --- [http-nio-8080-exec-4] c.b.r.service.TrassirChannelService      : te
+2022-01-31 09:56:32.861 ERROR 19616 --- [http-nio-8080-exec-7] c.b.r.security.JWTTokenProvider          : JWT expired at 2022-01-31T09:52:04Z. Current time: 2022-01-31T09:56:32Z, a difference of 268858 milliseconds.  Allowed clock skew: 0 milliseconds.
+2022-01-31 09:56:58.832  INFO 19616 --- [http-nio-8080-exec-1] c.b.r.service.TrassirChannelService      : null
+2022-01-31 09:56:59.202  INFO 19616 --- [http-nio-8080-exec-9] c.b.r.service.TrassirChannelService      : null
+2022-01-31 09:58:20.545  INFO 19616 --- [http-nio-8080-exec-2] c.b.r.service.TrassirChannelService      : null
+2022-01-31 09:58:20.915  INFO 19616 --- [http-nio-8080-exec-4] c.b.r.service.TrassirChannelService      : null
+2022-01-31 09:59:19.880  INFO 19616 --- [http-nio-8080-exec-8] c.b.r.service.TrassirChannelService      : null
+2022-01-31 09:59:20.275  INFO 19616 --- [http-nio-8080-exec-5] c.b.r.service.TrassirChannelService      : null
+2022-01-31 10:07:52.848  INFO 19616 --- [http-nio-8080-exec-10] c.b.r.service.TrassirChannelService      : null
+2022-01-31 10:07:53.396  INFO 19616 --- [http-nio-8080-exec-1] c.b.r.service.TrassirChannelService      : null
+2022-01-31 10:08:01.466  INFO 19616 --- [http-nio-8080-exec-4] c.b.r.service.TrassirChannelService      : 1
+2022-01-31 10:08:01.678  INFO 19616 --- [http-nio-8080-exec-9] c.b.r.service.TrassirChannelService      : 11
+2022-01-31 10:08:10.564  INFO 19616 --- [http-nio-8080-exec-6] c.b.r.service.TrassirChannelService      : 11
+2022-01-31 10:08:11.276  INFO 19616 --- [http-nio-8080-exec-7] c.b.r.service.TrassirChannelService      : 11
+2022-01-31 10:08:12.451  INFO 19616 --- [http-nio-8080-exec-10] c.b.r.service.TrassirChannelService      : 11
+2022-01-31 10:08:13.171  INFO 19616 --- [http-nio-8080-exec-3] c.b.r.service.TrassirChannelService      : 11
+2022-01-31 10:08:13.701  INFO 19616 --- [http-nio-8080-exec-8] c.b.r.service.TrassirChannelService      : 11
+2022-01-31 10:08:18.012  INFO 19616 --- [http-nio-8080-exec-1] c.b.r.service.TrassirChannelService      : 11
+2022-01-31 10:08:20.123  INFO 19616 --- [http-nio-8080-exec-2] c.b.r.service.TrassirChannelService      : null
+2022-01-31 10:08:21.781  INFO 19616 --- [http-nio-8080-exec-5] c.b.r.service.TrassirChannelService      : null
+2022-01-31 10:08:24.843  INFO 19616 --- [http-nio-8080-exec-4] c.b.r.service.TrassirChannelService      : null
+2022-01-31 10:08:31.286  INFO 19616 --- [http-nio-8080-exec-9] c.b.r.service.TrassirChannelService      : null
+2022-01-31 10:28:25.752 ERROR 19616 --- [http-nio-8080-exec-3] c.b.r.security.JWTTokenProvider          : JWT expired at 2022-01-31T10:17:52Z. Current time: 2022-01-31T10:28:25Z, a difference of 633752 milliseconds.  Allowed clock skew: 0 milliseconds.
+2022-01-31 10:29:37.590  INFO 9788 --- [restartedMain] c.b.r.RebootingCamerasApplication        : Starting RebootingCamerasApplication using Java 11.0.13 on romanov-av with PID 9788 (C:\Users\romanov-av\Documents\rebooting-cameras\build\classes\java\main started by romanov-av in C:\Users\romanov-av\Documents\rebooting-cameras)
+2022-01-31 10:29:37.591  INFO 9788 --- [restartedMain] c.b.r.RebootingCamerasApplication        : No active profile set, falling back to default profiles: default
+2022-01-31 10:29:37.634  INFO 9788 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-01-31 10:29:37.634  INFO 9788 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-01-31 10:29:38.315  INFO 9788 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-01-31 10:29:38.380  INFO 9788 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 57 ms. Found 4 JPA repository interfaces.
+2022-01-31 10:29:39.078  INFO 9788 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-01-31 10:29:39.087  INFO 9788 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-01-31 10:29:39.087  INFO 9788 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.56]
+2022-01-31 10:29:39.170  INFO 9788 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-01-31 10:29:39.170  INFO 9788 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1535 ms
+2022-01-31 10:29:39.278  WARN 9788 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-01-31 10:29:39.415  INFO 9788 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-01-31 10:29:39.590  INFO 9788 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-01-31 10:29:39.657  INFO 9788 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-01-31 10:29:39.716  INFO 9788 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.3.Final
+2022-01-31 10:29:39.883  INFO 9788 --- [restartedMain] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-01-31 10:29:40.005  INFO 9788 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL10Dialect
+2022-01-31 10:29:40.581  INFO 9788 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-01-31 10:29:40.590  INFO 9788 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-01-31 10:29:42.059  INFO 9788 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@786bd5de, org.springframework.security.web.context.SecurityContextPersistenceFilter@11c8c931, org.springframework.security.web.header.HeaderWriterFilter@5f03acc9, org.springframework.web.filter.CorsFilter@21194445, org.springframework.security.web.authentication.logout.LogoutFilter@2d6326af, com.backend.rebootingcameras.security.JWTAuthenticationFilter@4f150ca4, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@b93190, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@5ffab2a8, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@26148007, org.springframework.security.web.session.SessionManagementFilter@267ea847, org.springframework.security.web.access.ExceptionTranslationFilter@3ea47e86, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@2cd31e5f]
+2022-01-31 10:29:42.558  INFO 9788 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-01-31 10:29:42.597  INFO 9788 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2022-01-31 10:29:42.610  INFO 9788 --- [restartedMain] c.b.r.RebootingCamerasApplication        : Started RebootingCamerasApplication in 5.395 seconds (JVM running for 6.124)
+2022-01-31 10:29:42.612  INFO 9788 --- [restartedMain] c.b.r.RebootingCamerasApplication        : Starting my application with 0 args.
+2022-01-31 10:31:08.549  INFO 9788 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-01-31 10:31:08.551  INFO 9788 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-01-31 10:31:08.552  INFO 9788 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2022-01-31 10:31:08.962  INFO 9788 --- [http-nio-8080-exec-3] c.b.r.service.TrassirChannelService      : null
+2022-01-31 10:31:09.504  INFO 9788 --- [http-nio-8080-exec-8] c.b.r.service.TrassirChannelService      : null
+2022-01-31 10:31:26.661  INFO 9788 --- [http-nio-8080-exec-1] c.b.r.service.TrassirChannelService      : null
+2022-01-31 10:31:29.853  INFO 9788 --- [http-nio-8080-exec-2] c.b.r.service.TrassirChannelService      : null
+2022-01-31 10:32:08.856  INFO 9788 --- [http-nio-8080-exec-4] c.b.r.service.TrassirChannelService      : null
+2022-01-31 10:32:11.670  INFO 9788 --- [http-nio-8080-exec-7] c.b.r.service.TrassirChannelService      : null
+2022-01-31 10:32:33.701  INFO 9788 --- [http-nio-8080-exec-3] c.b.r.service.TrassirChannelService      : null
+2022-01-31 10:32:39.565  INFO 9788 --- [http-nio-8080-exec-10] c.b.r.service.TrassirChannelService      : null
+2022-01-31 10:32:41.038  INFO 9788 --- [http-nio-8080-exec-9] c.b.r.service.TrassirChannelService      : null
+2022-01-31 10:32:45.534  INFO 9788 --- [http-nio-8080-exec-8] c.b.r.service.TrassirChannelService      : null
+2022-01-31 10:32:48.084  INFO 9788 --- [http-nio-8080-exec-1] c.b.r.service.TrassirChannelService      : null
+2022-01-31 10:32:53.700  INFO 9788 --- [http-nio-8080-exec-2] c.b.r.service.TrassirChannelService      : null
+2022-01-31 10:32:54.972  INFO 9788 --- [http-nio-8080-exec-4] c.b.r.service.TrassirChannelService      : null
+2022-01-31 10:32:57.827  INFO 9788 --- [http-nio-8080-exec-5] c.b.r.service.TrassirChannelService      : null
+2022-01-31 10:32:59.340  INFO 9788 --- [http-nio-8080-exec-6] c.b.r.service.TrassirChannelService      : null
+2022-01-31 10:57:08.257  INFO 25468 --- [restartedMain] c.b.r.RebootingCamerasApplication        : Starting RebootingCamerasApplication using Java 11.0.13 on romanov-av with PID 25468 (C:\Users\romanov-av\Documents\rebooting-cameras\build\classes\java\main started by romanov-av in C:\Users\romanov-av\Documents\rebooting-cameras)
+2022-01-31 10:57:08.258  INFO 25468 --- [restartedMain] c.b.r.RebootingCamerasApplication        : No active profile set, falling back to default profiles: default
+2022-01-31 10:57:08.299  INFO 25468 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-01-31 10:57:08.299  INFO 25468 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-01-31 10:57:09.035  INFO 25468 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-01-31 10:57:09.118  INFO 25468 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 72 ms. Found 4 JPA repository interfaces.
+2022-01-31 10:57:09.736  INFO 25468 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-01-31 10:57:09.745  INFO 25468 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-01-31 10:57:09.746  INFO 25468 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.56]
+2022-01-31 10:57:09.822  INFO 25468 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-01-31 10:57:09.823  INFO 25468 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1523 ms
+2022-01-31 10:57:09.926  WARN 25468 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-01-31 10:57:10.071  INFO 25468 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-01-31 10:57:10.217  INFO 25468 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-01-31 10:57:10.275  INFO 25468 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-01-31 10:57:10.328  INFO 25468 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.3.Final
+2022-01-31 10:57:10.473  INFO 25468 --- [restartedMain] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-01-31 10:57:10.594  INFO 25468 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL10Dialect
+2022-01-31 10:57:11.122  INFO 25468 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-01-31 10:57:11.131  INFO 25468 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-01-31 10:57:12.518  INFO 25468 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@4f2525e6, org.springframework.security.web.context.SecurityContextPersistenceFilter@2604d38a, org.springframework.security.web.header.HeaderWriterFilter@5a90d524, org.springframework.web.filter.CorsFilter@40737089, org.springframework.security.web.authentication.logout.LogoutFilter@10830877, com.backend.rebootingcameras.security.JWTAuthenticationFilter@19b5ddb9, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@3f55ee07, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@5f856b0e, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@3a7a4459, org.springframework.security.web.session.SessionManagementFilter@74cd5b61, org.springframework.security.web.access.ExceptionTranslationFilter@2aece04e, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@3bcf7326]
+2022-01-31 10:57:12.998  INFO 25468 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-01-31 10:57:13.028  INFO 25468 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2022-01-31 10:57:13.041  INFO 25468 --- [restartedMain] c.b.r.RebootingCamerasApplication        : Started RebootingCamerasApplication in 5.212 seconds (JVM running for 5.962)
+2022-01-31 10:57:13.044  INFO 25468 --- [restartedMain] c.b.r.RebootingCamerasApplication        : Starting my application with 0 args.
+2022-01-31 11:13:16.602  INFO 25468 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-01-31 11:13:16.603  INFO 25468 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-01-31 11:13:16.604  INFO 25468 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2022-01-31 11:13:16.709  INFO 25468 --- [http-nio-8080-exec-2] c.b.r.service.TrassirChannelService      : null
+2022-01-31 11:13:18.687  INFO 25468 --- [http-nio-8080-exec-3] c.b.r.service.TrassirChannelService      : null
+2022-01-31 11:13:24.896  INFO 25468 --- [http-nio-8080-exec-8] c.b.r.service.TrassirChannelService      : null
+2022-01-31 11:13:29.664  INFO 25468 --- [http-nio-8080-exec-9] c.b.r.service.TrassirChannelService      : null
+2022-01-31 11:13:32.999  INFO 25468 --- [http-nio-8080-exec-10] c.b.r.service.TrassirChannelService      : null
+2022-01-31 11:13:55.983  INFO 25468 --- [http-nio-8080-exec-1] c.b.r.service.TrassirChannelService      : null
+2022-01-31 11:14:04.543  INFO 25468 --- [http-nio-8080-exec-2] c.b.r.service.TrassirChannelService      : null
+2022-01-31 11:14:10.838  INFO 25468 --- [http-nio-8080-exec-4] c.b.r.service.TrassirChannelService      : null
+2022-01-31 11:15:00.498  INFO 25468 --- [http-nio-8080-exec-6] c.b.r.service.TrassirChannelService      : null
+2022-01-31 11:15:04.023  INFO 25468 --- [http-nio-8080-exec-7] c.b.r.service.TrassirChannelService      : null
+2022-01-31 11:15:14.680  INFO 25468 --- [http-nio-8080-exec-10] c.b.r.service.TrassirChannelService      : null
+2022-01-31 11:24:31.928  INFO 20068 --- [restartedMain] c.b.r.RebootingCamerasApplication        : Starting RebootingCamerasApplication using Java 11.0.13 on romanov-av with PID 20068 (C:\Users\romanov-av\Documents\rebooting-cameras\build\classes\java\main started by romanov-av in C:\Users\romanov-av\Documents\rebooting-cameras)
+2022-01-31 11:24:31.930  INFO 20068 --- [restartedMain] c.b.r.RebootingCamerasApplication        : No active profile set, falling back to default profiles: default
+2022-01-31 11:24:31.972  INFO 20068 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-01-31 11:24:31.972  INFO 20068 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-01-31 11:24:32.649  INFO 20068 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-01-31 11:24:32.721  INFO 20068 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 63 ms. Found 4 JPA repository interfaces.
+2022-01-31 11:24:33.360  INFO 20068 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-01-31 11:24:33.367  INFO 20068 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-01-31 11:24:33.368  INFO 20068 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.56]
+2022-01-31 11:24:33.446  INFO 20068 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-01-31 11:24:33.447  INFO 20068 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1474 ms
+2022-01-31 11:24:33.557  WARN 20068 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-01-31 11:24:33.689  INFO 20068 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-01-31 11:24:33.847  INFO 20068 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-01-31 11:24:33.906  INFO 20068 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-01-31 11:24:33.947  INFO 20068 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.3.Final
+2022-01-31 11:24:34.081  INFO 20068 --- [restartedMain] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-01-31 11:24:34.204  INFO 20068 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL10Dialect
+2022-01-31 11:24:34.758  INFO 20068 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-01-31 11:24:34.766  INFO 20068 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-01-31 11:24:36.174  INFO 20068 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@2a5ea359, org.springframework.security.web.context.SecurityContextPersistenceFilter@45c9ad3d, org.springframework.security.web.header.HeaderWriterFilter@5bc15705, org.springframework.web.filter.CorsFilter@60a3bf2b, org.springframework.security.web.authentication.logout.LogoutFilter@63cc023, com.backend.rebootingcameras.security.JWTAuthenticationFilter@9afc051, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@72c39afa, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@101f3583, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@52b3bbf4, org.springframework.security.web.session.SessionManagementFilter@489cd06, org.springframework.security.web.access.ExceptionTranslationFilter@4b68710c, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@2ef97c56]
+2022-01-31 11:24:36.668  INFO 20068 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-01-31 11:24:36.712  INFO 20068 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2022-01-31 11:24:36.732  INFO 20068 --- [restartedMain] c.b.r.RebootingCamerasApplication        : Started RebootingCamerasApplication in 5.17 seconds (JVM running for 5.87)
+2022-01-31 11:24:36.737  INFO 20068 --- [restartedMain] c.b.r.RebootingCamerasApplication        : Starting my application with 0 args.
+2022-01-31 11:28:36.196  INFO 20068 --- [http-nio-8080-exec-3] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-01-31 11:28:36.197  INFO 20068 --- [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-01-31 11:28:36.198  INFO 20068 --- [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2022-01-31 11:28:36.339  INFO 20068 --- [http-nio-8080-exec-3] c.b.r.service.TrassirChannelService      : null
+2022-01-31 11:28:40.638  INFO 20068 --- [http-nio-8080-exec-4] c.b.r.service.TrassirChannelService      : null
+2022-01-31 11:28:49.811  INFO 20068 --- [http-nio-8080-exec-5] c.b.r.service.TrassirChannelService      : null
+2022-01-31 11:29:20.539  INFO 20068 --- [http-nio-8080-exec-6] c.b.r.service.TrassirChannelService      : null
+2022-01-31 11:29:26.211  INFO 20068 --- [http-nio-8080-exec-7] c.b.r.service.TrassirChannelService      : null
+2022-01-31 11:32:03.987  INFO 23868 --- [restartedMain] c.b.r.RebootingCamerasApplication        : Starting RebootingCamerasApplication using Java 11.0.13 on romanov-av with PID 23868 (C:\Users\romanov-av\Documents\rebooting-cameras\build\classes\java\main started by romanov-av in C:\Users\romanov-av\Documents\rebooting-cameras)
+2022-01-31 11:32:03.989  INFO 23868 --- [restartedMain] c.b.r.RebootingCamerasApplication        : No active profile set, falling back to default profiles: default
+2022-01-31 11:32:04.033  INFO 23868 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-01-31 11:32:04.033  INFO 23868 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-01-31 11:32:04.707  INFO 23868 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-01-31 11:32:04.778  INFO 23868 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 63 ms. Found 4 JPA repository interfaces.
+2022-01-31 11:32:05.445  INFO 23868 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-01-31 11:32:05.453  INFO 23868 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-01-31 11:32:05.453  INFO 23868 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.56]
+2022-01-31 11:32:05.529  INFO 23868 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-01-31 11:32:05.529  INFO 23868 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1496 ms
+2022-01-31 11:32:05.639  WARN 23868 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-01-31 11:32:05.777  INFO 23868 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-01-31 11:32:05.922  INFO 23868 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-01-31 11:32:05.978  INFO 23868 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-01-31 11:32:06.018  INFO 23868 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.3.Final
+2022-01-31 11:32:06.159  INFO 23868 --- [restartedMain] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-01-31 11:32:06.272  INFO 23868 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL10Dialect
+2022-01-31 11:32:06.816  INFO 23868 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-01-31 11:32:06.823  INFO 23868 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-01-31 11:32:08.248  INFO 23868 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@49a8f956, org.springframework.security.web.context.SecurityContextPersistenceFilter@7d69ea6d, org.springframework.security.web.header.HeaderWriterFilter@4dd19edc, org.springframework.web.filter.CorsFilter@5c27787, org.springframework.security.web.authentication.logout.LogoutFilter@3840cf56, com.backend.rebootingcameras.security.JWTAuthenticationFilter@5ab82f61, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@19ab0346, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@3d457517, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@41ee59d0, org.springframework.security.web.session.SessionManagementFilter@5d3c7fd2, org.springframework.security.web.access.ExceptionTranslationFilter@d96abad, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@39644545]
+2022-01-31 11:32:08.721  INFO 23868 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-01-31 11:32:08.751  INFO 23868 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2022-01-31 11:32:08.766  INFO 23868 --- [restartedMain] c.b.r.RebootingCamerasApplication        : Started RebootingCamerasApplication in 5.159 seconds (JVM running for 5.874)
+2022-01-31 11:32:08.768  INFO 23868 --- [restartedMain] c.b.r.RebootingCamerasApplication        : Starting my application with 0 args.
+2022-01-31 11:35:13.441 ERROR 23868 --- [scheduling-1] o.s.s.s.TaskUtils$LoggingErrorHandler    : Unexpected error occurred in scheduled task
+
+java.lang.NullPointerException: null
+	at com.backend.rebootingcameras.controller.TrassirController.updateAllChannelsWithCheckingFields(TrassirController.java:310) ~[main/:na]
+	at com.backend.rebootingcameras.controller.TrassirController.startCollectTrassirStats(TrassirController.java:95) ~[main/:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566) ~[na:na]
+	at org.springframework.scheduling.support.ScheduledMethodRunnable.run(ScheduledMethodRunnable.java:84) ~[spring-context-5.3.14.jar:5.3.14]
+	at org.springframework.scheduling.support.DelegatingErrorHandlingRunnable.run(DelegatingErrorHandlingRunnable.java:54) ~[spring-context-5.3.14.jar:5.3.14]
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515) ~[na:na]
+	at java.base/java.util.concurrent.FutureTask.runAndReset(FutureTask.java:305) ~[na:na]
+	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:305) ~[na:na]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128) ~[na:na]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628) ~[na:na]
+	at java.base/java.lang.Thread.run(Thread.java:829) ~[na:na]
+
+2022-01-31 11:38:00.883  INFO 23868 --- [http-nio-8080-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-01-31 11:38:00.884  INFO 23868 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-01-31 11:38:00.886  INFO 23868 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2022-01-31 11:38:01.021  INFO 23868 --- [http-nio-8080-exec-1] c.b.r.service.TrassirChannelService      : null
+2022-01-31 11:38:05.392  INFO 23868 --- [http-nio-8080-exec-4] c.b.r.service.TrassirChannelService      : null
+2022-01-31 11:38:10.887  INFO 23868 --- [http-nio-8080-exec-5] c.b.r.service.TrassirChannelService      : null
+2022-01-31 11:38:12.981  INFO 23868 --- [http-nio-8080-exec-6] c.b.r.service.TrassirChannelService      : null
+2022-01-31 11:44:45.997  INFO 4544 --- [restartedMain] c.b.r.RebootingCamerasApplication        : Starting RebootingCamerasApplication using Java 11.0.13 on romanov-av with PID 4544 (C:\Users\romanov-av\Documents\rebooting-cameras\build\classes\java\main started by romanov-av in C:\Users\romanov-av\Documents\rebooting-cameras)
+2022-01-31 11:44:45.998  INFO 4544 --- [restartedMain] c.b.r.RebootingCamerasApplication        : No active profile set, falling back to default profiles: default
+2022-01-31 11:44:46.039  INFO 4544 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-01-31 11:44:46.040  INFO 4544 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-01-31 11:44:46.821  INFO 4544 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-01-31 11:44:46.898  INFO 4544 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 68 ms. Found 4 JPA repository interfaces.
+2022-01-31 11:44:47.533  INFO 4544 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-01-31 11:44:47.541  INFO 4544 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-01-31 11:44:47.541  INFO 4544 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.56]
+2022-01-31 11:44:47.612  INFO 4544 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-01-31 11:44:47.613  INFO 4544 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1571 ms
+2022-01-31 11:44:47.712  WARN 4544 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-01-31 11:44:47.844  INFO 4544 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-01-31 11:44:47.990  INFO 4544 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-01-31 11:44:48.048  INFO 4544 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-01-31 11:44:48.088  INFO 4544 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.3.Final
+2022-01-31 11:44:48.216  INFO 4544 --- [restartedMain] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-01-31 11:44:48.307  INFO 4544 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL10Dialect
+2022-01-31 11:44:48.825  INFO 4544 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-01-31 11:44:48.832  INFO 4544 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-01-31 11:44:50.162  INFO 4544 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@2ad2416a, org.springframework.security.web.context.SecurityContextPersistenceFilter@52bf349c, org.springframework.security.web.header.HeaderWriterFilter@6e568db, org.springframework.web.filter.CorsFilter@436ce7a6, org.springframework.security.web.authentication.logout.LogoutFilter@7f26999c, com.backend.rebootingcameras.security.JWTAuthenticationFilter@7de2d7b0, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@5d3c7fd2, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@19ab0346, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@59f8d39b, org.springframework.security.web.session.SessionManagementFilter@233fb6ec, org.springframework.security.web.access.ExceptionTranslationFilter@216f20e, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@6deb0058]
+2022-01-31 11:44:50.636  INFO 4544 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-01-31 11:44:50.667  INFO 4544 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2022-01-31 11:44:50.679  INFO 4544 --- [restartedMain] c.b.r.RebootingCamerasApplication        : Started RebootingCamerasApplication in 5.03 seconds (JVM running for 5.741)
+2022-01-31 11:44:50.681  INFO 4544 --- [restartedMain] c.b.r.RebootingCamerasApplication        : Starting my application with 0 args.
+2022-01-31 11:50:39.670  INFO 4544 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-01-31 11:50:39.671  INFO 4544 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-01-31 11:50:39.672  INFO 4544 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2022-01-31 11:50:39.781  INFO 4544 --- [http-nio-8080-exec-2] c.b.r.service.TrassirChannelService      : null
+2022-01-31 11:50:40.482  INFO 4544 --- [http-nio-8080-exec-3] c.b.r.service.TrassirChannelService      : null
+2022-01-31 11:50:43.177  INFO 4544 --- [http-nio-8080-exec-4] c.b.r.service.TrassirChannelService      : null
+2022-01-31 11:50:45.543  INFO 4544 --- [http-nio-8080-exec-5] c.b.r.service.TrassirChannelService      : null
+2022-01-31 11:50:50.800  INFO 4544 --- [http-nio-8080-exec-6] c.b.r.service.TrassirChannelService      : null
+2022-01-31 11:52:31.631  INFO 27200 --- [restartedMain] c.b.r.RebootingCamerasApplication        : Starting RebootingCamerasApplication using Java 11.0.13 on romanov-av with PID 27200 (C:\Users\romanov-av\Documents\rebooting-cameras\build\classes\java\main started by romanov-av in C:\Users\romanov-av\Documents\rebooting-cameras)
+2022-01-31 11:52:31.632  INFO 27200 --- [restartedMain] c.b.r.RebootingCamerasApplication        : No active profile set, falling back to default profiles: default
+2022-01-31 11:52:31.676  INFO 27200 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-01-31 11:52:31.676  INFO 27200 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-01-31 11:52:32.294  INFO 27200 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-01-31 11:52:32.358  INFO 27200 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 57 ms. Found 4 JPA repository interfaces.
+2022-01-31 11:52:32.983  INFO 27200 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-01-31 11:52:32.991  INFO 27200 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-01-31 11:52:32.991  INFO 27200 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.56]
+2022-01-31 11:52:33.062  INFO 27200 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-01-31 11:52:33.062  INFO 27200 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1385 ms
+2022-01-31 11:52:33.164  WARN 27200 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-01-31 11:52:33.297  INFO 27200 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-01-31 11:52:33.441  INFO 27200 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-01-31 11:52:33.498  INFO 27200 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-01-31 11:52:33.537  INFO 27200 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.3.Final
+2022-01-31 11:52:33.671  INFO 27200 --- [restartedMain] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-01-31 11:52:33.781  INFO 27200 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL10Dialect
+2022-01-31 11:52:34.288  INFO 27200 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-01-31 11:52:34.296  INFO 27200 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-01-31 11:52:35.665  INFO 27200 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@517cd2e9, org.springframework.security.web.context.SecurityContextPersistenceFilter@1bc20a05, org.springframework.security.web.header.HeaderWriterFilter@1ab0382d, org.springframework.web.filter.CorsFilter@251e5358, org.springframework.security.web.authentication.logout.LogoutFilter@2e6d7c05, com.backend.rebootingcameras.security.JWTAuthenticationFilter@559ed49, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@490a682e, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@5f3d97c1, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@4f0d779a, org.springframework.security.web.session.SessionManagementFilter@2e16a6cf, org.springframework.security.web.access.ExceptionTranslationFilter@2b982b32, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@1ef986b2]
+2022-01-31 11:52:36.157  INFO 27200 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-01-31 11:52:36.188  INFO 27200 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2022-01-31 11:52:36.200  INFO 27200 --- [restartedMain] c.b.r.RebootingCamerasApplication        : Started RebootingCamerasApplication in 4.924 seconds (JVM running for 5.632)
+2022-01-31 11:52:36.202  INFO 27200 --- [restartedMain] c.b.r.RebootingCamerasApplication        : Starting my application with 0 args.
+2022-01-31 11:55:20.993  INFO 27200 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-01-31 11:55:20.995  INFO 27200 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-01-31 11:55:20.997  INFO 27200 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2022-01-31 11:55:21.102  INFO 27200 --- [http-nio-8080-exec-1] c.b.r.service.TrassirChannelService      : null
+2022-01-31 11:55:24.419  INFO 27200 --- [http-nio-8080-exec-2] c.b.r.service.TrassirChannelService      : null
+2022-01-31 11:55:30.026  INFO 27200 --- [http-nio-8080-exec-3] c.b.r.service.TrassirChannelService      : null
+2022-01-31 11:55:32.675  INFO 27200 --- [http-nio-8080-exec-4] c.b.r.service.TrassirChannelService      : null
+2022-01-31 11:55:33.489  INFO 27200 --- [http-nio-8080-exec-5] c.b.r.service.TrassirChannelService      : null
+2022-01-31 11:55:35.602  INFO 27200 --- [http-nio-8080-exec-6] c.b.r.service.TrassirChannelService      : null
+2022-01-31 11:57:46.495  INFO 24544 --- [restartedMain] c.b.r.RebootingCamerasApplication        : Starting RebootingCamerasApplication using Java 11.0.13 on romanov-av with PID 24544 (C:\Users\romanov-av\Documents\rebooting-cameras\build\classes\java\main started by romanov-av in C:\Users\romanov-av\Documents\rebooting-cameras)
+2022-01-31 11:57:46.497  INFO 24544 --- [restartedMain] c.b.r.RebootingCamerasApplication        : No active profile set, falling back to default profiles: default
+2022-01-31 11:57:46.542  INFO 24544 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-01-31 11:57:46.543  INFO 24544 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-01-31 11:57:47.167  INFO 24544 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-01-31 11:57:47.240  INFO 24544 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 66 ms. Found 4 JPA repository interfaces.
+2022-01-31 11:57:47.872  INFO 24544 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-01-31 11:57:47.881  INFO 24544 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-01-31 11:57:47.881  INFO 24544 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.56]
+2022-01-31 11:57:47.954  INFO 24544 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-01-31 11:57:47.954  INFO 24544 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1411 ms
+2022-01-31 11:57:48.059  WARN 24544 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-01-31 11:57:48.194  INFO 24544 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-01-31 11:57:48.345  INFO 24544 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-01-31 11:57:48.403  INFO 24544 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-01-31 11:57:48.444  INFO 24544 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.3.Final
+2022-01-31 11:57:48.572  INFO 24544 --- [restartedMain] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-01-31 11:57:48.678  INFO 24544 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL10Dialect
+2022-01-31 11:57:49.229  INFO 24544 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-01-31 11:57:49.237  INFO 24544 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-01-31 11:57:50.621  INFO 24544 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@aea80c, org.springframework.security.web.context.SecurityContextPersistenceFilter@5c987c87, org.springframework.security.web.header.HeaderWriterFilter@11c8c931, org.springframework.web.filter.CorsFilter@6a35ab7f, org.springframework.security.web.authentication.logout.LogoutFilter@139bfb9b, com.backend.rebootingcameras.security.JWTAuthenticationFilter@6c6d6568, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@363b6fac, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@507a3363, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@361b4d75, org.springframework.security.web.session.SessionManagementFilter@2740dfed, org.springframework.security.web.access.ExceptionTranslationFilter@3dad72a5, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@1ca0e3bd]
+2022-01-31 11:57:51.138  INFO 24544 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-01-31 11:57:51.169  INFO 24544 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2022-01-31 11:57:51.181  INFO 24544 --- [restartedMain] c.b.r.RebootingCamerasApplication        : Started RebootingCamerasApplication in 5.021 seconds (JVM running for 5.71)
+2022-01-31 11:57:51.184  INFO 24544 --- [restartedMain] c.b.r.RebootingCamerasApplication        : Starting my application with 0 args.
+2022-01-31 11:57:51.507  INFO 24544 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-01-31 11:57:51.509  INFO 24544 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-01-31 11:57:51.510  INFO 24544 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2022-01-31 11:57:51.731  INFO 24544 --- [http-nio-8080-exec-1] c.b.r.service.TrassirChannelService      : null
+2022-01-31 11:57:53.967  INFO 24544 --- [http-nio-8080-exec-2] c.b.r.service.TrassirChannelService      : null
+2022-01-31 11:57:58.540  INFO 24544 --- [http-nio-8080-exec-7] c.b.r.service.TrassirChannelService      : null
+2022-01-31 11:58:00.459  INFO 24544 --- [http-nio-8080-exec-8] c.b.r.service.TrassirChannelService      : null
+2022-01-31 11:58:02.298  INFO 24544 --- [http-nio-8080-exec-9] c.b.r.service.TrassirChannelService      : null
+2022-01-31 12:06:42.799  INFO 10184 --- [restartedMain] c.b.r.RebootingCamerasApplication        : Starting RebootingCamerasApplication using Java 11.0.13 on romanov-av with PID 10184 (C:\Users\romanov-av\Documents\rebooting-cameras\build\classes\java\main started by romanov-av in C:\Users\romanov-av\Documents\rebooting-cameras)
+2022-01-31 12:06:42.800  INFO 10184 --- [restartedMain] c.b.r.RebootingCamerasApplication        : No active profile set, falling back to default profiles: default
+2022-01-31 12:06:42.861  INFO 10184 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-01-31 12:06:42.862  INFO 10184 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-01-31 12:06:44.520  INFO 10184 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-01-31 12:06:44.602  INFO 10184 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 71 ms. Found 4 JPA repository interfaces.
+2022-01-31 12:06:45.182  INFO 10184 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-01-31 12:06:45.188  INFO 10184 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-01-31 12:06:45.189  INFO 10184 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.56]
+2022-01-31 12:06:45.258  INFO 10184 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-01-31 12:06:45.258  INFO 10184 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2395 ms
+2022-01-31 12:06:45.357  WARN 10184 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-01-31 12:06:45.494  INFO 10184 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-01-31 12:06:45.644  INFO 10184 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-01-31 12:06:45.715  INFO 10184 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-01-31 12:06:45.759  INFO 10184 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.3.Final
+2022-01-31 12:06:45.913  INFO 10184 --- [restartedMain] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-01-31 12:06:46.036  INFO 10184 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL10Dialect
+2022-01-31 12:06:46.627  INFO 10184 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-01-31 12:06:46.635  INFO 10184 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-01-31 12:06:47.982  INFO 10184 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@18b5c3eb, org.springframework.security.web.context.SecurityContextPersistenceFilter@7f52097f, org.springframework.security.web.header.HeaderWriterFilter@7bc569b3, org.springframework.web.filter.CorsFilter@7e66f46d, org.springframework.security.web.authentication.logout.LogoutFilter@60116571, com.backend.rebootingcameras.security.JWTAuthenticationFilter@34dde824, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@ca40b0f, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@72945207, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@1660ba78, org.springframework.security.web.session.SessionManagementFilter@4db3bc92, org.springframework.security.web.access.ExceptionTranslationFilter@650cb44, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@521b8219]
+2022-01-31 12:06:48.458  INFO 10184 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-01-31 12:06:48.489  INFO 10184 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2022-01-31 12:06:48.501  INFO 10184 --- [restartedMain] c.b.r.RebootingCamerasApplication        : Started RebootingCamerasApplication in 7.016 seconds (JVM running for 7.778)
+2022-01-31 12:06:48.503  INFO 10184 --- [restartedMain] c.b.r.RebootingCamerasApplication        : Starting my application with 0 args.
+2022-01-31 12:06:58.614  INFO 10184 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-01-31 12:06:58.615  INFO 10184 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-01-31 12:06:58.616  INFO 10184 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2022-01-31 12:06:58.753  INFO 10184 --- [http-nio-8080-exec-1] c.b.r.service.TrassirChannelService      : null
+2022-01-31 12:07:02.297  INFO 10184 --- [http-nio-8080-exec-4] c.b.r.service.TrassirChannelService      : null
+2022-01-31 12:08:25.969  INFO 10184 --- [http-nio-8080-exec-8] c.b.r.service.TrassirChannelService      : null
+2022-01-31 12:09:05.050  INFO 10184 --- [http-nio-8080-exec-9] c.b.r.service.TrassirChannelService      : null
+2022-01-31 12:09:06.862  INFO 10184 --- [http-nio-8080-exec-10] c.b.r.service.TrassirChannelService      : null
+2022-01-31 12:09:11.748  INFO 10184 --- [http-nio-8080-exec-2] c.b.r.service.TrassirChannelService      : null
+2022-01-31 12:09:13.313  INFO 10184 --- [http-nio-8080-exec-3] c.b.r.service.TrassirChannelService      : null
+2022-01-31 12:09:17.378  INFO 10184 --- [http-nio-8080-exec-1] c.b.r.service.TrassirChannelService      : null
+2022-01-31 12:09:29.718  INFO 10184 --- [http-nio-8080-exec-4] c.b.r.service.TrassirChannelService      : null
+2022-01-31 12:09:36.071  INFO 10184 --- [http-nio-8080-exec-5] c.b.r.service.TrassirChannelService      : null
+2022-01-31 12:09:40.665  INFO 10184 --- [http-nio-8080-exec-6] c.b.r.service.TrassirChannelService      : null
+2022-01-31 12:09:55.827  INFO 10184 --- [http-nio-8080-exec-7] c.b.r.service.TrassirChannelService      : null
+2022-01-31 12:09:57.181  INFO 10184 --- [http-nio-8080-exec-10] c.b.r.service.TrassirChannelService      : null
+2022-01-31 12:10:15.832  INFO 10184 --- [http-nio-8080-exec-2] c.b.r.service.TrassirChannelService      : null
+2022-01-31 12:10:27.392  INFO 10184 --- [http-nio-8080-exec-3] c.b.r.service.TrassirChannelService      : null
+2022-01-31 12:11:13.992 ERROR 10184 --- [http-nio-8080-exec-5] c.b.r.security.JWTTokenProvider          : JWT expired at 2022-01-31T12:11:08Z. Current time: 2022-01-31T12:11:13Z, a difference of 5990 milliseconds.  Allowed clock skew: 0 milliseconds.
+2022-01-31 12:11:20.329  INFO 10184 --- [http-nio-8080-exec-9] c.b.r.service.TrassirChannelService      : null
+2022-01-31 12:11:20.602  INFO 10184 --- [http-nio-8080-exec-2] c.b.r.service.TrassirChannelService      : null
+2022-01-31 12:11:24.475  INFO 10184 --- [http-nio-8080-exec-1] c.b.r.service.TrassirChannelService      : null
+2022-01-31 12:11:47.151  INFO 10184 --- [http-nio-8080-exec-5] c.b.r.service.TrassirChannelService      : null
+2022-01-31 12:13:41.061  INFO 10184 --- [http-nio-8080-exec-7] c.b.r.service.TrassirChannelService      : null
+2022-01-31 12:13:42.305  INFO 10184 --- [http-nio-8080-exec-9] c.b.r.service.TrassirChannelService      : null
+2022-01-31 12:13:44.511  INFO 10184 --- [http-nio-8080-exec-4] c.b.r.service.TrassirChannelService      : null
+2022-01-31 12:17:35.579  INFO 5520 --- [restartedMain] c.b.r.RebootingCamerasApplication        : Starting RebootingCamerasApplication using Java 11.0.13 on romanov-av with PID 5520 (C:\Users\romanov-av\Documents\rebooting-cameras\build\classes\java\main started by romanov-av in C:\Users\romanov-av\Documents\rebooting-cameras)
+2022-01-31 12:17:35.580  INFO 5520 --- [restartedMain] c.b.r.RebootingCamerasApplication        : No active profile set, falling back to default profiles: default
+2022-01-31 12:17:35.626  INFO 5520 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-01-31 12:17:35.627  INFO 5520 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-01-31 12:17:36.287  INFO 5520 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-01-31 12:17:36.353  INFO 5520 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 58 ms. Found 4 JPA repository interfaces.
+2022-01-31 12:17:37.006  INFO 5520 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-01-31 12:17:37.014  INFO 5520 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-01-31 12:17:37.015  INFO 5520 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.56]
+2022-01-31 12:17:37.091  INFO 5520 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-01-31 12:17:37.091  INFO 5520 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1464 ms
+2022-01-31 12:17:37.196  WARN 5520 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-01-31 12:17:37.332  INFO 5520 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-01-31 12:17:37.480  INFO 5520 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-01-31 12:17:37.542  INFO 5520 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-01-31 12:17:37.582  INFO 5520 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.3.Final
+2022-01-31 12:17:37.710  INFO 5520 --- [restartedMain] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-01-31 12:17:37.819  INFO 5520 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL10Dialect
+2022-01-31 12:17:38.327  INFO 5520 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-01-31 12:17:38.336  INFO 5520 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-01-31 12:17:39.758  INFO 5520 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@4f7f0fbc, org.springframework.security.web.context.SecurityContextPersistenceFilter@55b3c525, org.springframework.security.web.header.HeaderWriterFilter@4ac622cb, org.springframework.web.filter.CorsFilter@5e030796, org.springframework.security.web.authentication.logout.LogoutFilter@2abfa85a, com.backend.rebootingcameras.security.JWTAuthenticationFilter@7cebcca4, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@70d8e77a, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@234d7929, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@35e219aa, org.springframework.security.web.session.SessionManagementFilter@7da9e234, org.springframework.security.web.access.ExceptionTranslationFilter@3f190dae, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@136a568b]
+2022-01-31 12:17:40.242  INFO 5520 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-01-31 12:17:40.274  INFO 5520 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2022-01-31 12:17:40.286  INFO 5520 --- [restartedMain] c.b.r.RebootingCamerasApplication        : Started RebootingCamerasApplication in 5.08 seconds (JVM running for 5.784)
+2022-01-31 12:17:40.289  INFO 5520 --- [restartedMain] c.b.r.RebootingCamerasApplication        : Starting my application with 0 args.
+2022-01-31 12:25:49.726  INFO 5520 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-01-31 12:25:49.728  INFO 5520 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-01-31 12:25:49.730  INFO 5520 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2022-01-31 12:25:49.852  INFO 5520 --- [http-nio-8080-exec-2] c.b.r.service.TrassirChannelService      : null
+2022-01-31 12:25:50.758  INFO 5520 --- [http-nio-8080-exec-3] c.b.r.service.TrassirChannelService      : asd
+2022-01-31 12:25:50.826  INFO 5520 --- [http-nio-8080-exec-4] c.b.r.service.TrassirChannelService      : asd
+2022-01-31 12:25:50.865  INFO 5520 --- [http-nio-8080-exec-5] c.b.r.service.TrassirChannelService      : asd
+2022-01-31 12:25:51.834  INFO 5520 --- [http-nio-8080-exec-6] c.b.r.service.TrassirChannelService      : null
+2022-01-31 12:25:53.193  INFO 5520 --- [http-nio-8080-exec-7] c.b.r.service.TrassirChannelService      : 1
+2022-01-31 12:25:53.944  INFO 5520 --- [http-nio-8080-exec-8] c.b.r.service.TrassirChannelService      : 12
+2022-01-31 12:25:54.526  INFO 5520 --- [http-nio-8080-exec-9] c.b.r.service.TrassirChannelService      : 123
+2022-01-31 12:25:55.889  INFO 5520 --- [http-nio-8080-exec-10] c.b.r.service.TrassirChannelService      : null
+2022-01-31 12:25:57.128  INFO 5520 --- [http-nio-8080-exec-1] c.b.r.service.TrassirChannelService      : null
+2022-01-31 12:26:01.574  INFO 5520 --- [http-nio-8080-exec-2] c.b.r.service.TrassirChannelService      : 01
+2022-01-31 12:26:01.640  INFO 5520 --- [http-nio-8080-exec-3] c.b.r.service.TrassirChannelService      : 01
+2022-01-31 12:26:03.169  INFO 5520 --- [http-nio-8080-exec-4] c.b.r.service.TrassirChannelService      : null
+2022-01-31 12:26:04.634  INFO 5520 --- [http-nio-8080-exec-5] c.b.r.service.TrassirChannelService      : 01
+2022-01-31 12:26:04.721  INFO 5520 --- [http-nio-8080-exec-6] c.b.r.service.TrassirChannelService      : 01
+2022-01-31 12:26:05.849  INFO 5520 --- [http-nio-8080-exec-7] c.b.r.service.TrassirChannelService      : 0
+2022-01-31 12:26:06.783  INFO 5520 --- [http-nio-8080-exec-8] c.b.r.service.TrassirChannelService      : 1
+2022-01-31 12:26:10.632  INFO 5520 --- [http-nio-8080-exec-9] c.b.r.service.TrassirChannelService      : 1
+2022-01-31 12:26:12.690  INFO 5520 --- [http-nio-8080-exec-10] c.b.r.service.TrassirChannelService      : 01
+2022-01-31 12:26:12.777  INFO 5520 --- [http-nio-8080-exec-1] c.b.r.service.TrassirChannelService      : 01
+2022-01-31 12:26:13.740  INFO 5520 --- [http-nio-8080-exec-2] c.b.r.service.TrassirChannelService      : 01-
+2022-01-31 12:26:17.627  INFO 5520 --- [http-nio-8080-exec-3] c.b.r.service.TrassirChannelService      : 01-2
+2022-01-31 12:26:17.865  INFO 5520 --- [http-nio-8080-exec-4] c.b.r.service.TrassirChannelService      : 01-27
+2022-01-31 12:26:19.259  INFO 5520 --- [http-nio-8080-exec-5] c.b.r.service.TrassirChannelService      : 01-2
+2022-01-31 12:26:19.790  INFO 5520 --- [http-nio-8080-exec-6] c.b.r.service.TrassirChannelService      : 01-
+2022-01-31 12:26:40.668  INFO 5520 --- [http-nio-8080-exec-7] c.b.r.service.TrassirChannelService      : 01
+2022-01-31 12:27:27.736  INFO 5520 --- [http-nio-8080-exec-8] c.b.r.service.TrassirChannelService      : null
+2022-01-31 12:27:31.895  INFO 5520 --- [http-nio-8080-exec-9] c.b.r.service.TrassirChannelService      : null
+2022-01-31 12:27:35.621  INFO 5520 --- [http-nio-8080-exec-10] c.b.r.service.TrassirChannelService      : null
+2022-01-31 12:27:41.029  INFO 5520 --- [http-nio-8080-exec-1] c.b.r.service.TrassirChannelService      : null
+2022-01-31 12:36:08.980  INFO 26480 --- [restartedMain] c.b.r.RebootingCamerasApplication        : Starting RebootingCamerasApplication using Java 11.0.13 on romanov-av with PID 26480 (C:\Users\romanov-av\Documents\rebooting-cameras\build\classes\java\main started by romanov-av in C:\Users\romanov-av\Documents\rebooting-cameras)
+2022-01-31 12:36:08.981  INFO 26480 --- [restartedMain] c.b.r.RebootingCamerasApplication        : No active profile set, falling back to default profiles: default
+2022-01-31 12:36:09.025  INFO 26480 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-01-31 12:36:09.025  INFO 26480 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-01-31 12:36:09.716  INFO 26480 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-01-31 12:36:09.782  INFO 26480 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 58 ms. Found 4 JPA repository interfaces.
+2022-01-31 12:36:10.381  INFO 26480 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-01-31 12:36:10.388  INFO 26480 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-01-31 12:36:10.389  INFO 26480 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.56]
+2022-01-31 12:36:10.468  INFO 26480 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-01-31 12:36:10.468  INFO 26480 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1442 ms
+2022-01-31 12:36:10.567  WARN 26480 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-01-31 12:36:10.703  INFO 26480 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-01-31 12:36:10.879  INFO 26480 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-01-31 12:36:10.945  INFO 26480 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-01-31 12:36:10.991  INFO 26480 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.3.Final
+2022-01-31 12:36:11.136  INFO 26480 --- [restartedMain] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-01-31 12:36:11.236  INFO 26480 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL10Dialect
+2022-01-31 12:36:11.765  INFO 26480 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-01-31 12:36:11.774  INFO 26480 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-01-31 12:36:58.344  INFO 21624 --- [restartedMain] c.b.r.RebootingCamerasApplication        : Starting RebootingCamerasApplication using Java 11.0.13 on romanov-av with PID 21624 (C:\Users\romanov-av\Documents\rebooting-cameras\build\classes\java\main started by romanov-av in C:\Users\romanov-av\Documents\rebooting-cameras)
+2022-01-31 12:36:58.345  INFO 21624 --- [restartedMain] c.b.r.RebootingCamerasApplication        : No active profile set, falling back to default profiles: default
+2022-01-31 12:36:58.390  INFO 21624 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-01-31 12:36:58.390  INFO 21624 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-01-31 12:36:59.033  INFO 21624 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-01-31 12:36:59.096  INFO 21624 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 55 ms. Found 4 JPA repository interfaces.
+2022-01-31 12:36:59.692  INFO 21624 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-01-31 12:36:59.699  INFO 21624 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-01-31 12:36:59.700  INFO 21624 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.56]
+2022-01-31 12:36:59.767  INFO 21624 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-01-31 12:36:59.767  INFO 21624 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1376 ms
+2022-01-31 12:36:59.869  WARN 21624 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-01-31 12:37:00.000  INFO 21624 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-01-31 12:37:00.147  INFO 21624 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-01-31 12:37:00.219  INFO 21624 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-01-31 12:37:00.261  INFO 21624 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.3.Final
+2022-01-31 12:37:00.393  INFO 21624 --- [restartedMain] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-01-31 12:37:00.499  INFO 21624 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL10Dialect
+2022-01-31 12:37:01.017  INFO 21624 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-01-31 12:37:01.024  INFO 21624 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-01-31 12:37:02.391  INFO 21624 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@1654d2f3, org.springframework.security.web.context.SecurityContextPersistenceFilter@624820df, org.springframework.security.web.header.HeaderWriterFilter@7b8643d, org.springframework.web.filter.CorsFilter@6c3ab331, org.springframework.security.web.authentication.logout.LogoutFilter@72467a55, com.backend.rebootingcameras.security.JWTAuthenticationFilter@3b42ab6d, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@76816d13, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@1f02af16, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@2ba5c70a, org.springframework.security.web.session.SessionManagementFilter@3032a3fa, org.springframework.security.web.access.ExceptionTranslationFilter@287382eb, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@a2a88f8]
+2022-01-31 12:37:02.872  INFO 21624 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-01-31 12:37:02.902  INFO 21624 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2022-01-31 12:37:02.914  INFO 21624 --- [restartedMain] c.b.r.RebootingCamerasApplication        : Started RebootingCamerasApplication in 4.911 seconds (JVM running for 5.607)
+2022-01-31 12:37:02.916  INFO 21624 --- [restartedMain] c.b.r.RebootingCamerasApplication        : Starting my application with 0 args.
+2022-01-31 12:42:26.452  INFO 21624 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-01-31 12:42:26.453  INFO 21624 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-01-31 12:42:26.454  INFO 21624 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2022-01-31 12:42:26.560  INFO 21624 --- [http-nio-8080-exec-1] c.b.r.service.TrassirChannelService      : null
+2022-01-31 12:42:29.205  INFO 21624 --- [http-nio-8080-exec-2] c.b.r.service.TrassirChannelService      : null
+2022-01-31 12:42:30.800  INFO 21624 --- [http-nio-8080-exec-3] c.b.r.service.TrassirChannelService      : null
+2022-01-31 12:42:37.391  INFO 21624 --- [http-nio-8080-exec-4] c.b.r.service.TrassirChannelService      : null
+2022-01-31 12:43:19.453  INFO 21624 --- [http-nio-8080-exec-5] c.b.r.service.TrassirChannelService      : null
+2022-01-31 12:43:20.107  INFO 21624 --- [http-nio-8080-exec-6] c.b.r.service.TrassirChannelService      : null
+2022-01-31 12:43:22.105  INFO 21624 --- [http-nio-8080-exec-7] c.b.r.service.TrassirChannelService      : null
+2022-01-31 12:45:28.701  INFO 3524 --- [restartedMain] c.b.r.RebootingCamerasApplication        : Starting RebootingCamerasApplication using Java 11.0.13 on romanov-av with PID 3524 (C:\Users\romanov-av\Documents\rebooting-cameras\build\classes\java\main started by romanov-av in C:\Users\romanov-av\Documents\rebooting-cameras)
+2022-01-31 12:45:28.702  INFO 3524 --- [restartedMain] c.b.r.RebootingCamerasApplication        : No active profile set, falling back to default profiles: default
+2022-01-31 12:45:28.742  INFO 3524 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-01-31 12:45:28.742  INFO 3524 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-01-31 12:45:29.399  INFO 3524 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-01-31 12:45:29.463  INFO 3524 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 57 ms. Found 4 JPA repository interfaces.
+2022-01-31 12:45:30.066  INFO 3524 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-01-31 12:45:30.073  INFO 3524 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-01-31 12:45:30.073  INFO 3524 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.56]
+2022-01-31 12:45:30.145  INFO 3524 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-01-31 12:45:30.145  INFO 3524 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1403 ms
+2022-01-31 12:45:30.246  WARN 3524 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-01-31 12:45:30.377  INFO 3524 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-01-31 12:45:30.528  INFO 3524 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-01-31 12:45:30.584  INFO 3524 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-01-31 12:45:30.624  INFO 3524 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.3.Final
+2022-01-31 12:45:30.744  INFO 3524 --- [restartedMain] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-01-31 12:45:30.843  INFO 3524 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL10Dialect
+2022-01-31 12:45:31.361  INFO 3524 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-01-31 12:45:31.369  INFO 3524 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-01-31 12:45:32.751  INFO 3524 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@3651dc79, org.springframework.security.web.context.SecurityContextPersistenceFilter@2c1bc3f0, org.springframework.security.web.header.HeaderWriterFilter@57d49ccf, org.springframework.web.filter.CorsFilter@3beea49e, org.springframework.security.web.authentication.logout.LogoutFilter@4f5fda63, com.backend.rebootingcameras.security.JWTAuthenticationFilter@59104a8b, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@57402dcf, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@165eae8b, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@115fb8cb, org.springframework.security.web.session.SessionManagementFilter@777257b6, org.springframework.security.web.access.ExceptionTranslationFilter@66ff98, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@37e651b1]
+2022-01-31 12:45:33.223  INFO 3524 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-01-31 12:45:33.256  INFO 3524 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2022-01-31 12:45:33.269  INFO 3524 --- [restartedMain] c.b.r.RebootingCamerasApplication        : Started RebootingCamerasApplication in 4.915 seconds (JVM running for 5.604)
+2022-01-31 12:45:33.271  INFO 3524 --- [restartedMain] c.b.r.RebootingCamerasApplication        : Starting my application with 0 args.
+2022-01-31 12:48:56.022  INFO 3524 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-01-31 12:48:56.023  INFO 3524 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-01-31 12:48:56.025  INFO 3524 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2022-01-31 12:48:56.133  INFO 3524 --- [http-nio-8080-exec-1] c.b.r.service.TrassirChannelService      : null
+2022-01-31 12:48:57.039  INFO 3524 --- [http-nio-8080-exec-2] c.b.r.service.TrassirChannelService      : null
+2022-01-31 12:49:00.446  INFO 3524 --- [http-nio-8080-exec-3] c.b.r.service.TrassirChannelService      : null
+2022-01-31 12:49:05.850  INFO 3524 --- [http-nio-8080-exec-4] c.b.r.service.TrassirChannelService      : null
+2022-01-31 12:49:09.415  INFO 3524 --- [http-nio-8080-exec-9] c.b.r.service.TrassirChannelService      : null
+2022-01-31 12:49:10.846  INFO 3524 --- [http-nio-8080-exec-10] c.b.r.service.TrassirChannelService      : null
+2022-01-31 13:08:10.391  INFO 3524 --- [http-nio-8080-exec-5] c.b.r.service.TrassirChannelService      : null
+2022-01-31 13:08:13.865  INFO 3524 --- [http-nio-8080-exec-4] c.b.r.service.TrassirChannelService      : null
+2022-01-31 13:08:46.805  INFO 3524 --- [http-nio-8080-exec-8] c.b.r.service.TrassirChannelService      : null
+2022-01-31 13:17:38.837  INFO 3524 --- [http-nio-8080-exec-9] c.b.r.service.TrassirChannelService      : null
+2022-01-31 13:22:27.090  INFO 3524 --- [http-nio-8080-exec-5] c.b.r.service.TrassirChannelService      : null
+2022-01-31 13:29:39.005  INFO 15456 --- [restartedMain] c.b.r.RebootingCamerasApplication        : Starting RebootingCamerasApplication using Java 11.0.13 on romanov-av with PID 15456 (C:\Users\romanov-av\Documents\rebooting-cameras\build\classes\java\main started by romanov-av in C:\Users\romanov-av\Documents\rebooting-cameras)
+2022-01-31 13:29:39.006  INFO 15456 --- [restartedMain] c.b.r.RebootingCamerasApplication        : No active profile set, falling back to default profiles: default
+2022-01-31 13:29:39.043  INFO 15456 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-01-31 13:29:39.044  INFO 15456 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-01-31 13:29:39.806  INFO 15456 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-01-31 13:29:39.892  INFO 15456 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 78 ms. Found 4 JPA repository interfaces.
+2022-01-31 13:29:40.549  INFO 15456 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-01-31 13:29:40.556  INFO 15456 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-01-31 13:29:40.556  INFO 15456 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.56]
+2022-01-31 13:29:40.637  INFO 15456 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-01-31 13:29:40.637  INFO 15456 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1593 ms
+2022-01-31 13:29:40.767  WARN 15456 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-01-31 13:29:40.915  INFO 15456 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-01-31 13:29:41.084  INFO 15456 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-01-31 13:29:41.162  INFO 15456 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-01-31 13:29:41.208  INFO 15456 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.3.Final
+2022-01-31 13:29:41.363  INFO 15456 --- [restartedMain] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-01-31 13:29:41.474  INFO 15456 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL10Dialect
+2022-01-31 13:29:42.050  INFO 15456 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-01-31 13:29:42.058  INFO 15456 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-01-31 13:29:43.645  INFO 15456 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@5fd69c65, org.springframework.security.web.context.SecurityContextPersistenceFilter@6c860632, org.springframework.security.web.header.HeaderWriterFilter@5b99ac88, org.springframework.web.filter.CorsFilter@4786423c, org.springframework.security.web.authentication.logout.LogoutFilter@c819b4, com.backend.rebootingcameras.security.JWTAuthenticationFilter@27407e21, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@4bcd8b76, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@324a0d86, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@787f0438, org.springframework.security.web.session.SessionManagementFilter@58818e51, org.springframework.security.web.access.ExceptionTranslationFilter@75a5b970, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@493d7758]
+2022-01-31 13:29:44.175  INFO 15456 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-01-31 13:29:44.216  INFO 15456 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2022-01-31 13:29:44.230  INFO 15456 --- [restartedMain] c.b.r.RebootingCamerasApplication        : Started RebootingCamerasApplication in 5.628 seconds (JVM running for 6.382)
+2022-01-31 13:29:44.233  INFO 15456 --- [restartedMain] c.b.r.RebootingCamerasApplication        : Starting my application with 0 args.
+2022-01-31 13:33:44.490  INFO 15456 --- [http-nio-8080-exec-3] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-01-31 13:33:44.492  INFO 15456 --- [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-01-31 13:33:44.494  INFO 15456 --- [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2022-01-31 13:33:44.647  INFO 15456 --- [http-nio-8080-exec-2] c.b.r.service.TrassirChannelService      : null
+2022-01-31 13:33:50.494  INFO 15456 --- [http-nio-8080-exec-6] c.b.r.service.TrassirChannelService      : null
+2022-01-31 13:34:00.502  INFO 15456 --- [http-nio-8080-exec-7] c.b.r.service.TrassirChannelService      : null
+2022-01-31 13:34:01.684  INFO 15456 --- [http-nio-8080-exec-8] c.b.r.service.TrassirChannelService      : null
+2022-01-31 14:28:25.471 ERROR 15456 --- [http-nio-8080-exec-5] c.b.r.security.JWTTokenProvider          : JWT expired at 2022-01-31T13:51:20Z. Current time: 2022-01-31T14:28:25Z, a difference of 2225469 milliseconds.  Allowed clock skew: 0 milliseconds.
+2022-01-31 14:28:30.363  INFO 15456 --- [http-nio-8080-exec-6] c.b.r.service.TrassirChannelService      : null
+2022-01-31 14:28:30.650  INFO 15456 --- [http-nio-8080-exec-1] c.b.r.service.TrassirChannelService      : null
+2022-01-31 14:28:41.056  INFO 15456 --- [http-nio-8080-exec-4] c.b.r.service.TrassirChannelService      : null
+2022-01-31 14:28:44.821  INFO 15456 --- [http-nio-8080-exec-2] c.b.r.service.TrassirChannelService      : null
+2022-01-31 14:28:47.660  INFO 15456 --- [http-nio-8080-exec-7] c.b.r.service.TrassirChannelService      : null
+2022-01-31 14:29:01.213  INFO 15456 --- [http-nio-8080-exec-8] c.b.r.service.TrassirChannelService      : null
+2022-01-31 14:30:26.021  INFO 15456 --- [http-nio-8080-exec-3] c.b.r.service.TrassirChannelService      : null
+2022-01-31 14:30:26.754  INFO 15456 --- [http-nio-8080-exec-5] c.b.r.service.TrassirChannelService      : null
+2022-01-31 14:34:25.552 ERROR 15456 --- [scheduling-1] o.s.s.s.TaskUtils$LoggingErrorHandler    : Unexpected error occurred in scheduled task
+
+org.springframework.web.client.ResourceAccessException: I/O error on GET request for "https://192.168.112.56:8080/health": Read timed out; nested exception is java.net.SocketTimeoutException: Read timed out
+	at org.springframework.web.client.RestTemplate.doExecute(RestTemplate.java:785) ~[spring-web-5.3.14.jar:5.3.14]
+	at org.springframework.web.client.RestTemplate.execute(RestTemplate.java:711) ~[spring-web-5.3.14.jar:5.3.14]
+	at org.springframework.web.client.RestTemplate.getForObject(RestTemplate.java:334) ~[spring-web-5.3.14.jar:5.3.14]
+	at com.backend.rebootingcameras.controller.TrassirController.fillServers(TrassirController.java:374) ~[main/:na]
+	at com.backend.rebootingcameras.controller.TrassirController.startCollectTrassirStats(TrassirController.java:69) ~[main/:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566) ~[na:na]
+	at org.springframework.scheduling.support.ScheduledMethodRunnable.run(ScheduledMethodRunnable.java:84) ~[spring-context-5.3.14.jar:5.3.14]
+	at org.springframework.scheduling.support.DelegatingErrorHandlingRunnable.run(DelegatingErrorHandlingRunnable.java:54) ~[spring-context-5.3.14.jar:5.3.14]
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515) ~[na:na]
+	at java.base/java.util.concurrent.FutureTask.runAndReset(FutureTask.java:305) ~[na:na]
+	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:305) ~[na:na]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128) ~[na:na]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628) ~[na:na]
+	at java.base/java.lang.Thread.run(Thread.java:829) ~[na:na]
+Caused by: java.net.SocketTimeoutException: Read timed out
+	at java.base/java.net.SocketInputStream.socketRead0(Native Method) ~[na:na]
+	at java.base/java.net.SocketInputStream.socketRead(SocketInputStream.java:115) ~[na:na]
+	at java.base/java.net.SocketInputStream.read(SocketInputStream.java:168) ~[na:na]
+	at java.base/java.net.SocketInputStream.read(SocketInputStream.java:140) ~[na:na]
+	at java.base/sun.security.ssl.SSLSocketInputRecord.read(SSLSocketInputRecord.java:478) ~[na:na]
+	at java.base/sun.security.ssl.SSLSocketInputRecord.readHeader(SSLSocketInputRecord.java:472) ~[na:na]
+	at java.base/sun.security.ssl.SSLSocketInputRecord.bytesInCompletePacket(SSLSocketInputRecord.java:70) ~[na:na]
+	at java.base/sun.security.ssl.SSLSocketImpl.readApplicationRecord(SSLSocketImpl.java:1374) ~[na:na]
+	at java.base/sun.security.ssl.SSLSocketImpl$AppInputStream.read(SSLSocketImpl.java:985) ~[na:na]
+	at org.apache.http.impl.io.SessionInputBufferImpl.streamRead(SessionInputBufferImpl.java:137) ~[httpcore-4.4.15.jar:4.4.15]
+	at org.apache.http.impl.io.SessionInputBufferImpl.fillBuffer(SessionInputBufferImpl.java:153) ~[httpcore-4.4.15.jar:4.4.15]
+	at org.apache.http.impl.io.SessionInputBufferImpl.readLine(SessionInputBufferImpl.java:280) ~[httpcore-4.4.15.jar:4.4.15]
+	at org.apache.http.impl.conn.DefaultHttpResponseParser.parseHead(DefaultHttpResponseParser.java:140) ~[httpclient-4.5.jar:4.5]
+	at org.apache.http.impl.conn.DefaultHttpResponseParser.parseHead(DefaultHttpResponseParser.java:57) ~[httpclient-4.5.jar:4.5]
+	at org.apache.http.impl.io.AbstractMessageParser.parse(AbstractMessageParser.java:259) ~[httpcore-4.4.15.jar:4.4.15]
+	at org.apache.http.impl.DefaultBHttpClientConnection.receiveResponseHeader(DefaultBHttpClientConnection.java:163) ~[httpcore-4.4.15.jar:4.4.15]
+	at org.apache.http.impl.conn.CPoolProxy.receiveResponseHeader(CPoolProxy.java:167) ~[httpclient-4.5.jar:4.5]
+	at org.apache.http.protocol.HttpRequestExecutor.doReceiveResponse(HttpRequestExecutor.java:273) ~[httpcore-4.4.15.jar:4.4.15]
+	at org.apache.http.protocol.HttpRequestExecutor.execute(HttpRequestExecutor.java:125) ~[httpcore-4.4.15.jar:4.4.15]
+	at org.apache.http.impl.execchain.MainClientExec.execute(MainClientExec.java:271) ~[httpclient-4.5.jar:4.5]
+	at org.apache.http.impl.execchain.ProtocolExec.execute(ProtocolExec.java:184) ~[httpclient-4.5.jar:4.5]
+	at org.apache.http.impl.execchain.RetryExec.execute(RetryExec.java:88) ~[httpclient-4.5.jar:4.5]
+	at org.apache.http.impl.execchain.RedirectExec.execute(RedirectExec.java:110) ~[httpclient-4.5.jar:4.5]
+	at org.apache.http.impl.client.InternalHttpClient.doExecute(InternalHttpClient.java:184) ~[httpclient-4.5.jar:4.5]
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:82) ~[httpclient-4.5.jar:4.5]
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:55) ~[httpclient-4.5.jar:4.5]
+	at org.springframework.http.client.HttpComponentsClientHttpRequest.executeInternal(HttpComponentsClientHttpRequest.java:87) ~[spring-web-5.3.14.jar:5.3.14]
+	at org.springframework.http.client.AbstractBufferingClientHttpRequest.executeInternal(AbstractBufferingClientHttpRequest.java:48) ~[spring-web-5.3.14.jar:5.3.14]
+	at org.springframework.http.client.AbstractClientHttpRequest.execute(AbstractClientHttpRequest.java:66) ~[spring-web-5.3.14.jar:5.3.14]
+	at org.springframework.web.client.RestTemplate.doExecute(RestTemplate.java:776) ~[spring-web-5.3.14.jar:5.3.14]
+	... 16 common frames omitted
+
+2022-01-31 14:45:49.698  INFO 15456 --- [http-nio-8080-exec-4] c.b.r.service.TrassirChannelService      : null
+2022-01-31 14:45:53.448  INFO 15456 --- [http-nio-8080-exec-2] c.b.r.service.TrassirChannelService      : null
+2022-01-31 14:45:59.186  INFO 15456 --- [http-nio-8080-exec-7] c.b.r.service.TrassirChannelService      : null
+2022-01-31 14:46:00.176  INFO 15456 --- [http-nio-8080-exec-8] c.b.r.service.TrassirChannelService      : null
+2022-01-31 16:27:46.024  INFO 24068 --- [restartedMain] c.b.r.RebootingCamerasApplication        : Starting RebootingCamerasApplication using Java 11.0.13 on romanov-av with PID 24068 (C:\Users\romanov-av\Documents\rebooting-cameras\build\classes\java\main started by romanov-av in C:\Users\romanov-av\Documents\rebooting-cameras)
+2022-01-31 16:27:46.026  INFO 24068 --- [restartedMain] c.b.r.RebootingCamerasApplication        : No active profile set, falling back to default profiles: default
+2022-01-31 16:27:46.211  INFO 24068 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-01-31 16:27:46.213  INFO 24068 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-01-31 16:27:47.586  INFO 24068 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-01-31 16:27:47.653  INFO 24068 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 60 ms. Found 4 JPA repository interfaces.
+2022-01-31 16:27:48.310  INFO 24068 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-01-31 16:27:48.319  INFO 24068 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-01-31 16:27:48.319  INFO 24068 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.56]
+2022-01-31 16:27:48.393  INFO 24068 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-01-31 16:27:48.393  INFO 24068 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2178 ms
+2022-01-31 16:27:48.501  WARN 24068 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-01-31 16:27:48.667  INFO 24068 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-01-31 16:27:48.838  INFO 24068 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-01-31 16:27:48.907  INFO 24068 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-01-31 16:27:48.971  INFO 24068 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.3.Final
+2022-01-31 16:27:49.123  INFO 24068 --- [restartedMain] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-01-31 16:27:49.232  INFO 24068 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL10Dialect
+2022-01-31 16:27:49.835  INFO 24068 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-01-31 16:27:49.842  INFO 24068 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-01-31 16:27:51.437  INFO 24068 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@5f976596, org.springframework.security.web.context.SecurityContextPersistenceFilter@40d1c251, org.springframework.security.web.header.HeaderWriterFilter@4fbd57cb, org.springframework.web.filter.CorsFilter@3d519848, org.springframework.security.web.authentication.logout.LogoutFilter@2871d820, com.backend.rebootingcameras.security.JWTAuthenticationFilter@30c55b59, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@226ada32, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@47743d8a, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@330c1bc3, org.springframework.security.web.session.SessionManagementFilter@60330577, org.springframework.security.web.access.ExceptionTranslationFilter@3eb22bc5, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@6082f9a6]
+2022-01-31 16:27:52.178  INFO 24068 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-01-31 16:27:52.325  INFO 24068 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2022-01-31 16:27:52.373  INFO 24068 --- [restartedMain] c.b.r.RebootingCamerasApplication        : Started RebootingCamerasApplication in 7.643 seconds (JVM running for 8.545)
+2022-01-31 16:27:52.380  INFO 24068 --- [restartedMain] c.b.r.RebootingCamerasApplication        : Starting my application with 0 args.
+2022-01-31 16:27:56.330  INFO 24068 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-01-31 16:27:56.331  INFO 24068 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-01-31 16:27:56.333  INFO 24068 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2022-01-31 16:27:56.401 ERROR 24068 --- [http-nio-8080-exec-4] c.b.r.security.JWTTokenProvider          : JWT expired at 2022-01-31T16:08:30Z. Current time: 2022-01-31T16:27:56Z, a difference of 1166399 milliseconds.  Allowed clock skew: 0 milliseconds.
+2022-01-31 16:27:56.401 ERROR 24068 --- [http-nio-8080-exec-6] c.b.r.security.JWTTokenProvider          : JWT expired at 2022-01-31T16:08:30Z. Current time: 2022-01-31T16:27:56Z, a difference of 1166399 milliseconds.  Allowed clock skew: 0 milliseconds.
+2022-01-31 16:27:56.401 ERROR 24068 --- [http-nio-8080-exec-5] c.b.r.security.JWTTokenProvider          : JWT expired at 2022-01-31T16:08:30Z. Current time: 2022-01-31T16:27:56Z, a difference of 1166399 milliseconds.  Allowed clock skew: 0 milliseconds.
+2022-01-31 16:28:00.844  INFO 24068 --- [http-nio-8080-exec-9] c.b.r.service.TrassirChannelService      : null
+2022-01-31 16:28:01.084  INFO 24068 --- [http-nio-8080-exec-1] c.b.r.service.TrassirChannelService      : null
+2022-01-31 16:28:05.981  INFO 24068 --- [http-nio-8080-exec-5] c.b.r.service.TrassirChannelService      : null
+2022-01-31 16:28:07.749  INFO 24068 --- [http-nio-8080-exec-4] c.b.r.service.TrassirChannelService      : null
+2022-01-31 16:28:56.104  INFO 24068 --- [http-nio-8080-exec-7] c.b.r.service.TrassirChannelService      : null
+2022-01-31 16:28:56.803  INFO 24068 --- [http-nio-8080-exec-8] c.b.r.service.TrassirChannelService      : null
+2022-01-31 16:28:56.994  INFO 24068 --- [http-nio-8080-exec-3] c.b.r.service.TrassirChannelService      : null
+2022-01-31 16:28:57.164  INFO 24068 --- [http-nio-8080-exec-10] c.b.r.service.TrassirChannelService      : null
+2022-01-31 16:28:57.362  INFO 24068 --- [http-nio-8080-exec-9] c.b.r.service.TrassirChannelService      : null
+2022-01-31 16:29:56.411  INFO 24068 --- [http-nio-8080-exec-1] c.b.r.service.TrassirChannelService      : null
+2022-01-31 16:29:56.423  INFO 24068 --- [http-nio-8080-exec-5] c.b.r.service.TrassirChannelService      : null
+2022-01-31 16:33:27.614  INFO 24068 --- [http-nio-8080-exec-7] c.b.r.service.TrassirChannelService      : null
+2022-01-31 16:34:20.927  INFO 24068 --- [http-nio-8080-exec-10] c.b.r.service.TrassirChannelService      : null
+2022-01-31 16:34:26.335  INFO 24068 --- [http-nio-8080-exec-6] c.b.r.service.TrassirChannelService      : null
+2022-01-31 16:35:22.448  INFO 24068 --- [http-nio-8080-exec-4] c.b.r.service.TrassirChannelService      : null
+2022-01-31 16:35:38.034  INFO 24068 --- [http-nio-8080-exec-7] c.b.r.service.TrassirChannelService      : null
+2022-01-31 16:36:42.734  INFO 24068 --- [http-nio-8080-exec-6] c.b.r.service.TrassirChannelService      : null
+2022-01-31 16:36:45.767  INFO 24068 --- [http-nio-8080-exec-8] c.b.r.service.TrassirChannelService      : null
+2022-01-31 16:37:15.754  INFO 24068 --- [http-nio-8080-exec-3] c.b.r.service.TrassirChannelService      : null
+2022-01-31 16:37:19.941  INFO 24068 --- [http-nio-8080-exec-9] c.b.r.service.TrassirChannelService      : null
+2022-01-31 16:38:50.500  INFO 24068 --- [http-nio-8080-exec-1] c.b.r.service.TrassirChannelService      : null
+2022-01-31 16:39:18.351  INFO 24068 --- [http-nio-8080-exec-7] c.b.r.service.TrassirChannelService      : null
+2022-01-31 16:41:08.561  INFO 24068 --- [http-nio-8080-exec-5] c.b.r.service.TrassirChannelService      : null
+2022-01-31 16:41:17.830  INFO 24068 --- [http-nio-8080-exec-1] c.b.r.service.TrassirChannelService      : null
+2022-01-31 16:41:47.321  INFO 24068 --- [http-nio-8080-exec-4] c.b.r.service.TrassirChannelService      : null
+2022-01-31 16:41:49.653  INFO 24068 --- [http-nio-8080-exec-2] c.b.r.service.TrassirChannelService      : null
+2022-01-31 16:42:17.785  INFO 24068 --- [http-nio-8080-exec-10] c.b.r.service.TrassirChannelService      : null
+2022-01-31 16:42:23.549  INFO 24068 --- [http-nio-8080-exec-5] c.b.r.service.TrassirChannelService      : null
+2022-01-31 16:50:51.485  INFO 24068 --- [http-nio-8080-exec-3] c.b.r.service.TrassirChannelService      : null
+2022-01-31 16:50:58.640  INFO 24068 --- [http-nio-8080-exec-8] c.b.r.service.TrassirChannelService      : null
+2022-01-31 16:51:01.761  INFO 24068 --- [http-nio-8080-exec-6] c.b.r.service.TrassirChannelService      : null
+2022-01-31 16:51:04.439  INFO 24068 --- [http-nio-8080-exec-10] c.b.r.service.TrassirChannelService      : null
+2022-01-31 16:51:10.921  INFO 24068 --- [http-nio-8080-exec-5] c.b.r.service.TrassirChannelService      : null
+2022-01-31 16:51:13.710  INFO 24068 --- [http-nio-8080-exec-4] c.b.r.service.TrassirChannelService      : null
+2022-01-31 16:52:23.415  INFO 24068 --- [http-nio-8080-exec-9] c.b.r.service.TrassirChannelService      : null
+2022-01-31 16:52:30.194  INFO 24068 --- [http-nio-8080-exec-6] c.b.r.service.TrassirChannelService      : null
+2022-01-31 16:52:48.784  INFO 24068 --- [http-nio-8080-exec-10] c.b.r.service.TrassirChannelService      : null
+2022-01-31 16:52:52.745  INFO 24068 --- [http-nio-8080-exec-1] c.b.r.service.TrassirChannelService      : null
+2022-01-31 16:55:00.981  INFO 24068 --- [http-nio-8080-exec-3] c.b.r.service.TrassirChannelService      : null
+2022-01-31 16:55:06.168  INFO 24068 --- [http-nio-8080-exec-5] c.b.r.service.TrassirChannelService      : null
+2022-01-31 16:55:57.994  INFO 24068 --- [http-nio-8080-exec-4] c.b.r.service.TrassirChannelService      : null
+2022-01-31 16:56:01.095  INFO 24068 --- [http-nio-8080-exec-2] c.b.r.service.TrassirChannelService      : null
+2022-01-31 16:56:06.188  INFO 24068 --- [http-nio-8080-exec-9] c.b.r.service.TrassirChannelService      : null
+2022-01-31 16:56:55.824  INFO 24068 --- [http-nio-8080-exec-6] c.b.r.service.TrassirChannelService      : null
+2022-01-31 16:56:57.622  INFO 24068 --- [http-nio-8080-exec-3] c.b.r.service.TrassirChannelService      : null
+2022-01-31 16:57:00.070  INFO 24068 --- [http-nio-8080-exec-1] c.b.r.service.TrassirChannelService      : null
+2022-01-31 16:57:02.540  INFO 24068 --- [http-nio-8080-exec-4] c.b.r.service.TrassirChannelService      : null
+2022-01-31 16:57:03.550  INFO 24068 --- [http-nio-8080-exec-2] c.b.r.service.TrassirChannelService      : null
+2022-01-31 17:03:15.317  INFO 24068 --- [http-nio-8080-exec-3] c.b.r.service.TrassirChannelService      : null
+2022-01-31 17:04:42.740  INFO 24068 --- [http-nio-8080-exec-7] c.b.r.service.TrassirChannelService      : null
+2022-01-31 17:05:06.102  INFO 24068 --- [http-nio-8080-exec-6] c.b.r.service.TrassirChannelService      : null
+2022-01-31 17:05:32.187  INFO 24068 --- [http-nio-8080-exec-3] c.b.r.service.TrassirChannelService      : null
+2022-01-31 17:06:17.156  INFO 24068 --- [http-nio-8080-exec-1] c.b.r.service.TrassirChannelService      : null
+2022-01-31 17:07:10.627  INFO 24068 --- [http-nio-8080-exec-7] c.b.r.service.TrassirChannelService      : null
+2022-01-31 17:08:56.741  INFO 24068 --- [http-nio-8080-exec-3] c.b.r.service.TrassirChannelService      : null
+2022-01-31 17:09:22.754  INFO 24068 --- [http-nio-8080-exec-8] c.b.r.service.TrassirChannelService      : null
+2022-01-31 17:10:19.166  INFO 24068 --- [http-nio-8080-exec-7] c.b.r.service.TrassirChannelService      : null
+2022-01-31 17:10:49.380  INFO 24068 --- [http-nio-8080-exec-2] c.b.r.service.TrassirChannelService      : null
+2022-01-31 17:11:56.878  INFO 24068 --- [http-nio-8080-exec-10] c.b.r.service.TrassirChannelService      : null
+2022-01-31 17:12:50.143  INFO 24068 --- [http-nio-8080-exec-7] c.b.r.service.TrassirChannelService      : null
+2022-01-31 17:14:10.532  INFO 24068 --- [http-nio-8080-exec-9] c.b.r.service.TrassirChannelService      : null
+2022-01-31 17:14:46.634  INFO 24068 --- [http-nio-8080-exec-10] c.b.r.service.TrassirChannelService      : null
+2022-01-31 17:15:04.137  INFO 24068 --- [http-nio-8080-exec-7] c.b.r.service.TrassirChannelService      : null
+2022-01-31 17:15:18.133  INFO 24068 --- [http-nio-8080-exec-8] c.b.r.service.TrassirChannelService      : null
+2022-01-31 17:15:52.751  INFO 24068 --- [http-nio-8080-exec-6] c.b.r.service.TrassirChannelService      : null
+2022-01-31 17:16:08.211  INFO 24068 --- [http-nio-8080-exec-3] c.b.r.service.TrassirChannelService      : null
+2022-01-31 17:17:07.878  INFO 24068 --- [http-nio-8080-exec-7] c.b.r.service.TrassirChannelService      : null
+2022-01-31 17:17:41.089  INFO 24068 --- [http-nio-8080-exec-2] c.b.r.service.TrassirChannelService      : null
+2022-01-31 17:18:15.720  INFO 24068 --- [http-nio-8080-exec-6] c.b.r.service.TrassirChannelService      : null
+2022-01-31 17:18:28.408  INFO 24068 --- [http-nio-8080-exec-3] c.b.r.service.TrassirChannelService      : null
+2022-01-31 17:19:24.994  INFO 24068 --- [http-nio-8080-exec-8] c.b.r.service.TrassirChannelService      : null
+2022-01-31 17:19:28.206  INFO 24068 --- [http-nio-8080-exec-4] c.b.r.service.TrassirChannelService      : null
+2022-01-31 17:19:38.629  INFO 24068 --- [http-nio-8080-exec-1] c.b.r.service.TrassirChannelService      : null
+2022-01-31 17:19:50.632  INFO 24068 --- [http-nio-8080-exec-3] c.b.r.service.TrassirChannelService      : null
+2022-01-31 17:21:24.030  INFO 24068 --- [http-nio-8080-exec-5] c.b.r.service.TrassirChannelService      : null
+2022-01-31 17:22:02.837  INFO 24068 --- [http-nio-8080-exec-1] c.b.r.service.TrassirChannelService      : null
+2022-01-31 17:22:40.343  INFO 24068 --- [http-nio-8080-exec-7] c.b.r.service.TrassirChannelService      : null
+2022-01-31 17:22:45.887  INFO 24068 --- [http-nio-8080-exec-2] c.b.r.service.TrassirChannelService      : null
+2022-01-31 17:23:15.188  INFO 24068 --- [http-nio-8080-exec-4] c.b.r.service.TrassirChannelService      : null
+2022-01-31 17:23:22.838  INFO 24068 --- [http-nio-8080-exec-5] c.b.r.service.TrassirChannelService      : null
+2022-01-31 17:24:49.343  INFO 24068 --- [http-nio-8080-exec-10] c.b.r.service.TrassirChannelService      : null
+2022-01-31 17:24:58.716  INFO 24068 --- [http-nio-8080-exec-7] c.b.r.service.TrassirChannelService      : null
+2022-01-31 17:25:14.965  INFO 24068 --- [http-nio-8080-exec-2] c.b.r.service.TrassirChannelService      : null
+2022-01-31 17:25:53.498  INFO 24068 --- [http-nio-8080-exec-4] c.b.r.service.TrassirChannelService      : null
+2022-01-31 17:27:21.564  INFO 24068 --- [http-nio-8080-exec-10] c.b.r.service.TrassirChannelService      : null
+2022-01-31 17:27:42.250  INFO 24068 --- [http-nio-8080-exec-2] c.b.r.service.TrassirChannelService      : null
+2022-01-31 17:28:14.125  INFO 24068 --- [http-nio-8080-exec-4] c.b.r.service.TrassirChannelService      : null
+2022-01-31 17:28:47.946  INFO 24068 --- [http-nio-8080-exec-6] c.b.r.service.TrassirChannelService      : null
+2022-01-31 17:28:54.617  INFO 24068 --- [http-nio-8080-exec-7] c.b.r.service.TrassirChannelService      : null
+2022-01-31 17:29:11.205  INFO 24068 --- [http-nio-8080-exec-1] c.b.r.service.TrassirChannelService      : null
+2022-01-31 17:29:24.657  INFO 24068 --- [http-nio-8080-exec-4] c.b.r.service.TrassirChannelService      : null
+2022-01-31 17:30:21.148  INFO 24068 --- [http-nio-8080-exec-8] c.b.r.service.TrassirChannelService      : null
+2022-01-31 17:30:41.771  INFO 24068 --- [http-nio-8080-exec-5] c.b.r.service.TrassirChannelService      : null
+2022-01-31 17:30:51.529  INFO 24068 --- [http-nio-8080-exec-4] c.b.r.service.TrassirChannelService      : null
+2022-01-31 17:31:26.611  INFO 24068 --- [http-nio-8080-exec-9] c.b.r.service.TrassirChannelService      : null
+2022-01-31 17:32:01.288  INFO 24068 --- [http-nio-8080-exec-10] c.b.r.service.TrassirChannelService      : null
+2022-01-31 17:32:04.514  INFO 24068 --- [http-nio-8080-exec-6] c.b.r.service.TrassirChannelService      : null
+2022-01-31 17:33:52.568  INFO 24068 --- [http-nio-8080-exec-2] c.b.r.service.TrassirChannelService      : null
+2022-01-31 17:33:57.750  INFO 24068 --- [http-nio-8080-exec-3] c.b.r.service.TrassirChannelService      : null
+2022-01-31 17:34:01.817  INFO 24068 --- [http-nio-8080-exec-8] c.b.r.service.TrassirChannelService      : null
+2022-01-31 17:34:24.374  INFO 24068 --- [http-nio-8080-exec-6] c.b.r.service.TrassirChannelService      : null
+2022-01-31 17:35:01.518  INFO 24068 --- [http-nio-8080-exec-1] c.b.r.service.TrassirChannelService      : null
+2022-01-31 17:35:06.440  INFO 24068 --- [http-nio-8080-exec-5] c.b.r.service.TrassirChannelService      : null
+2022-01-31 17:35:32.471  INFO 24068 --- [http-nio-8080-exec-2] c.b.r.service.TrassirChannelService      : null
+2022-01-31 17:35:35.086  INFO 24068 --- [http-nio-8080-exec-4] c.b.r.service.TrassirChannelService      : null
+2022-01-31 17:35:38.571  INFO 24068 --- [http-nio-8080-exec-6] c.b.r.service.TrassirChannelService      : null
+2022-01-31 17:35:49.983  INFO 24068 --- [http-nio-8080-exec-7] c.b.r.service.TrassirChannelService      : null
+2022-01-31 17:35:50.815  INFO 24068 --- [http-nio-8080-exec-1] c.b.r.service.TrassirChannelService      : null
+2022-01-31 17:35:52.279  INFO 24068 --- [http-nio-8080-exec-5] c.b.r.service.TrassirChannelService      : null
+2022-01-31 17:35:56.009  INFO 24068 --- [http-nio-8080-exec-2] c.b.r.service.TrassirChannelService      : null
+2022-01-31 17:36:12.109  INFO 24068 --- [http-nio-8080-exec-9] c.b.r.service.TrassirChannelService      : null
+2022-01-31 17:36:13.285  INFO 24068 --- [http-nio-8080-exec-3] c.b.r.service.TrassirChannelService      : null
+2022-01-31 17:36:13.966  INFO 24068 --- [http-nio-8080-exec-4] c.b.r.service.TrassirChannelService      : null
+2022-01-31 17:36:21.534  INFO 24068 --- [http-nio-8080-exec-10] c.b.r.service.TrassirChannelService      : null
+2022-01-31 17:36:39.598  INFO 24068 --- [http-nio-8080-exec-7] c.b.r.service.TrassirChannelService      : null
+2022-01-31 17:36:42.118  INFO 24068 --- [http-nio-8080-exec-1] c.b.r.service.TrassirChannelService      : null
+2022-01-31 17:36:44.992  INFO 24068 --- [http-nio-8080-exec-5] c.b.r.service.TrassirChannelService      : null
+2022-01-31 17:36:50.389  INFO 24068 --- [http-nio-8080-exec-2] c.b.r.service.TrassirChannelService      : null
+2022-01-31 17:36:51.869  INFO 24068 --- [http-nio-8080-exec-9] c.b.r.service.TrassirChannelService      : null
+2022-01-31 17:36:54.159  INFO 24068 --- [http-nio-8080-exec-3] c.b.r.service.TrassirChannelService      : null
+2022-01-31 17:37:11.174  INFO 24068 --- [http-nio-8080-exec-4] c.b.r.service.TrassirChannelService      : null
+2022-01-31 17:37:27.701  INFO 24068 --- [http-nio-8080-exec-10] c.b.r.service.TrassirChannelService      : null
+2022-01-31 17:37:33.904  INFO 24068 --- [http-nio-8080-exec-6] c.b.r.service.TrassirChannelService      : null
+2022-01-31 17:37:45.541  INFO 24068 --- [http-nio-8080-exec-8] c.b.r.service.TrassirChannelService      : null
+2022-01-31 17:37:49.701  INFO 24068 --- [http-nio-8080-exec-7] c.b.r.service.TrassirChannelService      : null
+2022-01-31 17:41:29.929  INFO 24068 --- [http-nio-8080-exec-5] c.b.r.service.TrassirChannelService      : null
