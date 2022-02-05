@@ -54,6 +54,7 @@ public class CommonChannelController {
         Long switchId = searchValues.getSwitchId() != null ? searchValues.getSwitchId() : null;
         String channelIp = searchValues.getIp() != null && searchValues.getIp().trim().length() > 0
                 ? searchValues.getIp() : null;
+        Boolean lostChannel = searchValues.getLostChannel();
 
         // сортировка
         String sortDirection = searchValues.getSortDirection() == null ||
@@ -82,7 +83,7 @@ public class CommonChannelController {
 
         // результат запроса с постраничным выводом
         Page<TrassirChannelInfo> channelsWithPaginationAndSorting = channelService.findByParams(serverId, null,
-                channelName, signal, switchId, channelIp, pageRequest);
+                channelName, signal, switchId, channelIp, lostChannel, pageRequest);
 
         return new ResponseEntity(channelsWithPaginationAndSorting, HttpStatus.OK);
     }

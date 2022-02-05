@@ -22,13 +22,15 @@ public interface TrassirChannelRepo extends JpaRepository<TrassirChannelInfo, St
             "and (:name is null or :name = '' or lower(s.name) like lower(concat('%',:name,'%'))) " +
             "and (:signal is null or s.signal = :signal)" +
             "and (:switchId is null or s.switchId.id = :switchId) " +
-            "and (:ip is null or :ip = '' or lower(s.ip) like lower(concat('%',:ip,'%'))) ")
+            "and (:ip is null or :ip = '' or lower(s.ip) like lower(concat('%',:ip,'%'))) " +
+            "and (:lostChannel is null or s.lostChannel = :lostChannel)")
     Page<TrassirChannelInfo> findByParams(@Param("guidServer")String guidServer,
                                           @Param("guidChannel")String guidChannel,
                                           @Param("name") String name,
                                           @Param("signal") Integer signal,
                                           @Param("switchId") Long switchId,
                                           @Param("ip") String ip,
+                                          @Param("lostChannel") Boolean lostChannel,
                                           Pageable pageable);
 
 }

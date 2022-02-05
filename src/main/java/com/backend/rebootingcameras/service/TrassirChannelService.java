@@ -47,9 +47,9 @@ public class TrassirChannelService {
 
     @Transactional
     public Page<TrassirChannelInfo> findByParams(String serverId, String channelId, String channelName,
-                                                 Integer signal, Long switchId, String channelIp, PageRequest pageRequest) {
+                                                 Integer signal, Long switchId, String channelIp, Boolean lostChannel, PageRequest pageRequest) {
         log.info(channelName);
-        return trassirChannelRepo.findByParams(serverId, channelId, channelName, signal, switchId, channelIp, pageRequest);
+        return trassirChannelRepo.findByParams(serverId, channelId, channelName, signal, switchId, channelIp, lostChannel, pageRequest);
     }
 
 }

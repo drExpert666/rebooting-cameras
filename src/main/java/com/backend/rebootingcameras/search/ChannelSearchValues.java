@@ -15,6 +15,8 @@ public class ChannelSearchValues {
     private Long switchId;
     private String ip;
 
+    private Boolean lostChannel;
+
     // постарничность
     private Integer pageNumber;
     private Integer pageSize;

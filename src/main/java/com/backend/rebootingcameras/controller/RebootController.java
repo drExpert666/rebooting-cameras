@@ -7,6 +7,7 @@ import com.backend.rebootingcameras.service.SwitchService;
 import com.backend.rebootingcameras.utils.RebootChannel;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -47,7 +48,8 @@ public class RebootController {
             boolean[] result =  rebootChannel.executeSnmpSetForReboot();
             if (!result[0] & !result[1]) {
                 rebootValues.setSwitchIp("OK");
-            } else {
+            }
+            else {
                 rebootValues.setSwitchIp("ERROR");
             }
             System.out.println(Arrays.toString(result));
@@ -57,7 +59,7 @@ public class RebootController {
         }
 
         else {
-            return ResponseEntity.ok(new RebootValues(null, null));
+            return new ResponseEntity(new RebootValues("PORT_NOT_FOUND", null), HttpStatus.OK);
         }
 
     }
