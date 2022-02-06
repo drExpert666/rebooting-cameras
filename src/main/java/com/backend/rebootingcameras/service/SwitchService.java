@@ -52,11 +52,10 @@ public class SwitchService {
         return switchRepo.findByParams(name, ip, description);
     }
 
-    @Transactional //todo добавить проверку
+    @Transactional
     public Switch findByIp(String ip) {
        return switchRepo.findSwitchByIp(ip);
     }
-
 
 
 }

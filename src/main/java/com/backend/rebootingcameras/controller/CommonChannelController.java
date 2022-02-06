@@ -16,22 +16,14 @@ import java.util.List;
 import java.util.Locale;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:4200") // разрешить для этого ресурса получать данные с бэкенда
+@CrossOrigin // разрешить для этого ресурса получать данные с бэкенда
 @RequestMapping("/common") //todo поменять на channel, если класс channel не пригодится
 public class CommonChannelController {
 
-    private TrassirController trassirController;
-
+    private TrassirChannelService channelService;
     @Autowired
     public void setChannelService(TrassirChannelService channelService) {
         this.channelService = channelService;
-    }
-
-    private TrassirChannelService channelService;
-
-    @Autowired
-    public CommonChannelController(TrassirController trassirController) {
-        this.trassirController = trassirController;
     }
 
     @GetMapping("/all")
@@ -42,7 +34,6 @@ public class CommonChannelController {
 
     @PostMapping("/search")
     public ResponseEntity<List<TrassirChannelInfo>> search(@RequestBody ChannelSearchValues searchValues) {
-
         System.out.println(searchValues);
 
         /* сохраняю переданные значения */

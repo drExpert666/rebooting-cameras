@@ -51,5 +51,4 @@ public class TrassirChannelService {
         log.info(channelName);
         return trassirChannelRepo.findByParams(serverId, channelId, channelName, signal, switchId, channelIp, lostChannel, pageRequest);
     }
-
 }

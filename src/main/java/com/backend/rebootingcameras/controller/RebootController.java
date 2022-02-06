@@ -15,7 +15,7 @@ import java.util.Arrays;
 
 @RestController
 @RequestMapping("/reboot")
-@CrossOrigin(origins = "http://localhost:4200") // разрешить для этого ресурса получать данные с бэкенда)
+@CrossOrigin // разрешить для этого ресурса получать данные с бэкенда)
 @Slf4j
 public class RebootController {
 

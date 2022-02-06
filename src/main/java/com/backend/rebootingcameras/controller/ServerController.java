@@ -12,7 +12,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/server")
-@CrossOrigin(origins = "http://localhost:4200") // разрешить для этого ресурса получать данные с бэкенда)
+@CrossOrigin // разрешить для этого ресурса получать данные с бэкенда)
 public class ServerController {
 
     private TrassirServerService serverService;

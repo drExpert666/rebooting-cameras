@@ -40,6 +40,7 @@ public class RebootChannel implements Runnable {
         System.out.println(PathForRequest.STRING_FOR_RUN_SNMP_SET + setCommandOff);
         System.out.println(PathForRequest.STRING_FOR_RUN_SNMP_SET + setCommandOn);
 
+        //todo изменить реализацию для сервера (убрать запуск exe файла)
         try {
             /* запускаю SnmpSet */
             runSnmp(setCommandOff, "poe_of.bin");
@@ -77,7 +78,7 @@ public class RebootChannel implements Runnable {
         String result = content.toString();
         RebootingCamerasApplication.log.debug(result);
         System.out.println(result);
-        wasErrorOnChangePoeStatus = !result.contains("OK"); //todo возможно нужно ловить исключения
+        wasErrorOnChangePoeStatus = !result.contains("OK");
     }
 
     private void runSnmp(String setCommand, String fileName) throws IOException, InterruptedException {
