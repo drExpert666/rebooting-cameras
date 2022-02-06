@@ -22,4 +22,5 @@ public interface SwitchRepo extends JpaRepository<Switch, Long> {
     Switch findSwitchByIp(String ip);
 
 
+    List<Switch> findAllByOrderByIp();
 }

@@ -23,7 +23,7 @@ public class SwitchService {
 
     @Transactional
     public List<Switch> findAll() {
-        return switchRepo.findAll();
+        return switchRepo.findAllByOrderByIp();
     }
 
     @Transactional
