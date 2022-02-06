@@ -28,7 +28,7 @@ public class TrassirServerService {
 
     @Transactional
     public List<TrassirServerInfo> findAll() {
-        return trassirServerRepo.findAll();
+        return trassirServerRepo.findAllByOrderByServerName();
     }
 
     @Transactional

@@ -714,3 +714,412 @@
 2022-02-06 20:53:18.667  INFO 8920 --- [http-nio-8080-exec-1] c.b.r.service.TrassirChannelService      : 12
 2022-02-06 20:53:19.885  INFO 8920 --- [http-nio-8080-exec-7] c.b.r.service.TrassirChannelService      : null
 2022-02-06 20:53:29.760  INFO 8920 --- [http-nio-8080-exec-3] c.b.r.service.TrassirChannelService      : null
+2022-02-06 21:14:58.843  INFO 8920 --- [http-nio-8080-exec-8] c.b.r.service.TrassirChannelService      : null
+2022-02-06 21:16:56.073  INFO 8920 --- [http-nio-8080-exec-10] c.b.r.service.TrassirChannelService      : null
+2022-02-06 21:18:12.465  INFO 8920 --- [http-nio-8080-exec-8] c.b.r.service.TrassirChannelService      : null
+2022-02-06 21:18:14.200  INFO 8920 --- [http-nio-8080-exec-7] c.b.r.service.TrassirChannelService      : null
+2022-02-06 21:18:15.195  INFO 8920 --- [http-nio-8080-exec-9] c.b.r.service.TrassirChannelService      : null
+2022-02-06 21:18:15.760  INFO 8920 --- [http-nio-8080-exec-3] c.b.r.service.TrassirChannelService      : null
+2022-02-06 21:18:17.644  INFO 8920 --- [http-nio-8080-exec-4] c.b.r.service.TrassirChannelService      : null
+2022-02-06 21:18:18.126  INFO 8920 --- [http-nio-8080-exec-2] c.b.r.service.TrassirChannelService      : null
+2022-02-06 21:18:19.103  INFO 8920 --- [http-nio-8080-exec-10] c.b.r.service.TrassirChannelService      : null
+2022-02-06 21:18:19.805  INFO 8920 --- [http-nio-8080-exec-5] c.b.r.service.TrassirChannelService      : null
+2022-02-06 21:18:23.106  INFO 8920 --- [http-nio-8080-exec-1] c.b.r.service.TrassirChannelService      : null
+2022-02-06 21:18:23.647  INFO 8920 --- [http-nio-8080-exec-6] c.b.r.service.TrassirChannelService      : null
+2022-02-06 21:18:24.073  INFO 8920 --- [http-nio-8080-exec-8] c.b.r.service.TrassirChannelService      : null
+2022-02-06 21:18:24.462  INFO 8920 --- [http-nio-8080-exec-7] c.b.r.service.TrassirChannelService      : null
+2022-02-06 21:18:24.821  INFO 8920 --- [http-nio-8080-exec-9] c.b.r.service.TrassirChannelService      : null
+2022-02-06 21:18:25.739  INFO 8920 --- [http-nio-8080-exec-3] c.b.r.service.TrassirChannelService      : null
+2022-02-06 21:18:26.136  INFO 8920 --- [http-nio-8080-exec-4] c.b.r.service.TrassirChannelService      : null
+2022-02-06 21:18:26.856  INFO 8920 --- [http-nio-8080-exec-2] c.b.r.service.TrassirChannelService      : null
+2022-02-06 21:18:27.414  INFO 8920 --- [http-nio-8080-exec-10] c.b.r.service.TrassirChannelService      : null
+2022-02-06 21:19:09.607  INFO 8920 --- [http-nio-8080-exec-5] c.b.r.service.TrassirChannelService      : null
+2022-02-06 21:19:11.286  INFO 8920 --- [http-nio-8080-exec-1] c.b.r.service.TrassirChannelService      : null
+2022-02-06 21:22:56.403  INFO 13944 --- [restartedMain] c.b.r.RebootingCamerasApplication        : Starting RebootingCamerasApplication using Java 16.0.2 on RomanovA-PC with PID 13944 (C:\Users\sashk\Documents\rebooting-cameras\build\classes\java\main started by sashk in C:\Users\sashk\Documents\rebooting-cameras)
+2022-02-06 21:22:56.409  INFO 13944 --- [restartedMain] c.b.r.RebootingCamerasApplication        : No active profile set, falling back to default profiles: default
+2022-02-06 21:22:56.623  INFO 13944 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-02-06 21:22:56.624  INFO 13944 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-02-06 21:22:59.292  INFO 13944 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-02-06 21:22:59.611  INFO 13944 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 276 ms. Found 4 JPA repository interfaces.
+2022-02-06 21:23:02.472  INFO 13944 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-02-06 21:23:02.503  INFO 13944 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-02-06 21:23:02.505  INFO 13944 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.56]
+2022-02-06 21:23:02.830  INFO 13944 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-02-06 21:23:02.831  INFO 13944 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 6205 ms
+2022-02-06 21:23:03.279  WARN 13944 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-02-06 21:23:03.844  INFO 13944 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-02-06 21:23:04.473  INFO 13944 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-02-06 21:23:04.731  INFO 13944 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-02-06 21:23:04.927  INFO 13944 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.3.Final
+2022-02-06 21:23:05.556  INFO 13944 --- [restartedMain] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-02-06 21:23:05.981  INFO 13944 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL10Dialect
+2022-02-06 21:23:08.049  INFO 13944 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-02-06 21:23:08.080  INFO 13944 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-02-06 21:23:14.371  INFO 13944 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@594b8973, org.springframework.security.web.context.SecurityContextPersistenceFilter@33c90f11, org.springframework.security.web.header.HeaderWriterFilter@24d0b04, org.springframework.web.filter.CorsFilter@6ffd1e42, org.springframework.security.web.authentication.logout.LogoutFilter@1b9f4ad6, com.backend.rebootingcameras.security.JWTAuthenticationFilter@69e45ea8, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@38edd358, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@18a92956, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@2e4f78b2, org.springframework.security.web.session.SessionManagementFilter@45d7aecc, org.springframework.security.web.access.ExceptionTranslationFilter@60c50055, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@294ed898]
+2022-02-06 21:23:16.623  INFO 13944 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-02-06 21:23:16.767  INFO 13944 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2022-02-06 21:23:16.813  INFO 13944 --- [restartedMain] c.b.r.RebootingCamerasApplication        : Started RebootingCamerasApplication in 21.822 seconds (JVM running for 24.4)
+2022-02-06 21:23:16.822  INFO 13944 --- [restartedMain] c.b.r.RebootingCamerasApplication        : Starting my application with 0 args.
+2022-02-06 21:23:33.335  INFO 13944 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-02-06 21:23:33.336  INFO 13944 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-02-06 21:23:33.337  INFO 13944 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2022-02-06 21:23:33.523  INFO 13944 --- [http-nio-8080-exec-1] c.b.r.service.TrassirChannelService      : null
+2022-02-06 21:23:34.012  INFO 13944 --- [http-nio-8080-exec-2] c.b.r.service.TrassirChannelService      : null
+2022-02-06 21:23:36.135  INFO 13944 --- [http-nio-8080-exec-3] c.b.r.service.TrassirChannelService      : null
+2022-02-06 21:23:37.619  INFO 13944 --- [http-nio-8080-exec-4] c.b.r.service.TrassirChannelService      : null
+2022-02-06 21:23:38.683  INFO 13944 --- [http-nio-8080-exec-5] c.b.r.service.TrassirChannelService      : null
+2022-02-06 21:28:20.607  INFO 12808 --- [restartedMain] c.b.r.RebootingCamerasApplication        : Starting RebootingCamerasApplication using Java 16.0.2 on RomanovA-PC with PID 12808 (C:\Users\sashk\Documents\rebooting-cameras\build\classes\java\main started by sashk in C:\Users\sashk\Documents\rebooting-cameras)
+2022-02-06 21:28:20.609  INFO 12808 --- [restartedMain] c.b.r.RebootingCamerasApplication        : No active profile set, falling back to default profiles: default
+2022-02-06 21:28:20.678  INFO 12808 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-02-06 21:28:20.678  INFO 12808 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-02-06 21:28:21.719  INFO 12808 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-02-06 21:28:21.827  INFO 12808 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 96 ms. Found 4 JPA repository interfaces.
+2022-02-06 21:28:24.266  INFO 12808 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-02-06 21:28:24.305  INFO 12808 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-02-06 21:28:24.307  INFO 12808 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.56]
+2022-02-06 21:28:24.905  INFO 12808 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-02-06 21:28:24.906  INFO 12808 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 4227 ms
+2022-02-06 21:28:25.784  WARN 12808 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-02-06 21:28:26.749  INFO 12808 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-02-06 21:28:27.430  INFO 12808 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-02-06 21:28:27.683  INFO 12808 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-02-06 21:28:27.851  INFO 12808 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.3.Final
+2022-02-06 21:28:28.356  INFO 12808 --- [restartedMain] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-02-06 21:28:28.724  INFO 12808 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL10Dialect
+2022-02-06 21:28:30.807  INFO 12808 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-02-06 21:28:30.842  INFO 12808 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-02-06 21:28:36.356  INFO 12808 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@7f344509, org.springframework.security.web.context.SecurityContextPersistenceFilter@809277, org.springframework.security.web.header.HeaderWriterFilter@1a9d398c, org.springframework.web.filter.CorsFilter@20fc2bb0, org.springframework.security.web.authentication.logout.LogoutFilter@5dfb7098, com.backend.rebootingcameras.security.JWTAuthenticationFilter@25b8fa26, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@c834a21, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@2794eee3, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@1c0549e8, org.springframework.security.web.session.SessionManagementFilter@6cce061e, org.springframework.security.web.access.ExceptionTranslationFilter@360bf13f, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@72756fbe]
+2022-02-06 21:28:38.210  INFO 12808 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-02-06 21:28:38.344  INFO 12808 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2022-02-06 21:28:38.385  INFO 12808 --- [restartedMain] c.b.r.RebootingCamerasApplication        : Started RebootingCamerasApplication in 18.285 seconds (JVM running for 19.245)
+2022-02-06 21:28:38.393  INFO 12808 --- [restartedMain] c.b.r.RebootingCamerasApplication        : Starting my application with 0 args.
+2022-02-06 21:29:32.650  INFO 12808 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-02-06 21:29:32.650  INFO 12808 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-02-06 21:29:32.652  INFO 12808 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2022-02-06 21:33:21.778  INFO 12808 --- [http-nio-8080-exec-8] c.b.r.service.TrassirChannelService      : null
+2022-02-06 21:33:32.791  INFO 12808 --- [http-nio-8080-exec-9] c.b.r.service.TrassirChannelService      : g
+2022-02-06 21:33:33.077  INFO 12808 --- [http-nio-8080-exec-10] c.b.r.service.TrassirChannelService      : gj
+2022-02-06 21:33:33.853  INFO 12808 --- [http-nio-8080-exec-1] c.b.r.service.TrassirChannelService      : g
+2022-02-06 21:33:34.876  INFO 12808 --- [http-nio-8080-exec-2] c.b.r.service.TrassirChannelService      : п
+2022-02-06 21:33:36.500  INFO 12808 --- [http-nio-8080-exec-3] c.b.r.service.TrassirChannelService      : п
+2022-02-06 21:33:37.404  INFO 12808 --- [http-nio-8080-exec-4] c.b.r.service.TrassirChannelService      : по
+2022-02-06 21:33:38.780  INFO 12808 --- [http-nio-8080-exec-5] c.b.r.service.TrassirChannelService      : под
+2022-02-06 21:33:41.565  INFO 12808 --- [http-nio-8080-exec-6] c.b.r.service.TrassirChannelService      : подв
+2022-02-06 21:33:41.796  INFO 12808 --- [http-nio-8080-exec-7] c.b.r.service.TrassirChannelService      : подва
+2022-02-06 21:33:41.972  INFO 12808 --- [http-nio-8080-exec-8] c.b.r.service.TrassirChannelService      : подвал
+2022-02-06 21:33:49.231  INFO 12808 --- [http-nio-8080-exec-9] c.b.r.service.TrassirChannelService      : подвал
+2022-02-06 21:33:53.538  INFO 12808 --- [http-nio-8080-exec-10] c.b.r.service.TrassirChannelService      : подвал
+2022-02-06 21:33:59.888  INFO 12808 --- [http-nio-8080-exec-1] c.b.r.service.TrassirChannelService      : подвал
+2022-02-06 21:34:03.203  INFO 12808 --- [http-nio-8080-exec-2] c.b.r.service.TrassirChannelService      : null
+2022-02-06 21:34:04.166  INFO 12808 --- [http-nio-8080-exec-3] c.b.r.service.TrassirChannelService      : null
+2022-02-06 21:34:07.703  INFO 12808 --- [http-nio-8080-exec-4] c.b.r.service.TrassirChannelService      : null
+2022-02-06 21:34:08.937  INFO 12808 --- [http-nio-8080-exec-5] c.b.r.service.TrassirChannelService      : null
+2022-02-06 21:34:10.538  INFO 12808 --- [http-nio-8080-exec-6] c.b.r.service.TrassirChannelService      : null
+2022-02-06 21:34:12.379  INFO 12808 --- [http-nio-8080-exec-7] c.b.r.service.TrassirChannelService      : п
+2022-02-06 21:34:13.179  INFO 12808 --- [http-nio-8080-exec-8] c.b.r.service.TrassirChannelService      : по
+2022-02-06 21:34:14.923  INFO 12808 --- [http-nio-8080-exec-9] c.b.r.service.TrassirChannelService      : под
+2022-02-06 21:34:15.988  INFO 12808 --- [http-nio-8080-exec-10] c.b.r.service.TrassirChannelService      : подв
+2022-02-06 21:34:16.555  INFO 12808 --- [http-nio-8080-exec-1] c.b.r.service.TrassirChannelService      : подва
+2022-02-06 21:34:17.011  INFO 12808 --- [http-nio-8080-exec-2] c.b.r.service.TrassirChannelService      : подвал
+2022-02-06 21:34:19.158  INFO 12808 --- [http-nio-8080-exec-3] c.b.r.service.TrassirChannelService      : null
+2022-02-06 21:34:23.099  INFO 12808 --- [http-nio-8080-exec-4] c.b.r.service.TrassirChannelService      : null
+2022-02-06 21:34:23.363  INFO 12808 --- [http-nio-8080-exec-5] c.b.r.service.TrassirChannelService      : null
+2022-02-06 21:34:23.643  INFO 12808 --- [http-nio-8080-exec-6] c.b.r.service.TrassirChannelService      : null
+2022-02-06 21:34:26.027  INFO 12808 --- [http-nio-8080-exec-7] c.b.r.service.TrassirChannelService      : null
+2022-02-06 21:34:29.611  INFO 12808 --- [http-nio-8080-exec-8] c.b.r.service.TrassirChannelService      : null
+2022-02-06 21:34:29.810  INFO 12808 --- [http-nio-8080-exec-9] c.b.r.service.TrassirChannelService      : null
+2022-02-06 21:34:30.547  INFO 12808 --- [http-nio-8080-exec-10] c.b.r.service.TrassirChannelService      : null
+2022-02-06 21:34:33.491  INFO 12808 --- [http-nio-8080-exec-1] c.b.r.service.TrassirChannelService      : null
+2022-02-06 21:34:41.322  INFO 12808 --- [http-nio-8080-exec-2] c.b.r.service.TrassirChannelService      : null
+2022-02-06 21:34:41.742  INFO 12808 --- [http-nio-8080-exec-3] c.b.r.service.TrassirChannelService      : null
+2022-02-06 21:34:51.387  INFO 12808 --- [http-nio-8080-exec-4] c.b.r.service.TrassirChannelService      : null
+2022-02-06 21:34:53.267  INFO 12808 --- [http-nio-8080-exec-5] c.b.r.service.TrassirChannelService      : null
+2022-02-06 21:35:19.422  INFO 12808 --- [http-nio-8080-exec-6] c.b.r.service.TrassirChannelService      : null
+2022-02-06 21:35:23.780  INFO 12808 --- [http-nio-8080-exec-7] c.b.r.service.TrassirChannelService      : null
+2022-02-06 21:36:00.107  INFO 12808 --- [http-nio-8080-exec-4] c.b.r.service.TrassirChannelService      : 1
+2022-02-06 21:36:03.995  INFO 12808 --- [http-nio-8080-exec-5] c.b.r.service.TrassirChannelService      : 1
+2022-02-06 21:36:06.059  INFO 12808 --- [http-nio-8080-exec-6] c.b.r.service.TrassirChannelService      : 1
+2022-02-06 21:36:06.987  INFO 12808 --- [http-nio-8080-exec-7] c.b.r.service.TrassirChannelService      : 1
+2022-02-06 21:36:07.402  INFO 12808 --- [http-nio-8080-exec-8] c.b.r.service.TrassirChannelService      : 1
+2022-02-06 21:36:07.954  INFO 12808 --- [http-nio-8080-exec-9] c.b.r.service.TrassirChannelService      : 1
+2022-02-06 21:36:09.227  INFO 12808 --- [http-nio-8080-exec-10] c.b.r.service.TrassirChannelService      : 1
+2022-02-06 21:36:10.435  INFO 12808 --- [http-nio-8080-exec-1] c.b.r.service.TrassirChannelService      : 1
+2022-02-06 21:36:23.819  INFO 12808 --- [http-nio-8080-exec-2] c.b.r.service.TrassirChannelService      : 1
+2022-02-06 21:36:29.331  INFO 12808 --- [http-nio-8080-exec-3] c.b.r.service.TrassirChannelService      : 1
+2022-02-06 21:36:41.467  INFO 12808 --- [http-nio-8080-exec-4] c.b.r.service.TrassirChannelService      : 1
+2022-02-06 21:36:42.575  INFO 12808 --- [http-nio-8080-exec-5] c.b.r.service.TrassirChannelService      : null
+2022-02-06 21:37:20.244  INFO 14168 --- [restartedMain] c.b.r.RebootingCamerasApplication        : Starting RebootingCamerasApplication using Java 16.0.2 on RomanovA-PC with PID 14168 (C:\Users\sashk\Documents\rebooting-cameras\build\classes\java\main started by sashk in C:\Users\sashk\Documents\rebooting-cameras)
+2022-02-06 21:37:20.246  INFO 14168 --- [restartedMain] c.b.r.RebootingCamerasApplication        : No active profile set, falling back to default profiles: default
+2022-02-06 21:37:20.314  INFO 14168 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-02-06 21:37:20.315  INFO 14168 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-02-06 21:37:21.395  INFO 14168 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-02-06 21:37:21.507  INFO 14168 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 99 ms. Found 4 JPA repository interfaces.
+2022-02-06 21:37:22.448  INFO 14168 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-02-06 21:37:22.460  INFO 14168 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-02-06 21:37:22.460  INFO 14168 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.56]
+2022-02-06 21:37:22.594  INFO 14168 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-02-06 21:37:22.594  INFO 14168 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2278 ms
+2022-02-06 21:37:22.792  WARN 14168 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-02-06 21:37:23.011  INFO 14168 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-02-06 21:37:23.225  INFO 14168 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-02-06 21:37:23.323  INFO 14168 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-02-06 21:37:23.391  INFO 14168 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.3.Final
+2022-02-06 21:37:23.589  INFO 14168 --- [restartedMain] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-02-06 21:37:23.740  INFO 14168 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL10Dialect
+2022-02-06 21:37:24.557  INFO 14168 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-02-06 21:37:24.570  INFO 14168 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-02-06 21:37:26.853  INFO 14168 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@3042fd65, org.springframework.security.web.context.SecurityContextPersistenceFilter@f1b7323, org.springframework.security.web.header.HeaderWriterFilter@45d89918, org.springframework.web.filter.CorsFilter@79d03245, org.springframework.security.web.authentication.logout.LogoutFilter@28b74417, com.backend.rebootingcameras.security.JWTAuthenticationFilter@2094b792, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@193fed34, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@4640e82f, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@518d716d, org.springframework.security.web.session.SessionManagementFilter@482f1526, org.springframework.security.web.access.ExceptionTranslationFilter@278da114, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@67c4508f]
+2022-02-06 21:37:27.622  INFO 14168 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-02-06 21:37:27.678  INFO 14168 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2022-02-06 21:37:27.702  INFO 14168 --- [restartedMain] c.b.r.RebootingCamerasApplication        : Started RebootingCamerasApplication in 8.282 seconds (JVM running for 9.326)
+2022-02-06 21:37:27.705  INFO 14168 --- [restartedMain] c.b.r.RebootingCamerasApplication        : Starting my application with 0 args.
+2022-02-06 21:39:19.316  INFO 14168 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-02-06 21:39:19.317  INFO 14168 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-02-06 21:39:19.319  INFO 14168 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2022-02-06 21:43:03.680  INFO 14168 --- [http-nio-8080-exec-7] c.b.r.service.TrassirChannelService      : null
+2022-02-06 21:43:58.402  INFO 14168 --- [http-nio-8080-exec-10] c.b.r.service.TrassirChannelService      : null
+2022-02-06 21:44:24.426  INFO 14168 --- [http-nio-8080-exec-3] c.b.r.service.TrassirChannelService      : null
+2022-02-06 21:44:39.973  INFO 14168 --- [http-nio-8080-exec-6] c.b.r.service.TrassirChannelService      : null
+2022-02-06 21:44:48.348  INFO 14168 --- [http-nio-8080-exec-7] c.b.r.service.TrassirChannelService      : null
+2022-02-06 21:45:45.594  INFO 14168 --- [http-nio-8080-exec-3] c.b.r.service.TrassirChannelService      : null
+2022-02-06 21:46:10.299  INFO 14168 --- [http-nio-8080-exec-6] c.b.r.service.TrassirChannelService      : null
+2022-02-06 21:47:30.898  INFO 14168 --- [http-nio-8080-exec-5] c.b.r.service.TrassirChannelService      : null
+2022-02-06 21:48:11.032  INFO 14168 --- [http-nio-8080-exec-3] c.b.r.service.TrassirChannelService      : null
+2022-02-06 21:48:54.364  INFO 14168 --- [http-nio-8080-exec-6] c.b.r.service.TrassirChannelService      : null
+2022-02-06 21:49:06.342  INFO 14168 --- [http-nio-8080-exec-4] c.b.r.service.TrassirChannelService      : null
+2022-02-06 21:49:31.294  INFO 14168 --- [http-nio-8080-exec-5] c.b.r.service.TrassirChannelService      : null
+2022-02-06 21:50:50.982  INFO 14168 --- [http-nio-8080-exec-6] c.b.r.service.TrassirChannelService      : null
+2022-02-06 21:51:33.004  INFO 14168 --- [http-nio-8080-exec-4] c.b.r.service.TrassirChannelService      : null
+2022-02-06 21:52:41.773  INFO 14168 --- [http-nio-8080-exec-6] c.b.r.service.TrassirChannelService      : null
+2022-02-06 21:53:06.601  INFO 14168 --- [http-nio-8080-exec-9] c.b.r.service.TrassirChannelService      : null
+2022-02-06 21:53:14.539  INFO 14168 --- [http-nio-8080-exec-3] c.b.r.service.TrassirChannelService      : null
+2022-02-06 21:53:24.012  INFO 14168 --- [http-nio-8080-exec-8] c.b.r.service.TrassirChannelService      : null
+2022-02-06 21:53:48.571  INFO 14168 --- [http-nio-8080-exec-10] c.b.r.service.TrassirChannelService      : null
+2022-02-06 21:54:08.484  INFO 14168 --- [http-nio-8080-exec-8] c.b.r.service.TrassirChannelService      : null
+2022-02-06 21:54:32.740  INFO 14168 --- [http-nio-8080-exec-7] c.b.r.service.TrassirChannelService      : null
+2022-02-06 21:54:43.857  INFO 14168 --- [http-nio-8080-exec-5] c.b.r.service.TrassirChannelService      : null
+2022-02-06 21:54:52.157  INFO 14168 --- [http-nio-8080-exec-1] c.b.r.service.TrassirChannelService      : null
+2022-02-06 21:55:22.838  INFO 14168 --- [http-nio-8080-exec-8] c.b.r.service.TrassirChannelService      : null
+2022-02-06 21:55:29.550  INFO 14168 --- [http-nio-8080-exec-7] c.b.r.service.TrassirChannelService      : null
+2022-02-06 21:55:46.914  INFO 14168 --- [http-nio-8080-exec-5] c.b.r.service.TrassirChannelService      : null
+2022-02-06 21:55:57.835  INFO 14168 --- [http-nio-8080-exec-1] c.b.r.service.TrassirChannelService      : null
+2022-02-06 21:56:37.658  INFO 14168 --- [http-nio-8080-exec-8] c.b.r.service.TrassirChannelService      : null
+2022-02-06 21:56:44.459  INFO 14168 --- [http-nio-8080-exec-7] c.b.r.service.TrassirChannelService      : null
+2022-02-06 21:57:04.183  INFO 14168 --- [http-nio-8080-exec-5] c.b.r.service.TrassirChannelService      : null
+2022-02-06 21:57:16.314  INFO 14168 --- [http-nio-8080-exec-1] c.b.r.service.TrassirChannelService      : null
+2022-02-06 21:57:24.229  INFO 14168 --- [http-nio-8080-exec-8] c.b.r.service.TrassirChannelService      : null
+2022-02-06 21:57:55.786  INFO 14168 --- [http-nio-8080-exec-7] c.b.r.service.TrassirChannelService      : null
+2022-02-06 21:58:09.367  INFO 14168 --- [http-nio-8080-exec-5] c.b.r.service.TrassirChannelService      : null
+2022-02-06 21:58:37.108  INFO 14168 --- [http-nio-8080-exec-1] c.b.r.service.TrassirChannelService      : null
+2022-02-06 21:58:48.911  INFO 14168 --- [http-nio-8080-exec-8] c.b.r.service.TrassirChannelService      : null
+2022-02-06 21:59:04.733  INFO 14168 --- [http-nio-8080-exec-7] c.b.r.service.TrassirChannelService      : null
+2022-02-06 21:59:12.752  INFO 14168 --- [http-nio-8080-exec-5] c.b.r.service.TrassirChannelService      : null
+2022-02-06 21:59:47.385  INFO 14168 --- [http-nio-8080-exec-1] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:00:15.425  INFO 14168 --- [http-nio-8080-exec-8] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:00:45.086  INFO 14168 --- [http-nio-8080-exec-7] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:01:34.679  INFO 14168 --- [http-nio-8080-exec-5] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:01:47.224  INFO 14168 --- [http-nio-8080-exec-1] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:02:38.498  INFO 14168 --- [http-nio-8080-exec-7] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:03:39.661  INFO 14168 --- [http-nio-8080-exec-1] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:03:54.956  INFO 14168 --- [http-nio-8080-exec-7] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:05:08.203  INFO 14168 --- [http-nio-8080-exec-1] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:05:35.441  INFO 14168 --- [http-nio-8080-exec-6] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:05:54.228  INFO 14168 --- [http-nio-8080-exec-7] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:06:24.625  INFO 14168 --- [http-nio-8080-exec-8] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:08:50.651  INFO 14168 --- [http-nio-8080-exec-6] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:10:14.611  INFO 14168 --- [http-nio-8080-exec-8] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:10:28.579  INFO 14168 --- [http-nio-8080-exec-10] c.b.r.service.TrassirChannelService      : 12
+2022-02-06 22:10:28.595  INFO 14168 --- [http-nio-8080-exec-3] c.b.r.service.TrassirChannelService      : 12
+2022-02-06 22:10:29.779  INFO 14168 --- [http-nio-8080-exec-5] c.b.r.service.TrassirChannelService      : 1
+2022-02-06 22:10:30.210  INFO 14168 --- [http-nio-8080-exec-6] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:10:31.586  INFO 14168 --- [http-nio-8080-exec-7] c.b.r.service.TrassirChannelService      : 12
+2022-02-06 22:10:31.786  INFO 14168 --- [http-nio-8080-exec-9] c.b.r.service.TrassirChannelService      : 1231
+2022-02-06 22:10:31.858  INFO 14168 --- [http-nio-8080-exec-4] c.b.r.service.TrassirChannelService      : 1231
+2022-02-06 22:10:31.883  INFO 14168 --- [http-nio-8080-exec-2] c.b.r.service.TrassirChannelService      : 1231
+2022-02-06 22:10:32.971  INFO 14168 --- [http-nio-8080-exec-1] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:10:34.562  INFO 14168 --- [http-nio-8080-exec-8] c.b.r.service.TrassirChannelService      : 21
+2022-02-06 22:10:34.580  INFO 14168 --- [http-nio-8080-exec-10] c.b.r.service.TrassirChannelService      : 21
+2022-02-06 22:10:34.771  INFO 14168 --- [http-nio-8080-exec-3] c.b.r.service.TrassirChannelService      : 21312
+2022-02-06 22:10:34.771  INFO 14168 --- [http-nio-8080-exec-5] c.b.r.service.TrassirChannelService      : 21312
+2022-02-06 22:10:34.787  INFO 14168 --- [http-nio-8080-exec-6] c.b.r.service.TrassirChannelService      : 21312
+2022-02-06 22:10:35.946  INFO 14168 --- [http-nio-8080-exec-7] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:10:38.677  INFO 14168 --- [http-nio-8080-exec-9] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:10:39.834  INFO 14168 --- [http-nio-8080-exec-4] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:10:41.082  INFO 14168 --- [http-nio-8080-exec-2] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:10:41.379  INFO 14168 --- [http-nio-8080-exec-1] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:10:41.427  INFO 14168 --- [http-nio-8080-exec-8] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:10:41.882  INFO 14168 --- [http-nio-8080-exec-10] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:10:42.100  INFO 14168 --- [http-nio-8080-exec-5] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:10:42.330  INFO 14168 --- [http-nio-8080-exec-3] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:10:42.586  INFO 14168 --- [http-nio-8080-exec-6] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:10:46.243  INFO 14168 --- [http-nio-8080-exec-7] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:10:47.266  INFO 14168 --- [http-nio-8080-exec-9] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:10:47.874  INFO 14168 --- [http-nio-8080-exec-4] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:10:48.166  INFO 14168 --- [http-nio-8080-exec-2] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:10:49.387  INFO 14168 --- [http-nio-8080-exec-1] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:10:50.427  INFO 14168 --- [http-nio-8080-exec-8] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:10:50.522  INFO 14168 --- [http-nio-8080-exec-10] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:10:50.714  INFO 14168 --- [http-nio-8080-exec-5] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:10:51.922  INFO 14168 --- [http-nio-8080-exec-3] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:10:52.674  INFO 14168 --- [http-nio-8080-exec-6] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:10:53.482  INFO 14168 --- [http-nio-8080-exec-7] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:10:57.275  INFO 14168 --- [http-nio-8080-exec-9] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:12:43.165  INFO 14168 --- [http-nio-8080-exec-8] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:12:57.282  INFO 14168 --- [http-nio-8080-exec-3] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:19:27.429 ERROR 14168 --- [http-nio-8080-exec-6] c.b.r.security.JWTTokenProvider          : JWT expired at 2022-02-06T22:15:34Z. Current time: 2022-02-06T22:19:27Z, a difference of 233428 milliseconds.  Allowed clock skew: 0 milliseconds.
+2022-02-06 22:19:27.429 ERROR 14168 --- [http-nio-8080-exec-5] c.b.r.security.JWTTokenProvider          : JWT expired at 2022-02-06T22:15:34Z. Current time: 2022-02-06T22:19:27Z, a difference of 233423 milliseconds.  Allowed clock skew: 0 milliseconds.
+2022-02-06 22:19:27.432 ERROR 14168 --- [http-nio-8080-exec-7] c.b.r.security.JWTTokenProvider          : JWT expired at 2022-02-06T22:15:34Z. Current time: 2022-02-06T22:19:27Z, a difference of 233432 milliseconds.  Allowed clock skew: 0 milliseconds.
+2022-02-06 22:19:40.049  INFO 14168 --- [http-nio-8080-exec-7] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:19:41.302  INFO 14168 --- [http-nio-8080-exec-8] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:19:50.735  INFO 14168 --- [http-nio-8080-exec-1] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:19:51.379  INFO 14168 --- [http-nio-8080-exec-5] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:19:51.684  INFO 14168 --- [http-nio-8080-exec-3] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:19:53.237  INFO 14168 --- [http-nio-8080-exec-7] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:19:53.633  INFO 14168 --- [http-nio-8080-exec-2] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:19:53.991  INFO 14168 --- [http-nio-8080-exec-1] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:19:55.084  INFO 14168 --- [http-nio-8080-exec-5] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:19:55.487  INFO 14168 --- [http-nio-8080-exec-3] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:19:55.947  INFO 14168 --- [http-nio-8080-exec-7] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:19:56.498  INFO 14168 --- [http-nio-8080-exec-2] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:19:56.982  INFO 14168 --- [http-nio-8080-exec-1] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:19:57.493  INFO 14168 --- [http-nio-8080-exec-5] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:19:57.906  INFO 14168 --- [http-nio-8080-exec-3] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:19:58.424  INFO 14168 --- [http-nio-8080-exec-7] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:19:59.141  INFO 14168 --- [http-nio-8080-exec-2] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:25:00.405  INFO 14168 --- [http-nio-8080-exec-5] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:25:13.511  INFO 14168 --- [http-nio-8080-exec-10] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:25:18.899  INFO 14168 --- [http-nio-8080-exec-4] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:25:19.733  INFO 14168 --- [http-nio-8080-exec-6] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:25:32.585  INFO 14168 --- [http-nio-8080-exec-3] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:26:09.906  INFO 14168 --- [http-nio-8080-exec-4] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:26:20.640  INFO 14168 --- [http-nio-8080-exec-7] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:26:21.380  INFO 14168 --- [http-nio-8080-exec-2] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:26:42.019  INFO 14168 --- [http-nio-8080-exec-8] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:26:50.193  INFO 14168 --- [http-nio-8080-exec-10] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:27:57.423  INFO 14168 --- [http-nio-8080-exec-6] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:28:01.723  INFO 14168 --- [http-nio-8080-exec-5] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:28:02.948  INFO 14168 --- [http-nio-8080-exec-7] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:28:03.459  INFO 14168 --- [http-nio-8080-exec-1] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:28:03.961  INFO 14168 --- [http-nio-8080-exec-3] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:28:04.465  INFO 14168 --- [http-nio-8080-exec-6] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:28:09.126  INFO 14168 --- [http-nio-8080-exec-2] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:28:24.344  INFO 14168 --- [http-nio-8080-exec-3] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:28:25.234  INFO 14168 --- [http-nio-8080-exec-6] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:28:25.971  INFO 14168 --- [http-nio-8080-exec-10] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:29:50.587  INFO 14168 --- [http-nio-8080-exec-3] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:29:55.317  INFO 14168 --- [http-nio-8080-exec-5] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:30:53.897  INFO 14168 --- [http-nio-8080-exec-9] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:31:33.704  INFO 14168 --- [http-nio-8080-exec-4] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:31:41.986  INFO 14168 --- [http-nio-8080-exec-8] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:31:44.216  INFO 14168 --- [http-nio-8080-exec-1] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:32:40.074  INFO 14168 --- [http-nio-8080-exec-7] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:32:43.866  INFO 14168 --- [http-nio-8080-exec-2] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:32:46.455  INFO 14168 --- [http-nio-8080-exec-5] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:32:47.809  INFO 14168 --- [http-nio-8080-exec-10] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:32:53.242  INFO 14168 --- [http-nio-8080-exec-8] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:33:11.807  INFO 14168 --- [http-nio-8080-exec-6] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:33:36.341  INFO 14168 --- [http-nio-8080-exec-10] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:33:40.400  INFO 14168 --- [http-nio-8080-exec-4] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:33:45.212  INFO 14168 --- [http-nio-8080-exec-9] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:34:51.985  INFO 14168 --- [http-nio-8080-exec-10] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:34:55.655  INFO 14168 --- [http-nio-8080-exec-5] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:34:57.988  INFO 14168 --- [http-nio-8080-exec-8] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:35:10.140  INFO 14168 --- [http-nio-8080-exec-2] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:35:13.581  INFO 14168 --- [http-nio-8080-exec-10] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:35:14.961  INFO 14168 --- [http-nio-8080-exec-1] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:35:19.226  INFO 14168 --- [http-nio-8080-exec-5] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:35:20.143  INFO 14168 --- [http-nio-8080-exec-8] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:35:21.512  INFO 14168 --- [http-nio-8080-exec-2] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:35:25.599  INFO 14168 --- [http-nio-8080-exec-10] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:35:40.347  INFO 14168 --- [http-nio-8080-exec-5] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:35:43.526  INFO 14168 --- [http-nio-8080-exec-6] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:35:47.307  INFO 14168 --- [http-nio-8080-exec-4] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:35:47.784  INFO 14168 --- [http-nio-8080-exec-8] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:35:49.391  INFO 14168 --- [http-nio-8080-exec-3] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:35:50.423  INFO 14168 --- [http-nio-8080-exec-2] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:35:51.407  INFO 14168 --- [http-nio-8080-exec-6] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:35:54.866  INFO 14168 --- [http-nio-8080-exec-8] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:36:02.279  INFO 14168 --- [http-nio-8080-exec-4] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:36:09.331  INFO 14168 --- [http-nio-8080-exec-3] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:37:04.087  INFO 14168 --- [http-nio-8080-exec-8] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:37:06.360  INFO 14168 --- [http-nio-8080-exec-9] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:37:07.713  INFO 14168 --- [http-nio-8080-exec-5] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:37:09.163  INFO 14168 --- [http-nio-8080-exec-6] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:37:12.435  INFO 14168 --- [http-nio-8080-exec-4] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:37:14.187  INFO 14168 --- [http-nio-8080-exec-3] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:37:15.679  INFO 14168 --- [http-nio-8080-exec-7] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:37:16.312  INFO 14168 --- [http-nio-8080-exec-1] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:37:22.677  INFO 14168 --- [http-nio-8080-exec-8] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:37:35.879  INFO 14168 --- [http-nio-8080-exec-3] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:37:38.860  INFO 14168 --- [http-nio-8080-exec-7] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:37:39.448  INFO 14168 --- [http-nio-8080-exec-1] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:37:40.463  INFO 14168 --- [http-nio-8080-exec-2] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:37:40.839  INFO 14168 --- [http-nio-8080-exec-4] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:37:42.261  INFO 14168 --- [http-nio-8080-exec-5] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:37:43.263  INFO 14168 --- [http-nio-8080-exec-6] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:39:36.465  INFO 14168 --- [http-nio-8080-exec-4] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:39:40.085  INFO 14168 --- [http-nio-8080-exec-7] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:39:44.494  INFO 14168 --- [http-nio-8080-exec-1] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:40:11.982  INFO 14168 --- [http-nio-8080-exec-8] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:40:16.645  INFO 14168 --- [http-nio-8080-exec-7] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:40:18.251  INFO 14168 --- [http-nio-8080-exec-1] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:40:20.225  INFO 14168 --- [http-nio-8080-exec-2] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:40:22.548  INFO 14168 --- [http-nio-8080-exec-9] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:40:25.623  INFO 14168 --- [http-nio-8080-exec-8] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:40:26.580  INFO 14168 --- [http-nio-8080-exec-7] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:40:52.684  INFO 14168 --- [http-nio-8080-exec-10] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:40:55.551  INFO 14168 --- [http-nio-8080-exec-8] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:40:56.805  INFO 14168 --- [http-nio-8080-exec-7] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:41:08.456  INFO 14168 --- [http-nio-8080-exec-2] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:41:12.950  INFO 14168 --- [http-nio-8080-exec-8] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:41:14.013  INFO 14168 --- [http-nio-8080-exec-7] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:41:15.615  INFO 14168 --- [http-nio-8080-exec-1] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:41:16.968  INFO 14168 --- [http-nio-8080-exec-9] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:41:19.933  INFO 14168 --- [http-nio-8080-exec-5] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:41:26.929  INFO 14168 --- [http-nio-8080-exec-6] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:41:33.543  INFO 14168 --- [http-nio-8080-exec-3] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:44:59.141  INFO 14168 --- [http-nio-8080-exec-10] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:45:04.225  INFO 14168 --- [http-nio-8080-exec-1] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:45:05.081  INFO 14168 --- [http-nio-8080-exec-9] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:45:07.669  INFO 14168 --- [http-nio-8080-exec-2] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:45:08.522  INFO 14168 --- [http-nio-8080-exec-5] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:46:41.956  INFO 14168 --- [http-nio-8080-exec-9] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:46:49.683  INFO 14168 --- [http-nio-8080-exec-3] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:51:05.157  INFO 14168 --- [http-nio-8080-exec-1] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:51:08.187  INFO 14168 --- [http-nio-8080-exec-5] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:51:09.191  INFO 14168 --- [http-nio-8080-exec-10] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:51:10.828  INFO 14168 --- [http-nio-8080-exec-6] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:51:12.113  INFO 14168 --- [http-nio-8080-exec-2] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:51:13.781  INFO 14168 --- [http-nio-8080-exec-9] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:51:16.333  INFO 14168 --- [http-nio-8080-exec-7] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:51:17.460  INFO 14168 --- [http-nio-8080-exec-4] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:51:17.850  INFO 14168 --- [http-nio-8080-exec-1] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:51:18.291  INFO 14168 --- [http-nio-8080-exec-8] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:51:18.695  INFO 14168 --- [http-nio-8080-exec-9] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:51:19.868  INFO 14168 --- [http-nio-8080-exec-7] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:51:54.872  INFO 14168 --- [http-nio-8080-exec-1] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:51:57.668  INFO 14168 --- [http-nio-8080-exec-10] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:51:58.392  INFO 14168 --- [http-nio-8080-exec-6] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:51:59.138  INFO 14168 --- [http-nio-8080-exec-2] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:52:00.584  INFO 14168 --- [http-nio-8080-exec-8] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:52:00.900  INFO 14168 --- [http-nio-8080-exec-1] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:52:04.238  INFO 14168 --- [http-nio-8080-exec-2] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:52:06.795  INFO 14168 --- [http-nio-8080-exec-10] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:52:13.429  INFO 14168 --- [http-nio-8080-exec-3] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:52:53.397  INFO 14168 --- [http-nio-8080-exec-2] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:54:07.407  INFO 14168 --- [http-nio-8080-exec-7] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:54:16.538  INFO 14168 --- [http-nio-8080-exec-5] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:54:16.930  INFO 14168 --- [http-nio-8080-exec-1] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:54:18.329  INFO 14168 --- [http-nio-8080-exec-6] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:54:49.249  INFO 14168 --- [http-nio-8080-exec-5] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:54:54.211  INFO 14168 --- [http-nio-8080-exec-7] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:55:01.389  INFO 14168 --- [http-nio-8080-exec-2] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:55:16.699  INFO 14168 --- [http-nio-8080-exec-10] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:55:24.179  INFO 14168 --- [http-nio-8080-exec-5] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:55:57.830  INFO 14168 --- [http-nio-8080-exec-6] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:56:03.027  INFO 14168 --- [http-nio-8080-exec-3] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:56:04.156  INFO 14168 --- [http-nio-8080-exec-7] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:56:04.938  INFO 14168 --- [http-nio-8080-exec-8] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:57:10.900  INFO 14168 --- [http-nio-8080-exec-6] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:57:17.030  INFO 14168 --- [http-nio-8080-exec-7] c.b.r.service.TrassirChannelService      : null
+2022-02-06 22:57:23.080  INFO 14168 --- [http-nio-8080-exec-8] c.b.r.controller.RebootController        : [true, false]
