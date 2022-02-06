@@ -20,7 +20,6 @@ import java.util.Collections;
 
 public class JWTAuthenticationFilter extends OncePerRequestFilter {
 
-
     /* логгер по этому классу */
     //todo посмотреть, надо ли менять реализацию,
     // так как у меня уже подключен собственный логгер у всего приложения (RebootingCamerasApplication.class)

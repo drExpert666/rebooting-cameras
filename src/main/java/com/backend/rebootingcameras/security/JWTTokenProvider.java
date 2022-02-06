@@ -11,6 +11,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
+/** класс по созданию и проверке токенов  */
 @Component
 public class JWTTokenProvider {
 
