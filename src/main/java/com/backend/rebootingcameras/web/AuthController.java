@@ -51,6 +51,7 @@ public class AuthController {
         this.userService = userService;
     }
 
+    @CrossOrigin
     @PostMapping("/signin")
     public ResponseEntity<Object> authenticateUser(@Valid @RequestBody LoginRequest loginRequest, BindingResult bindingResult) {
         ResponseEntity<Object> errors = responseErrorValidations.mapValidationService(bindingResult);
