@@ -3,9 +3,11 @@ package com.backend.rebootingcameras.trassir_models;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.experimental.Accessors;
 
 import javax.persistence.*;
 
+@Accessors(chain = true)
 @Entity
 @Data
 @NoArgsConstructor
@@ -14,7 +16,7 @@ import javax.persistence.*;
 public class TrassirUserRightsInfo {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "guid")
     private String guid;
 
@@ -22,7 +24,7 @@ public class TrassirUserRightsInfo {
     private String userName;
 
     @Column(name = "base_rights")
-    private String baseRights;
+    private Integer baseRights;
 
     @Column(name = "acl")
     private String acl;

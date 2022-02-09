@@ -17,7 +17,7 @@ public class PathForRequest {
     public final static String STRING_DEVICE_MODEL =  "/model";
 
     /* заполнение данных о юзерах и правах юзера */
-    public final static String STRING_USER_LIST =  "/settings/users/"; //список юзеров на сервере
+    public final static String STRING_USER_LIST =  "settings/users/"; //список юзеров на сервере
     public final static String STRING_BASE_RIGHTS =  "base_rights"; //список базовых прав юзера
     public final static String STRING_ACL_RIGHTS =  "acl"; //список дополнительных прав юзера
 
