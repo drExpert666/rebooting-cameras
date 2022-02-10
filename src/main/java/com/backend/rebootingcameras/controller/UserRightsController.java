@@ -1,7 +1,6 @@
 package com.backend.rebootingcameras.controller;
 
 import com.backend.rebootingcameras.data.PathForRequest;
-import com.backend.rebootingcameras.search.UserSearchValues;
 import com.backend.rebootingcameras.service.TrassirChannelService;
 import com.backend.rebootingcameras.service.TrassirServerService;
 import com.backend.rebootingcameras.service.UserRightsService;
@@ -63,12 +62,12 @@ public class UserRightsController {
     }
 
 
-    @Scheduled(initialDelay = 1000, fixedDelayString = "PT10S")
+    @Scheduled(initialDelay = 1000, fixedDelayString = "PT20S")
     public void startCollectUserRights() {
         System.out.println("----------------------------------------");
         System.out.println("Начало сбора информации о пользователях");
         /* записываю данные о сервере из БД в переменную */
-        String guidServer = "gZZKuo60";//todo получить guid сервера из БД
+        String guidServer = "H5hmIlE0";//todo получить guid сервера из БД
         TrassirServerInfo trassirServer = trassirServerService.findByGuid(guidServer);
 
         /* получаю айди пользователей из трассира */
@@ -103,17 +102,25 @@ public class UserRightsController {
         /* заполняю данные о каждом пользователе из трассира */
         if (usersGuid != null) {
             for (String userId : usersGuid) {
-                /*  */
+                /* получаю базовые права пользователя */
                 Integer baseRights = getBaseUserRights(userId, trassirServer);
-                /* */
+                /* получаю дополнительные права пользователя */
                 String aclRights = getAclUserRights(userId, trassirServer);
+                /* получаю тип пользователя */
+                String userType = getUserType(userId, trassirServer);
+                /* получаю группу пользователя */
+                String userGroup = null;
+                if (userType.equals("User")) {
+                  userGroup = getUserGroup(userId, trassirServer);
+                }
                 /* получаю имя пользователя */
                 String userName = getUserName(userId, trassirServer);
                 if (userId != null && baseRights != null && aclRights != null) {
                     System.out.println("----------------------------");
                     System.out.println("Добавляю userId: " + userId);
                     TrassirUserRightsInfo trassirUserRights =
-                            new TrassirUserRightsInfo(userId, userName, baseRights, aclRights, null, trassirServer.getGuid());
+                            new TrassirUserRightsInfo(userId, userName, baseRights, aclRights, null,
+                                    trassirServer.getGuid(), userType, userGroup);
                     System.out.println("----------------------------");
                     System.out.println("Присвоены значения: " + trassirUserRights);
                     userRights.add(trassirUserRights);
@@ -130,28 +137,48 @@ public class UserRightsController {
         System.out.println("-------------------------------------");
         System.out.println("Сохраняю в БД и получаю обратно список: " + trassirUserRightsInfos);
         try {
-            Thread.sleep(2000);
+            Thread.sleep(1000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+
+        /* добавляю каналы */
         trassirUserRightsInfos.forEach(ur -> {
-            String channels = parserUserRights.getChannelsFromUserTrassir(ur.getBaseRights(), ur.getAcl());
-            System.out.println("-----------------------------------------");
-            System.out.println("Распарсенная строка каналов: " + channels);
-            ur.setChannels(channels);
-            System.out.println("------------------------------------");
-            System.out.println("Список каналов пользователя " + ur.getGuid() + " " + ur.getUserName() + ": " + ur.getChannels());
-            System.out.println("Количество каналов пользователя " + ur.getGuid() + " " + ur.getUserName() + ": " +
-                    ((ur.getChannels().length() == 0) ? 0 : (ur.getChannels().split(",").length)));
-            /* записываю список каналов в БД */
-            userRightsService.update(ur);
+            if (ur.getGroupId() == null) {
+                String channels = parserUserRights.getChannelsFromUserTrassir(ur.getBaseRights(), ur.getAcl());
+                System.out.println("-----------------------------------------");
+                System.out.println("Распарсенная строка каналов: " + channels);
+                ur.setChannels(channels);
+                System.out.println("------------------------------------");
+                System.out.println("Список каналов пользователя " + ur.getGuid() + " " + ur.getUserName() + ": " + ur.getChannels());
+                System.out.println("Количество каналов пользователя " + ur.getGuid() + " " + ur.getUserName() + ": " +
+                        ((ur.getChannels().length() == 0) ? 0 : (ur.getChannels().split(",").length)));
+                /* записываю список каналов в БД */
+                userRightsService.update(ur);
+            } else {
+                List<TrassirUserRightsInfo> usersRightsInfo = userRightsService.findByGroupGuid(ur.getGroupId());
+                TrassirUserRightsInfo userGroup = userRightsService.findById(ur.getGroupId());
+                System.out.println(userGroup);
+                for (TrassirUserRightsInfo userRightsInfo : usersRightsInfo) {
+                    String channels = userGroup.getChannels();
+                    if (userRightsInfo.getAcl() == null || userRightsInfo.getAcl().trim().length() == 0) {
+                        userRightsInfo.setChannels(channels);
+                        System.out.println("----------------------------------");
+                        System.out.println("Обновляю список каналов :" + userRightsInfo.getChannels());
+                        userRightsService.update(userRightsInfo);
+                    } else {
+                        System.out.println("----------------------------------");
+                        System.out.println("Обработка в процессе реализации");
+                    }
+                }
+
+            }
         });
     }
 
 
     /* получаю айди пользователей из трассира */
     private List<String> fillUserRights(TrassirServerInfo trassirServer) {
-        //todo подумать что лучше делать, если время сессии истекло
         List<String> usersGuid;
         if (trassirController.checkLastSessionUpdate(trassirServer)) {
             String url = String.format(PathForRequest.STRING_FOR_FORMAT,
@@ -184,7 +211,7 @@ public class UserRightsController {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        return usersGuid; //todo тут возвращется null не из-за ошибки, а из-за просроченной сессии, нужно изменить
+        return usersGuid;
     }
 
     /* получаю базовые права пользователя */
@@ -239,7 +266,6 @@ public class UserRightsController {
         return aclRights;  //todo тут возвращется null не из-за ошибки, а из-за просроченной сессии, нужно изменить
     }
 
-
     /* получаю имя пользователя */
     private String getUserName(String guid, TrassirServerInfo trassirServer) {
         String name;
@@ -266,14 +292,68 @@ public class UserRightsController {
         return name;  //todo тут возвращется null не из-за ошибки, а из-за просроченной сессии, нужно изменить
     }
 
+    /* получаю тип пользователя */
+    private String getUserType(String guid, TrassirServerInfo trassirServer) {
+        String type;
+        if (trassirController.checkLastSessionUpdate(trassirServer)) {
+            String url = String.format(PathForRequest.STRING_FOR_FORMAT,
+                    trassirServer.getServerIP(),
+                    PathForRequest.STRING_USER_LIST + guid + "/",
+                    trassirServer.getSessionId());
+            UserType userType = restTemplate.getForObject(url, UserType.class);
+            System.out.println(userType);
+            if (userType != null && userType.getError_code() == null && userType.getValues() != null) {
+                type = userType.getType();
+            } else {
+                type = null;
+            }
+        } else {
+            type = null;
+        }
+        try {
+            Thread.sleep(20);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return type;  //todo тут возвращется null не из-за ошибки, а из-за просроченной сессии, нужно изменить
+    }
+
+    /* получаю группу пользователя */
+    private String getUserGroup(String guid, TrassirServerInfo trassirServer) {
+        String groupName;
+        if (trassirController.checkLastSessionUpdate(trassirServer)) {
+            String url = String.format(PathForRequest.STRING_FOR_FORMAT,
+                    trassirServer.getServerIP(),
+                    PathForRequest.STRING_USER_LIST + guid + "/" + "group",
+                    trassirServer.getSessionId());
+            UserGroup userGroup = restTemplate.getForObject(url, UserGroup.class);
+            System.out.println(userGroup);
+            if (userGroup != null && userGroup.getError_code() == null && userGroup.getValue() != null
+                    && userGroup.getValue().trim().length() > 0) {
+                groupName = userGroup.getValue();
+            } else {
+                groupName = null;
+            }
+        } else {
+            groupName = null;
+        }
+        try {
+            Thread.sleep(20);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return groupName;  //todo тут возвращется null не из-за ошибки, а из-за просроченной сессии, нужно изменить
+    }
+
+
     /* поиск юзеров по каналу */
     @GetMapping("/find/{id}")
     public List<String> findUsersByChannel(@PathVariable("id") String channelGuid) {
         List<String> usersName = new ArrayList<>();
         System.out.println(channelGuid);
         List<TrassirUserRightsInfo> users = userRightsService.findUsersByChannel(channelGuid);
-        for (TrassirUserRightsInfo user: users
-             ) {
+        for (TrassirUserRightsInfo user : users
+        ) {
             usersName.add(user.getUserName());
         }
         return usersName;

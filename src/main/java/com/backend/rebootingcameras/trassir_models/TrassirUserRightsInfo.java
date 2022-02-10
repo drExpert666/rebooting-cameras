@@ -16,7 +16,6 @@ import javax.persistence.*;
 public class TrassirUserRightsInfo {
 
     @Id
-//    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "guid")
     private String guid;
 
@@ -34,5 +33,11 @@ public class TrassirUserRightsInfo {
 
     @Column(name = "server_guid")
     private String serverGuid;
+
+    @Column(name = "user_type")
+    private String userType;
+
+    @Column(name = "group_id")
+    private String groupId;
 
 }

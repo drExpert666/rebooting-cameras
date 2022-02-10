@@ -21,9 +21,10 @@ public class ServersGuids {
             "O1GNrsQJ",
             "OzItN1TY",
             "iLYCl1AU",
-//            "H5hmIlE0", //todo для тестов убрал
+            "H5hmIlE0", //todo для тестов убрал
             "XmKSynoC",
             "TMWHCE9j",
-            "wBQPMoKQ"};
+//            "wBQPMoKQ"
+    };
     public List<String> serversGuidList = new ArrayList<>(Arrays.asList(serversGuid.clone()));
 }
