@@ -27,4 +27,9 @@ public class UserRightsService {
         return userRightsRepo.saveAll(trassirUserRights);
     }
 
+    @Transactional
+    public List<TrassirUserRightsInfo> findUsersByChannel(String channel) {
+        return userRightsRepo.findUsersByChannel(channel);
+    }
+
 }

@@ -21,7 +21,7 @@ public class ServersGuids {
             "O1GNrsQJ",
             "OzItN1TY",
             "iLYCl1AU",
-            "H5hmIlE0",
+//            "H5hmIlE0", //todo для тестов убрал
             "XmKSynoC",
             "TMWHCE9j",
             "wBQPMoKQ"};
