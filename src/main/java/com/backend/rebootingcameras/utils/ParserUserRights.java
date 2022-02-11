@@ -46,39 +46,19 @@ public class ParserUserRights {
 
         /* получили базовые права пользователя */
         receivedRights = getRights(baseRights);
-        System.out.println(receivedRights);
 
-        /* если базовые права = 0, то любое изменение в сервере, это изначально прибавление */
-//        if (receivedRights == null || receivedRights.size() == 0) {
-//            System.out.println("receivedRights == null");
-//            baseUserRights.put(32, "Просмотр");
-//        }
         /* кладём права в хэшмэп со значениями */
-//        else {
         baseUserRights = new HashMap<>();
             for (Integer right : receivedRights) {
                 baseUserRights.put(right, baseAddedRights.get(right));
             }
-//        }
-
-//        System.out.println("Базовые права пользователя: ");
-//        System.out.println(baseUserRights);
 
         /* парсим полученную строки по запросу к acl */
         List<String> substr = parseRights(aclRights);
-        System.out.println(substr);
 
         /* заполняю дополнительные права пользователя */
         fillUserOptionalRights(substr);
-//        System.out.println("---------------------------------------------------------");
-//        System.out.println("На добавление права пользователя: ");
-//        optionalAddedRights.forEach((k, v) -> System.out.println(k + " " + v));
-//        System.out.println("---------------------------------------------------------");
-//        System.out.println("На удаление права пользователя: ");
-//        optionalDeletedRights.forEach((k, v) -> System.out.println(k + " " + v));
-
         ServersGuids serversGuids = new ServersGuids();
-
 
         List<String> serversLeftAfterUpdate;
         List<String> serversLeft;
@@ -94,47 +74,26 @@ public class ParserUserRights {
            serversLeft = fillUserServersByDeleting(serversGuids.serversGuidList);
            serversLeftAfterUpdate = checkServersWithAllRightsOnAdd(serversLeft);
         }
-        /* оставшиеся сервера у юзера с галочкой "просмотр" на всё сервере */
-//        List<String> serversLeft = fillUserServersByDeleting(serversGuids.serversGuidList);
-//        System.out.println("---------------------------------------------------------");
-//        System.out.println("Получаю список оставшихся в полном доступе (на просмотр) серверов ");
-//        System.out.println(serversLeft);
-//        List<String> serversLeftAfterUpdate = checkServersWithAllRightsOnAdd(serversLeft);
-//        System.out.println("Получаю список оставшихся серверов после доп проверки каналов");
-//        System.out.println(serversLeftAfterUpdate);
 
         //todo тут получить список всех камер из БД по оставшимся серверам
-        System.out.println("---------------------------------------------------------");
-        System.out.println("Получаю список камер на удаление: ");
-        System.out.println(deleteUserChannels());
         List<String> channelsForDelete = deleteUserChannels();
         List<TrassirChannelInfo> channelsFromDB = new ArrayList<>();
         for (String s : serversLeftAfterUpdate) {
             channelsFromDB.addAll(getChannelsByParams(s));
         }
 
-//        System.out.println("---------------------------");
-//        System.out.println("Общее количество камер: " + channelsFromDB.size());
-
         /* удаляю камеры по guid из списка полученного в поле acl */
         List<TrassirChannelInfo> channelsToDelete = new ArrayList<>();
         for (String channelGuid : channelsForDelete) {
             channelGuid = new StringBuilder(channelGuid).delete(0, 18).toString();
             String finalChannelGuid = channelGuid;
-//            System.out.println(finalChannelGuid);
             channelsFromDB.forEach(ch -> {
                 if (ch.getGuidChannel().equals(finalChannelGuid)) {
-//                    System.out.println("---------------------------");
-//                    System.out.println("Удаляю: " + finalChannelGuid);
                     channelsToDelete.add(ch);
                 }
             });
         }
-//        List<TrassirChannelInfo> channelsLeft = new ArrayList<>();
         channelsFromDB.removeAll(channelsToDelete);
-
-//        System.out.println("---------------------------");
-//        System.out.println("Общее количество камер после удаления: " + channelsFromDB.size());
 
         /* добавляю камеры в список камер юзера */
         List<String> channelsGuid = new ArrayList<>();
@@ -147,13 +106,8 @@ public class ParserUserRights {
             }
         });
 
-//        System.out.println("---------------------------");
-//        System.out.println("Список камер для добавления: " + channelsGuid);
-
         List channelsForAdd = getChannelsByChannelGuid(channelsGuid);
         channelsFromDB.addAll(channelsForAdd);
-//        System.out.println("---------------------------");
-//        System.out.println("Общее количество камер после добавления: " + channelsFromDB.size());
 
         StringBuilder builder = new StringBuilder();
         channelsFromDB.forEach(ch -> {
@@ -163,9 +117,7 @@ public class ParserUserRights {
 
         });
         return builder.toString();
-
     }
-
 
     /* получаем список базовых прав юзера */
     private static List<Integer> getRights(long rights) {
@@ -214,35 +166,22 @@ public class ParserUserRights {
 
     /* заполняем список доступных серверов у юзера с галочкой на просмотр у всего сервера*/
     private List<String> fillUserServersByDeleting(List<String> serversGuids) {
-//        System.out.println("-------------------------------");
-//        System.out.println("Всего серверов в доступе: " + serversGuids);
         if (baseUserRights.get(0) != null) {
             optionalDeletedRights.forEach((k, v) -> {
                 /* если в ключе указан только гуид сервера */
                 if (k.length() == 8) {
-//                    System.out.println("-------------------------------");
-//                    System.out.println(getRights(v));
                     List<Integer> rightsForRemove = getRights(v);
                     if (rightsForRemove.contains(32)) {
-//                        System.out.println("Удаляю сервер из доступа (указан только гуид сервера): " + k);
                         serversGuids.remove(k);
-//                        System.out.println("Осталось серверов: ");
-//                        System.out.println(serversGuids);
                     }
                 }
                 /* если в ключе указан только гуид канала () */
                 if (k.length() == 17) {
-//                    System.out.println("-------------------------------");
-//                    System.out.println(getRights(v));
                     List<Integer> rightsForRemove = getRights(v);
                     if (rightsForRemove.contains(32)) {
                         StringBuilder builder = new StringBuilder(k);
                         k = builder.delete(8, 17).toString();
-
-//                        System.out.println("Удаляю сервер из доступа (указана только общая строка канал): " + k);
                         serversGuids.remove(k);
-//                        System.out.println("Осталось серверов: ");
-//                        System.out.println(serversGuids);
                     }
                 }
             });
@@ -253,33 +192,21 @@ public class ParserUserRights {
     /* заполняем список доступных серверов у юзера с галочкой на просмотр у всего сервера*/
     private List<String> fillUserServersByAdding() {
         List<String> serversGuids = new ArrayList<>();
-        System.out.println("-------------------------------");
-        System.out.println("Всего серверов в доступе: НОЛЬ");
             optionalAddedRights.forEach((k, v) -> {
                 /* если в ключе указан только гуид сервера */
                 if (k.length() == 8) {
-                    System.out.println("-------------------------------");
-                    System.out.println(getRights(v));
                     List<Integer> rightsForAdd = getRights(v);
                     if (rightsForAdd.contains(0)) {
-                        System.out.println("Добавляю сервер в доступ (указан только гуид сервера): " + k);
                         serversGuids.add(k);
-                        System.out.println("Стало серверов: " + serversGuids);
                     }
                 }
                 /* если в ключе указан только гуид канала () */
                 if (k.length() == 17) {
-                    System.out.println("-------------------------------");
-                    System.out.println(getRights(v));
                     List<Integer> rightsForAdd = getRights(v);
                     if (rightsForAdd.contains(0)) {
                         StringBuilder builder = new StringBuilder(k);
                         k = builder.delete(8, 17).toString();
-
-                        System.out.println("Добавляю сервер в доступ (указана только общая строка канал): " + k);
                         serversGuids.add(k);
-                        System.out.println("Стало серверов: ");
-                        System.out.println(serversGuids);
                     }
                 }
             });
@@ -306,16 +233,11 @@ public class ParserUserRights {
         optionalAddedRights.forEach((k, v) -> {
             /* если в ключе указан только гуид канала () */
             if (k.length() == 17) {
-//                System.out.println("-------------------------------");
                 List<Integer> rightsForAdd = getRights(v);
                 if (rightsForAdd.contains(0)) {
                     StringBuilder builder = new StringBuilder(k);
                     k = builder.delete(8, 17).toString();
-
-                    System.out.println("Добавляю сервер в доступ (указана только общая строка канал): " + k);
                     serversUserGuid.add(k);
-                    System.out.println("Осталось серверов: ");
-                    System.out.println(serversUserGuid);
                 }
             }
         });
@@ -328,16 +250,11 @@ public class ParserUserRights {
         optionalDeletedRights.forEach((k, v) -> {
             /* если в ключе указан только гуид канала () */
             if (k.length() == 17) {
-//                System.out.println("-------------------------------");
                 List<Integer> rightsForAdd = getRights(v);
                 if (rightsForAdd.contains(32)) {
                     StringBuilder builder = new StringBuilder(k);
                     k = builder.delete(8, 17).toString();
-
-                    System.out.println("Удаляю сервер из доступа (указана только общая строка канал): " + k);
                     serversLeft.remove(k);
-                    System.out.println("Осталось серверов: ");
-                    System.out.println(serversLeft);
                 }
             }
         });
