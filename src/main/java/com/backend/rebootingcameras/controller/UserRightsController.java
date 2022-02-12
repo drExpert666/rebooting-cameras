@@ -333,10 +333,4 @@ public class UserRightsController {
         }
         return usersName;
     }
-    @GetMapping("/user")
-    public String user(Authentication authentication) {
-        System.out.println("Method: getUser() from UserRightController");
-        System.out.println((UserDetails)authentication.getPrincipal());
-        return "User";
-    }
 }
