@@ -3,6 +3,7 @@ package com.backend.rebootingcameras.security;
 public class SecurityConstants {
 
     public static final String SIGN_UP_URLS = "/api/auth/**";
+    public static final String GET_USERS_URLS = "/users/find/**";
 
     /* поля, необходимые для генерации веб-токена */
     public static final String SECRET = "SecretKeyGenJWT";

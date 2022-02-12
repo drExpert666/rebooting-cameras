@@ -58,7 +58,7 @@ public class TrassirController {
     /**
      * планировщик, запускающий сбор статистики с серверов Trassir
      */
-//    @Scheduled(initialDelay = 3000, fixedDelayString = "PT5M")
+//    @Scheduled(initialDelay = 3000, fixedDelayString = "PT10S")
 //    public void startCollectTrassirStats() {
 //
 //        System.out.println("Начало работы планировщика: " + new Date());
@@ -432,7 +432,8 @@ public class TrassirController {
                             server.getGuid() != null ? server.getGuid() : serverFromDb.getGuid(),
                             server.getServerName() != null ? server.getServerName() : serverFromDb.getServerName(),
                             serverFromDb.getServerIP(),
-                            server.getChannelsTotal(), server.getChannelsOnline(), server.getServerStatus(),
+                            server.getChannelsTotal() != null ? server.getChannelsTotal()  : serverFromDb.getChannelsTotal(),
+                            server.getChannelsOnline(), server.getServerStatus(),
                             server.getSessionId(), new Date(), server.getErrorCode()));
                 }
             }

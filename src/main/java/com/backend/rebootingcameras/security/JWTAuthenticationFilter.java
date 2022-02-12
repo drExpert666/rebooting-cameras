@@ -47,8 +47,11 @@ public class JWTAuthenticationFilter extends OncePerRequestFilter {
                 Long userId = jwtTokenProvider.getUserIdFromToken(jwt); // получаем id юзера из токена
                 User userDetails = customUserDetailsService.loadUserById(userId); // получаем юзера по id из БД
 
+                System.out.println(userDetails.getAuthorities());
+
+                System.out.println("Method: doFilterInternal() from JWTAuthenticationFilter" + userDetails);
                 UsernamePasswordAuthenticationToken authenticationToken =
-                        new UsernamePasswordAuthenticationToken(userDetails, null, Collections.emptyList());
+                        new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
 
                 authenticationToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
 

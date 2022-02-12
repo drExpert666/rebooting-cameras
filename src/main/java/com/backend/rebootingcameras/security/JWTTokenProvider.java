@@ -22,6 +22,7 @@ public class JWTTokenProvider {
 
     public String generateToken(Authentication authentication) {
         User user = (User) authentication.getPrincipal();
+        System.out.println("Method: generateToken() from JWTTokenProvider" + user + "" + authentication);
         Date now = new Date(System.currentTimeMillis());
         Date expiryDate = new Date(now.getTime() + SecurityConstants.EXPIRATION_TIME); // вычисляем время, когда закончится действие токена
 
@@ -30,6 +31,7 @@ public class JWTTokenProvider {
         Map<String, Object> claimsMap = new HashMap<>();
         claimsMap.put("id", userId);
         claimsMap.put("username", user.getUsername());
+        claimsMap.put("authorities", user.getAuthorities());
 
         // Jwts прописали отельно в зависимости
         return Jwts.builder()
@@ -44,6 +46,7 @@ public class JWTTokenProvider {
     /* проверяем пришедший токен */
     public boolean validateToken(String token) {
         try {
+            System.out.println("Method: validateToken() from JWTTokenProvider " + token);
             Jwts.parser()
                     .setSigningKey(SecurityConstants.SECRET) // декодируем блягодаря нашему секретному слову
                     .parseClaimsJws(token); // берём все клэймсы, записанные в токен при передаче
@@ -60,10 +63,13 @@ public class JWTTokenProvider {
 
     /* берем id из токена */
     public Long getUserIdFromToken(String token) {
+
+        System.out.println("Method: getUserIdFromToken from JWTTokenProvider " + token);
         Claims claims = Jwts.parser()
                 .setSigningKey(SecurityConstants.SECRET)
                 .parseClaimsJws(token)
                 .getBody();
+        System.out.println(claims);
         String id = (String) claims.get("id");
         return Long.parseLong(id);
     }

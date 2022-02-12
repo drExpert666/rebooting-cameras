@@ -28,19 +28,25 @@ public class CustomUserDetailsService implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         User user = userRepository.findUserByUsername(username)
                 .orElseThrow(() -> new UsernameNotFoundException("Username not found: " + username));
-        System.out.println(user);
+        System.out.println("Метод: loadUserByUsername" + user);
         return build(user); // возвращаем юзера с листом authorities
     }
 
     public User loadUserById(Long id) {
-        return userRepository.findUserById(id).orElse(null);
+        User user = userRepository.findUserById(id).orElse(null);
+        if (user != null) {
+            user.setAuthorities(user.getRoles().stream() // преобразуем сет ролей юзера в стрим
+                    .map(role -> new SimpleGrantedAuthority(role.name())) // для каждой роли создаём новый элемент SimpleGrantedAuthority
+                    .collect(Collectors.toList()));
+        }
+        return user;
     }
 
     public static User build(User user) {
         List<GrantedAuthority> authorities = user.getRoles().stream() // преобразуем сет ролей юзера в стрим
                 .map(role -> new SimpleGrantedAuthority(role.name())) // для каждой роли создаём новый элемент SimpleGrantedAuthority
                 .collect(Collectors.toList()); // и собираём всё в лист
-        System.out.println(authorities);
+        System.out.println("Роли юзера: " + authorities);
         return new User(
                 user.getId(),
                 user.getUsername(),

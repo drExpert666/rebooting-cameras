@@ -1,5 +1,6 @@
 package com.backend.rebootingcameras.config;
 
+import com.backend.rebootingcameras.entity.enums.ERole;
 import com.backend.rebootingcameras.security.JWTAuthenticationEntryPoint;
 import com.backend.rebootingcameras.security.JWTAuthenticationFilter;
 import com.backend.rebootingcameras.security.SecurityConstants;
@@ -33,9 +34,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         this.customUserDetailsService = customUserDetailsService;
     }
 
-    /*  */
+    /* передаём нашего созданного/найденного из БД в классе CustomUserDetailsService */
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+        System.out.println("Method: configure(AuthenticationManagerBuilder auth) from SecurityConfig");
         auth.userDetailsService(customUserDetailsService).passwordEncoder(bCryptPasswordEncoder());
     }
 
@@ -45,14 +47,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.cors().and().csrf().disable()
                 .exceptionHandling() // обработчик ошибок
-                .authenticationEntryPoint(jwtAuthenticationEntryPoint) // передаём класс, который будет обрабатывать ошибки
+                .authenticationEntryPoint(jwtAuthenticationEntryPoint) // передаём класс, в задаём поля, которые будут отображаться при ошибке
                 .and().sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
                 .authorizeRequests()
                 .antMatchers(SecurityConstants.SIGN_UP_URLS).permitAll() // разрешаем доступ всем к этим эндпоинтам "/api/auth/**" и всё что за ним
+                .antMatchers(SecurityConstants.GET_USERS_URLS).hasAuthority("ROLE_ADMIN")
                 .anyRequest().authenticated(); // все остальные url должны быть авторизированы
-
+        /* видимо добавляем фильтр перед любыйм запросом (проверка jw-токенов)  */
+        System.out.println("Method: configure(HttpSecurity http) from SecurityConfig");
         http.addFilterBefore(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
     }
 

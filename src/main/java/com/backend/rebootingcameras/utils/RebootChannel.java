@@ -108,6 +108,8 @@ public class RebootChannel implements Runnable {
         } catch (InterruptedException e) {
             e.printStackTrace();
             wasErrorOnExecuteSnmp = true;
+        } finally {
+            process.destroy(); //todo включить блок finally если необходимо
         }
 
 
