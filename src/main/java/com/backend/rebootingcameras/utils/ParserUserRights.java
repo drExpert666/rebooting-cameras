@@ -30,8 +30,8 @@ public class ParserUserRights {
     private HashMap<Integer, String> baseUserRights = new HashMap<>();
 
     /* добавленные/удалённые значения */
-    private HashMap<String, Long> optionalAddedRights = new HashMap<>();
-    private HashMap<String, Long> optionalDeletedRights = new HashMap<>();
+    private HashMap<String, Long> aclAddedRights = new HashMap<>();
+    private HashMap<String, Long> aclDeletedRights = new HashMap<>();
 
     private List<Integer> receivedRights = new ArrayList<>();
 
@@ -63,14 +63,12 @@ public class ParserUserRights {
         List<String> serversLeftAfterUpdate;
         List<String> serversLeft;
         if (baseRights == 0) {
-            /* оставшиеся сервера у юзера с галочкой "просмотр" на всё сервере */
+            /* оставшиеся сервера у юзера с галочкой "просмотр" на всём сервере */
            serversLeft = fillUserServersByAdding();
-
-          serversLeftAfterUpdate = checkServersWithAllRightsOnDelete(serversLeft);
+           serversLeftAfterUpdate = checkServersWithAllRightsOnDelete(serversLeft);
         }
-
         else {
-            /* оставшиеся сервера у юзера с галочкой "просмотр" на всё сервере */
+            /* оставшиеся сервера у юзера с галочкой "просмотр" на всём сервере */
            serversLeft = fillUserServersByDeleting(serversGuids.serversGuidList);
            serversLeftAfterUpdate = checkServersWithAllRightsOnAdd(serversLeft);
         }
@@ -97,7 +95,7 @@ public class ParserUserRights {
 
         /* добавляю камеры в список камер юзера */
         List<String> channelsGuid = new ArrayList<>();
-        optionalAddedRights.forEach((k,v) -> {
+        aclAddedRights.forEach((k,v) -> {
             List<Integer> rightsForAdd = getRights(v);
             if (rightsForAdd.contains(0) && k.contains("/channels") && k.length() > 17) {
                 StringBuilder builder = new StringBuilder(k);
@@ -149,16 +147,16 @@ public class ParserUserRights {
 
     /* заполняем права (добавленные и удалённые) */
     private void fillUserOptionalRights(List<String> userOptionalRights) {
-        optionalAddedRights = new HashMap<>();
-        optionalDeletedRights = new HashMap<>();
+        aclAddedRights = new HashMap<>();
+        aclDeletedRights = new HashMap<>();
         if (userOptionalRights != null) {
             userOptionalRights.forEach(r -> {
                 String key = r.split(",")[0];
                 Long value = Long.valueOf(r.split(",")[1]);
                 if (value != null && value < 2000) {
-                    optionalAddedRights.put(key, value);
+                    aclAddedRights.put(key, value);
                 } else {
-                    optionalDeletedRights.put(key, value);
+                    aclDeletedRights.put(key, value);
                 }
             });
         }
@@ -167,7 +165,7 @@ public class ParserUserRights {
     /* заполняем список доступных серверов у юзера с галочкой на просмотр у всего сервера*/
     private List<String> fillUserServersByDeleting(List<String> serversGuids) {
         if (baseUserRights.get(0) != null) {
-            optionalDeletedRights.forEach((k, v) -> {
+            aclDeletedRights.forEach((k, v) -> {
                 /* если в ключе указан только гуид сервера */
                 if (k.length() == 8) {
                     List<Integer> rightsForRemove = getRights(v);
@@ -192,7 +190,7 @@ public class ParserUserRights {
     /* заполняем список доступных серверов у юзера с галочкой на просмотр у всего сервера*/
     private List<String> fillUserServersByAdding() {
         List<String> serversGuids = new ArrayList<>();
-            optionalAddedRights.forEach((k, v) -> {
+            aclAddedRights.forEach((k, v) -> {
                 /* если в ключе указан только гуид сервера */
                 if (k.length() == 8) {
                     List<Integer> rightsForAdd = getRights(v);
@@ -216,7 +214,7 @@ public class ParserUserRights {
     /* заполняем список камер на удаление */
     private List<String> deleteUserChannels() {
         List<String> channelsForRemove = new ArrayList<>();
-            optionalDeletedRights.forEach((k, v) -> {
+            aclDeletedRights.forEach((k, v) -> {
                 if (k.contains("/channels") && k.length() > 17) {
                     List<Integer> rightsForRemove = getRights(v);
                     if (rightsForRemove.contains(32)) {
@@ -227,11 +225,11 @@ public class ParserUserRights {
         return channelsForRemove;
     }
 
-    /* делаю запрос к БД на получение всех доступных камер с полным доступом на просмотр у сервера */
+
+    /* проверяю, есть ли в правах на добавление поле с указанием всех каналов на просмотр (формат i8MTdNGd/channels) */
     private List<String> checkServersWithAllRightsOnAdd(List<String> serversUserGuid) {
-        /* проверяю, есть ли в правах на добавление поле с указанием всех каналов на просмотр (формат i8MTdNGd/channels) */
-        optionalAddedRights.forEach((k, v) -> {
-            /* если в ключе указан только гуид канала () */
+        aclAddedRights.forEach((k, v) -> {
+            /* если в ключе указан только гуид канала (формат i8MTdNGd/channels) */
             if (k.length() == 17) {
                 List<Integer> rightsForAdd = getRights(v);
                 if (rightsForAdd.contains(0)) {
@@ -244,14 +242,14 @@ public class ParserUserRights {
         return serversUserGuid;
     }
 
-    /* делаю запрос к БД на получение всех доступных камер с полным доступом на просмотр у сервера если базовые права были 0*/
+
+    /* проверяю, есть ли в правах на удаление поле с указанием всех каналов на просмотр (формат i8MTdNGd/channels) */
     private List<String> checkServersWithAllRightsOnDelete(List<String> serversLeft) {
-        /* проверяю, есть ли в правах на добавление поле с указанием всех каналов на просмотр (формат i8MTdNGd/channels) */
-        optionalDeletedRights.forEach((k, v) -> {
-            /* если в ключе указан только гуид канала () */
+        aclDeletedRights.forEach((k, v) -> {
+            /* если в ключе указан только гуид канала (формат i8MTdNGd/channels) */
             if (k.length() == 17) {
-                List<Integer> rightsForAdd = getRights(v);
-                if (rightsForAdd.contains(32)) {
+                List<Integer> rightsForRemove = getRights(v);
+                if (rightsForRemove.contains(32)) {
                     StringBuilder builder = new StringBuilder(k);
                     k = builder.delete(8, 17).toString();
                     serversLeft.remove(k);

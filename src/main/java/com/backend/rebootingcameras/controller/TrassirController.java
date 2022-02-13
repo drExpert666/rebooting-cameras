@@ -149,15 +149,12 @@ public class TrassirController {
                         /* получаем модель девайса */
                         String deviceModelValue = getDeviceModel(serverIp, deviceGuidValue, SID);
 
-
                         TrassirChannelInfo trassirChannel = new TrassirChannelInfo(server,
                                 guidChannel, channelName,
                                 channelStatus,
                                 deviceGuidValue, deviceIpValue, deviceModelValue, new Date(), null, null, null, false);
-
                         channelsFromTrassir.add(trassirChannel);
                         System.out.println(trassirChannel);
-
                     }
                     threadSleepWithTryCatchBlock(30);
                 }
@@ -329,13 +326,11 @@ public class TrassirController {
 
         for (TrassirServerInfo server : servers) {
             TrassirSession session;
-
             //todo подумать над реализацией, т.к. в данный момент сессия сохранена на 13 минут в БД, и если связь теряется в этом промежутке,
             // то проверка try-catch уже не срабатывает (пока только на ум приходит получение сессии каждый раз)
             if (!checkLastSessionUpdate(server)) {
                 System.out.println("Время сессии " + server.getServerName() + " истекло, нужно обновить");
                 System.out.println("-----------------------------------------");
-
                 try {
                     session = getSession(server);
                 } catch (ResourceAccessException e) {
@@ -397,9 +392,7 @@ public class TrassirController {
 
             /* усыпляем поток перед следующим вызовом */
             threadSleepWithTryCatchBlock(30);
-
         }
-
     }
 
     /**
