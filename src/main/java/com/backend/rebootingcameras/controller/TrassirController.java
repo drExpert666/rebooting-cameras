@@ -466,10 +466,8 @@ public class TrassirController {
 
             long result = calendarNewTime.getTimeInMillis() - calendarLastUpdateTime.getTimeInMillis();
             if (result > PathForRequest.TIME_BETWEEN_NOW_AND_GET_SESSION) {
-                System.out.println("true " + result / 60000 + " минут");
                 return false;
             } else {
-                System.out.println("else " + result / 60000 + " минут");
                 return true;
             }
         }
@@ -482,8 +480,10 @@ public class TrassirController {
 
         TrassirSession session = restTemplate.getForObject(getSessionUrl, TrassirSession.class);
 
-        server.setSessionId(session.getSid());
-        server.setLustUpdate(new Date()); // время последнего обновления
+        if (session != null) {
+            server.setSessionId(session.getSid());
+            server.setLustUpdate(new Date()); // время последнего обновления
+        }
 
         return session;
     }
