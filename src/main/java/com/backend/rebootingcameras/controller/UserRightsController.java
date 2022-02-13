@@ -1,6 +1,7 @@
 package com.backend.rebootingcameras.controller;
 
 import com.backend.rebootingcameras.data.PathForRequest;
+import com.backend.rebootingcameras.search.UserSearchValues;
 import com.backend.rebootingcameras.service.TrassirChannelService;
 import com.backend.rebootingcameras.service.TrassirServerService;
 import com.backend.rebootingcameras.service.UserRightsService;
@@ -10,9 +11,9 @@ import com.backend.rebootingcameras.trassir_requests.*;
 import com.backend.rebootingcameras.utils.ParserUserRights;
 import com.backend.rebootingcameras.utils.UserRightsComparator;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.scheduling.annotation.Scheduled;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
@@ -360,21 +361,17 @@ public class UserRightsController {
 
 
     /* поиск юзеров по каналу */
-    @GetMapping("/find/{id}")
-    public List<String> findUsersByChannel(@PathVariable("id") String channelGuid) {
+    @PostMapping("/find")
+    public ResponseEntity<UserSearchValues> findUsersByChannel(@RequestBody UserSearchValues userSearchValues) {
+        String channelGuid = userSearchValues.getChannelGuid();
         List<String> usersName = new ArrayList<>();
-        String channelName = trassirChannelService.findByGuid(channelGuid).getName();
-        String serverName = trassirServerService.findByGuid("gZZKuo60").getServerName();
-        usersName.add("Список пользователей с доступом к камере " + channelName + ":");
         List<TrassirUserRightsInfo> users = userRightsService.findUsersByChannel(channelGuid);
-
         for (TrassirUserRightsInfo user : users
         ) {
             if (user.getUserType().equals("User")) {
-                usersName.add("Пользователь: " + user.getUserName() + ", Сервер: " + serverName);
+                usersName.add(user.getUserName());
             }
-
         }
-        return usersName;
+        return new ResponseEntity<>(new UserSearchValues(channelGuid, usersName), HttpStatus.OK);
     }
 }
