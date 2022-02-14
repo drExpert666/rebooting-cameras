@@ -65,100 +65,115 @@ public class UserRightsController {
 
     @Scheduled(initialDelay = 1000, fixedDelayString = "PT5S")
     public void startCollectUserRights() {
-        /* записываю данные о сервере из БД в переменную */
-        String guidServer = "H5hmIlE0";//todo получить guid сервера из БД
-        TrassirServerInfo trassirServer = trassirServerService.findByGuid(guidServer);
+        List<String> serversGuid = new ArrayList<>();
+        serversGuid.add("gZZKuo60");
+        serversGuid.add("H5hmIlE0");
 
-        /* получаю айди пользователей из трассира */
-        List<String> usersGuid = fillUserRights(trassirServer);
+        for (String guidServer: serversGuid) {
 
-        List<TrassirUserRightsInfo> userRights = new ArrayList<>();
+            /* записываю данные о сервере из БД в переменную */
+            TrassirServerInfo trassirServer = trassirServerService.findByGuid(guidServer);
 
-        /* заполняю данные о каждом пользователе из трассира */
-        if (usersGuid != null) {
-            for (String userId : usersGuid) {
-                /* получаю базовые права пользователя */
-                Integer baseRights = getBaseUserRights(userId, trassirServer);
-                /* получаю дополнительные права пользователя */
-                String aclRights = getAclUserRights(userId, trassirServer);
-                /* получаю тип пользователя */
-                String userType = getUserType(userId, trassirServer);
-                /* получаю группу пользователя */
-                String userGroup = null;
-                if (userType != null && userType.equals("User")) {
-                    userGroup = getUserGroup(userId, trassirServer);
-                }
-                /* получаю имя пользователя */
-                String userName = getUserName(userId, trassirServer);
-                if (userId != null && baseRights != null && aclRights != null) {
-                    String userChannels = userRightsService.findById(userId).getChannels();
-                    TrassirUserRightsInfo trassirUserRights =
-                            new TrassirUserRightsInfo(userId, userName, baseRights, aclRights,
-                                    (userChannels != null && userChannels.trim().length() > 0) ? userChannels : null,
-                                    trassirServer.getGuid(), userType, userGroup);
-                    userRights.add(trassirUserRights);
-                } else {
-                    System.out.println("Ошибка, гуид пользователя: " + userId + " " + userName);
-                    System.out.println("Ошибка, baseRights пользователя: " + baseRights);
-                    System.out.println("Ошибка, aclRights пользователя: " + aclRights);
-                }
-            }
-        }
+            /* получаю айди пользователей из трассира */
+            List<String> usersGuid = fillUserRights(trassirServer);
 
-        List<TrassirUserRightsInfo> trassirUserRightsInfos = userRightsService.saveAll(userRights);
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+            System.out.println(trassirServer);
+            System.out.println(usersGuid);
 
-        /* добавляю каналы */
-        List<TrassirUserRightsInfo> trassirUsersForUpdate = new ArrayList<>();
-        trassirUserRightsInfos = trassirUserRightsInfos.stream()
-                .sorted(Comparator.comparing(TrassirUserRightsInfo::getUserType)
-                        .thenComparing(Comparator.nullsLast(new UserRightsComparator()
-                        ))).collect(Collectors.toList());
+            List<TrassirUserRightsInfo> userRights = new ArrayList<>();
 
-        trassirUserRightsInfos.forEach(ur -> {
-            /* сначала получаю только группы (т.к. выше массив отсортирован, то вначале будут только группы) */
-            if (ur.getUserType().equals("Group")) {
-                String channels = parserUserRights.getChannelsFromUserTrassir(ur.getBaseRights(), ur.getAcl());
-                ur.setChannels(channels);
-                /* записываю список каналов в массив для последующего сохранения в БД */
-                /* получаю список пользователей с указанной группой */
-                List<TrassirUserRightsInfo> usersRightsInfo = userRightsService.findByGroupGuid(ur.getGuid());
-                /* получаю группу */
-                for (TrassirUserRightsInfo userRightsInfo : usersRightsInfo) {
-                    if (userRightsInfo.getAcl() == null || userRightsInfo.getAcl().trim().length() == 0) {
-                        userRightsInfo.setChannels(channels);
-                    } else {
-                        String userBaseAcl = ur.getAcl();
-                        Integer userBaseRights = ur.getBaseRights();
-                        String aclRights;
-                        /* проверяю, пуст ли acl для группы (чтобы не передавать запятую для парсинга) */
-                        if (ur.getAcl() == null || ur.getAcl().trim().length() == 0) {
-                            aclRights = userRightsInfo.getAcl();
-                        } else {
-                            aclRights = userBaseAcl + "," + userRightsInfo.getAcl();
-                        }
-                        String userChannels = parserUserRights.getChannelsFromUserTrassir(userBaseRights, aclRights);
-                        userRightsInfo.setChannels(userChannels);
+            /* заполняю данные о каждом пользователе из трассира */
+            if (usersGuid != null) {
+                for (String userId : usersGuid) {
+                    /* получаю базовые права пользователя */
+                    Integer baseRights = getBaseUserRights(userId, trassirServer);
+                    /* получаю дополнительные права пользователя */
+                    String aclRights = getAclUserRights(userId, trassirServer);
+                    /* получаю тип пользователя */
+                    String userType = getUserType(userId, trassirServer);
+                    /* получаю группу пользователя */
+                    String userGroup = null;
+                    if (userType != null && userType.equals("User")) {
+                        userGroup = getUserGroup(userId, trassirServer);
                     }
-                    /* записываю список каналов в массив для последующего сохранения в БД */
-                    trassirUsersForUpdate.add(userRightsInfo);
+                    /* получаю имя пользователя */
+                    String userName = getUserName(userId, trassirServer);
+                    if (userId != null && baseRights != null && aclRights != null) {
+                        TrassirUserRightsInfo user = userRightsService.findById(userId);
+                        String userChannels = null;
+                        if (user != null) {
+                            userChannels = user.getChannels();
+                        }
+                        TrassirUserRightsInfo trassirUserRights =
+                                new TrassirUserRightsInfo(userId, userName, baseRights, aclRights,
+                                        (userChannels != null && userChannels.trim().length() > 0) ? userChannels : null,
+                                        trassirServer.getGuid(), userType, userGroup);
+                        userRights.add(trassirUserRights);
+                    } else {
+                        System.out.println("Ошибка, гуид пользователя: " + userId + " " + userName);
+                        System.out.println("Ошибка, baseRights пользователя: " + baseRights);
+                        System.out.println("Ошибка, aclRights пользователя: " + aclRights);
+                    }
                 }
-                /* получаю юзеров без группы (т.к. выше мы уже получили и заполнили всех юзеров с группой) */
             }
-            if (ur.getUserType().equals("User") && ur.getGroupId() == null) {
-                String channels = parserUserRights.getChannelsFromUserTrassir(ur.getBaseRights(), ur.getAcl());
-                ur.setChannels(channels);
-                /* записываю список каналов в массив для последующего сохранения в БД */
-                trassirUsersForUpdate.add(ur);
-            }
-        });
 
-        /* сохраняю все данные в БД */
-        userRightsService.saveAll(trassirUsersForUpdate);
+            List<TrassirUserRightsInfo> trassirUserRightsInfos = userRightsService.saveAll(userRights);
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
+            /* добавляю каналы */
+            List<TrassirUserRightsInfo> trassirUsersForUpdate = new ArrayList<>();
+            /* сортирую полученные от Трассира данные по пользователям, сначала группы, потом пользователи */
+            trassirUserRightsInfos = trassirUserRightsInfos.stream()
+                    .sorted(Comparator.comparing(TrassirUserRightsInfo::getUserType)
+                            .thenComparing(Comparator.nullsLast(new UserRightsComparator()
+                            ))).collect(Collectors.toList());
+
+            trassirUserRightsInfos.forEach(ur -> {
+                /* сначала получаю только группы (т.к. выше массив отсортирован, то вначале будут только группы) */
+                if (ur.getUserType().equals("Group")) {
+                    String channels = parserUserRights.getChannelsFromUserTrassir(ur.getBaseRights(), ur.getAcl(), guidServer);
+                    ur.setChannels(channels);
+                    /* записываю список каналов в массив для последующего сохранения в БД */
+                    /* получаю список пользователей с указанной группой */
+                    List<TrassirUserRightsInfo> usersRightsInfo = userRightsService.findByGroupGuid(ur.getGuid());
+                    /* получаю группу */
+                    for (TrassirUserRightsInfo userRightsInfo : usersRightsInfo) {
+                        if (userRightsInfo.getAcl() == null || userRightsInfo.getAcl().trim().length() == 0) {
+                            userRightsInfo.setChannels(channels);
+                        } else {
+                            String userBaseAcl = ur.getAcl();
+                            Integer userBaseRights = ur.getBaseRights();
+                            String aclRights;
+                            /* проверяю, пуст ли acl для группы (чтобы не передавать запятую для парсинга) */
+                            if (ur.getAcl() == null || ur.getAcl().trim().length() == 0) {
+                                aclRights = userRightsInfo.getAcl();
+                            } else {
+                                aclRights = userBaseAcl + "," + userRightsInfo.getAcl();
+                            }
+                            String userChannels = parserUserRights.getChannelsFromUserTrassir(userBaseRights, aclRights, guidServer);
+                            userRightsInfo.setChannels(userChannels);
+                        }
+                        /* записываю список каналов в массив для последующего сохранения в БД */
+                        trassirUsersForUpdate.add(userRightsInfo);
+                    }
+                    /* получаю юзеров без группы (т.к. выше мы уже получили и заполнили всех юзеров с группой) */
+                }
+                if (ur.getUserType().equals("User") && ur.getGroupId() == null) {
+                    String channels = parserUserRights.getChannelsFromUserTrassir(ur.getBaseRights(), ur.getAcl(), guidServer);
+                    ur.setChannels(channels);
+                    /* записываю список каналов в массив для последующего сохранения в БД */
+                    trassirUsersForUpdate.add(ur);
+                }
+            });
+
+            /* сохраняю все данные в БД */
+            userRightsService.saveAll(trassirUsersForUpdate);
+        }
+
 
 //        trassirUserRightsInfos.forEach(ur -> {
 //            /* если группа не указана */
@@ -197,7 +212,6 @@ public class UserRightsController {
 //        });
 //        userRightsService.saveAll(trassirUsersForUpdate);
     }
-
 
     /* получаю айди пользователей из трассира */
     private List<String> fillUserRights(TrassirServerInfo trassirServer) {
@@ -359,19 +373,22 @@ public class UserRightsController {
         return groupName;  //todo тут возвращется null не из-за ошибки, а из-за просроченной сессии, нужно изменить
     }
 
-
     /* поиск юзеров по каналу */
     @PostMapping("/find")
     public ResponseEntity<UserSearchValues> findUsersByChannel(@RequestBody UserSearchValues userSearchValues) {
         String channelGuid = userSearchValues.getChannelGuid();
-        List<String> usersName = new ArrayList<>();
+        List<String> usersNameFromTrassirMain = new ArrayList<>();
+        List<String> usersNameFromTrassir2 = new ArrayList<>();
         List<TrassirUserRightsInfo> users = userRightsService.findUsersByChannel(channelGuid);
         for (TrassirUserRightsInfo user : users
         ) {
-            if (user.getUserType().equals("User")) {
-                usersName.add(user.getUserName());
+            if (user.getUserType().equals("User") && user.getServerGuid().equals("gZZKuo60")) {
+                usersNameFromTrassirMain.add(user.getUserName());
+            }
+            if (user.getUserType().equals("User") && user.getServerGuid().equals("H5hmIlE0")) {
+                usersNameFromTrassir2.add(user.getUserName());
             }
         }
-        return new ResponseEntity<>(new UserSearchValues(channelGuid, usersName), HttpStatus.OK);
+        return new ResponseEntity<>(new UserSearchValues(channelGuid, usersNameFromTrassirMain, usersNameFromTrassir2), HttpStatus.OK);
     }
 }

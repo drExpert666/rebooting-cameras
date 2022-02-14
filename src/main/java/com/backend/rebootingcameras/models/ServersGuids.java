@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class ServersGuids {
-    private final String[] serversGuid = new String[]{
+    private final String[] serversGuidTrassirMain = new String[]{
             "zLuaHPw1",
             "hqpstp9l",
             "JeYq8zYX",
@@ -22,9 +22,35 @@ public class ServersGuids {
             "OzItN1TY",
             "iLYCl1AU",
 //            "H5hmIlE0", //todo для тестов убрал
-            "XmKSynoC",
-            "TMWHCE9j",
-            "wBQPMoKQ"
+//            "XmKSynoC", // лыжные
+//            "TMWHCE9j",
+//            "wBQPMoKQ" // новый сервер стройки
     };
-    public List<String> serversGuidList = new ArrayList<>(Arrays.asList(serversGuid.clone()));
+
+    private final String[] serversGuidTrassir2 = new String[]{
+            "zLuaHPw1",
+            "hqpstp9l",
+            "JeYq8zYX",
+            "pYF7hSV7",
+            "pqzJwZy9",
+            "h4yPogum",
+            "ctIJPOMN",
+            "h0ZCZ2Yf",
+            "gZZKuo60",
+            "kKAZPSPI",
+            "i8MTdNGd",
+            "cjFPWPb5",
+            "O1GNrsQJ",
+            "OzItN1TY",
+            "iLYCl1AU",
+            "H5hmIlE0", //todo для тестов убрал
+//            "XmKSynoC", // лыжные
+//            "TMWHCE9j",
+//            "wBQPMoKQ" // новый сервер стройки
+    };
+
+
+    public List<String> serversGuidListTrassirMain = new ArrayList<>(Arrays.asList(serversGuidTrassirMain.clone()));
+
+    public List<String> serversGuidListTrassir2 = new ArrayList<>(Arrays.asList(serversGuidTrassir2.clone()));
 }

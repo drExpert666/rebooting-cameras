@@ -10,6 +10,6 @@ import java.util.List;
 public class UserSearchValues {
 
     private String channelGuid;
-    private List<String> usersFromChannel;
-
+    private List<String> usersFromTrassirMain;
+    private List<String> usersFromTrassir2;
 }

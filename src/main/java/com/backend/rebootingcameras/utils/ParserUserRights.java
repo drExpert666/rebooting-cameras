@@ -36,7 +36,7 @@ public class ParserUserRights {
     private List<Integer> receivedRights = new ArrayList<>();
 
 
-    public String getChannelsFromUserTrassir(Integer baseRights, String aclRights) {
+    public String getChannelsFromUserTrassir(Integer baseRights, String aclRights, String serverGuid) {
 
         //todo поменять реализацию после подключения БД
         /* получили и заполнили хэш-мэпы с базовыми правами */
@@ -58,9 +58,10 @@ public class ParserUserRights {
 
         /* заполняю дополнительные права пользователя */
         fillUserOptionalRights(substr);
+        /* получаю список guid серверов */
         ServersGuids serversGuids = new ServersGuids();
 
-        List<String> serversLeftAfterUpdate;
+        List<String> serversLeftAfterUpdate = new ArrayList<>();
         List<String> serversLeft;
         if (baseRights == 0) {
             /* оставшиеся сервера у юзера с галочкой "просмотр" на всём сервере */
@@ -69,8 +70,15 @@ public class ParserUserRights {
         }
         else {
             /* оставшиеся сервера у юзера с галочкой "просмотр" на всём сервере */
-           serversLeft = fillUserServersByDeleting(serversGuids.serversGuidList);
-           serversLeftAfterUpdate = checkServersWithAllRightsOnAdd(serversLeft);
+            if (serverGuid.equals("gZZKuo60")) {
+                serversLeft = fillUserServersByDeleting(serversGuids.serversGuidListTrassirMain);
+                serversLeftAfterUpdate = checkServersWithAllRightsOnAdd(serversLeft);
+            }
+            if (serverGuid.equals("H5hmIlE0")) {
+                serversLeft = fillUserServersByDeleting(serversGuids.serversGuidListTrassir2);
+                serversLeftAfterUpdate = checkServersWithAllRightsOnAdd(serversLeft);
+            }
+
         }
 
         //todo тут получить список всех камер из БД по оставшимся серверам

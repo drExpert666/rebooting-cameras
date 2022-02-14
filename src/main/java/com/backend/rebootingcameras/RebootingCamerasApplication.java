@@ -18,8 +18,8 @@ public class RebootingCamerasApplication extends SpringBootServletInitializer {
 
     public static void main(String[] args) {
         SpringApplication.run(RebootingCamerasApplication.class, args);
-        log.debug("Starting my application in debug with {} args", args.length);
-        log.info("Starting my application with {} args.", args.length);
+//        log.debug("Starting my application in debug with {} args", args.length);
+//        log.info("Starting my application with {} args.", args.length);
     }
 
 }
